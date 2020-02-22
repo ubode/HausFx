@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ubo.fx.fahrten.gui.KontakteController">
+    <top>
+    </top>
+   <center>
+      <TabPane BorderPane.alignment="CENTER">
+         <tabs>
+            <Tab fx:id="datenTab" closable="false" onSelectionChanged="#handleDatenTab" text="Daten">
+               <content>
+                  <SplitPane dividerPositions="0.5" orientation="VERTICAL">
+                     <items>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="10.0" prefWidth="50.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="10.0" prefWidth="50.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="10.0" prefWidth="20.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="10.0" prefWidth="50.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="10.0" prefWidth="20.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="10.0" prefWidth="50.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="5.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Zu- und Vorname" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="5.0" />
+                                 </GridPane.margin></Label>
+                              <Label text="Tel. privat" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="5.0" />
+                                 </GridPane.margin></Label>
+                              <Label text="Tel. dienstl." GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="5.0" />
+                                 </GridPane.margin></Label>
+                              <Label text="Email" GridPane.rowIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="5.0" />
+                                 </GridPane.margin></Label>
+                              <Label text="Bemerkung" GridPane.rowIndex="5">
+                                 <GridPane.margin>
+                                    <Insets left="5.0" />
+                                 </GridPane.margin></Label>
+                              <Label text="Strasse / Nr." GridPane.rowIndex="6">
+                                 <GridPane.margin>
+                                    <Insets left="5.0" />
+                                 </GridPane.margin></Label>
+                              <Label text="PLZ / Ort" GridPane.rowIndex="7">
+                                 <GridPane.margin>
+                                    <Insets left="5.0" />
+                                 </GridPane.margin></Label>
+                              <Label text="Land" GridPane.rowIndex="8">
+                                 <GridPane.margin>
+                                    <Insets left="5.0" />
+                                 </GridPane.margin></Label>
+                              <TextField fx:id="nameTextField" promptText="Name" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="vornameTextField" promptText="Vorname" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></TextField>
+                              <ChoiceBox fx:id="anredeChoiceBox" prefWidth="150.0" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></ChoiceBox>
+                              <ChoiceBox fx:id="titelChoiceBox" prefWidth="150.0" GridPane.columnIndex="11" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="5.0" />
+                                 </GridPane.margin></ChoiceBox>
+                              <TextField fx:id="telVorwahlTextField" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="telefonTextField" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="handyVorwahlTextField" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="handyTextField" GridPane.columnIndex="8" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="faxVorwahlTextField" GridPane.columnIndex="11" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="faxTextField" GridPane.columnIndex="12" GridPane.rowIndex="2">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="5.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="telDienstVorwahlTextField" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="telDienstTextField" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="handyDienstVorwahlTextField" GridPane.columnIndex="7" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="handyDienstTextField" GridPane.columnIndex="8" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="faxDienstVorwahlTextField" GridPane.columnIndex="11" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="faxDienstTextField" GridPane.columnIndex="12" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="5.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="emailTextField" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></TextField>
+                              <DatePicker fx:id="geburtstagDatePicker" onAction="#handleGeburtstagChanged" GridPane.columnIndex="11" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="5.0" />
+                                 </GridPane.margin></DatePicker>
+                              <TextField fx:id="bemerkungTextField" GridPane.columnIndex="1" GridPane.columnSpan="12" GridPane.rowIndex="5">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="5.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="strasseTextField" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" />
+                              <TextField fx:id="hausnummerTextField" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></TextField>
+                              <ChoiceBox fx:id="adresseChoiceBox" GridPane.columnIndex="4" GridPane.rowIndex="6">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin>
+                              </ChoiceBox>
+                              <TextField fx:id="plzTextField" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="ortTextField" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></TextField>
+                              <TextField fx:id="landTextField" prefHeight="25.0" prefWidth="89.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></TextField>
+                              <CheckBox fx:id="inaktivCheckBox" mnemonicParsing="false" GridPane.columnIndex="11" GridPane.rowIndex="8">
+                                 <GridPane.margin>
+                                    <Insets left="2.0" right="2.0" />
+                                 </GridPane.margin></CheckBox>
+                              <Label text="Anrede" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                              <Label text="Handy priv." GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                              <Label text="Handy dienstl." GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                              <Label text="Titel" GridPane.columnIndex="10" GridPane.rowIndex="1" />
+                              <Label text="Fax priv." GridPane.columnIndex="10" GridPane.rowIndex="2" />
+                              <Label text="Fax dienstl." GridPane.columnIndex="10" GridPane.rowIndex="3" />
+                              <Label text="Geburtstag" GridPane.columnIndex="10" GridPane.rowIndex="4" />
+                              <Label text="inaktiv" GridPane.columnIndex="10" GridPane.rowIndex="8" />
+                           </children>
+                        </GridPane>
+                        <TableView prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="Datum" />
+                            <TableColumn prefWidth="75.0" text="Notiz" />
+                          </columns>
+                        </TableView>
+                     </items>
+                  </SplitPane>
+               </content>
+            </Tab>
+            <Tab closable="false" onSelectionChanged="#handleBuchungenTab" text="Buchungen">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <TableView fx:id="buchungsTableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                          <columns>
+                              <TableColumn fx:id="datumCol" editable="false" maxWidth="100.0" minWidth="80" prefWidth="90.0" text="Datum" />
+                              <TableColumn fx:id="buchNrCol" editable="false" maxWidth="400.0" minWidth="80.0" text="Nummer" />
+                              <TableColumn fx:id="empfaengerCol" editable="false" maxWidth="400.0" minWidth="200" prefWidth="200.0" text="Empfänger" />
+                              <TableColumn fx:id="betragCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="80.0" prefWidth="100.0" text="Betrag" />
+                              <TableColumn fx:id="kategorieCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="100.0" text="Kategorie" />
+                              <TableColumn fx:id="verwendungCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="400.0" text="Verwendung" />
+                          </columns>
+                        </TableView>
+                     </center>
+                     <top>
+                        <AnchorPane BorderPane.alignment="CENTER">
+                           <children>
+                              <ChoiceBox fx:id="jahrChoiceBox" layoutX="501.0" layoutY="5.0" prefWidth="150.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </ChoiceBox>
+                           </children>
+                        </AnchorPane>
+                     </top>
+                  </BorderPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </center>
+   <bottom>
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <buttons>
+          <Button fx:id="neuButton" mnemonicParsing="false" onAction="#handleNeuButton" text="Neu" />
+            <Button fx:id="loeschButton" mnemonicParsing="false" onAction="#handleLoeschButton" text="Löschen" />
+            <Button fx:id="abbruchButton" mnemonicParsing="false" onAction="#handleAbbruchButton" text="Abbrechen" />
+            <Button fx:id="saveButton" mnemonicParsing="false" onAction="#handleSaveButton" text="Speichern" />
+        </buttons>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets right="10.0" />
+         </padding>
+      </ButtonBar>
+   </bottom>
+   <left>
+      <TableView fx:id="personenTableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+            <TableColumn fx:id="iconColumn" editable="false" maxWidth="100.0" minWidth="20.0" prefWidth="20.0" />
+          <TableColumn fx:id="nameColumn" editable="false" maxWidth="200.0" minWidth="80.0" prefWidth="150.0" text="Name, Vorname" />
+        </columns>
+      </TableView>
+   </left>
+</BorderPane>

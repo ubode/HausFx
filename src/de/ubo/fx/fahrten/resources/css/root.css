@@ -1,0 +1,208 @@
+/* leere Bereiche in der Tabelle */
+.table-row-cell:empty {
+	-fx-background: transparent
+}
+
+
+/* Validation fehlgeschlagen */
+.text-input.validationFailed, .combo-box.validationFailed {
+    -fx-border-width: 0 0 0 5;
+    -fx-border-color: #fa8072;
+}
+
+.check-box.validationFailed {
+    -fx-border-color: transparent;
+}
+
+.check-box.validationFailed > .box,
+.check-box.dataChanged.validationFailed > .box {
+    -fx-border-color: #fa8072;
+}
+
+.table-cell.validationFailed,
+.table-cell.dataChanged.validationFailed {
+    -fx-border-width: 0 0 0 5;
+    -fx-border-color: #fa8072;
+}
+
+.tab-pane > .tab-header-area {
+	/*-fx-font-weight: bold;*/
+	/*-fx-text-fill: #006284;*/ 
+}
+
+
+/* Ausstehende Änderungen */
+.tab.dataChanged {
+    -fx-background-color: -fx-outer-border, -fx-inner-border, linear-gradient(to bottom,
+    ladder(
+            white,
+            derive(yellowgreen, 8%) 75%,
+            derive(yellowgreen, 10%) 80%
+    ),
+    derive(#EEEEEE, -8%));
+}
+
+.tab.dataChanged:hover, .tab.dataChanged:focused, .tab.dataChanged:selected {
+    -fx-background-color: -fx-outer-border, -fx-inner-border, linear-gradient(to bottom,
+    ladder(
+            white,
+            derive(yellowgreen, 8%) 75%,
+            derive(#97e532, 10%) 80%
+    ),
+    derive(white, -8%));
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab.dataChanged > .tab-container > .tab-close-button {
+    -fx-background-color: darkgreen;
+}
+
+.text-input.dataChanged, .combo-box.dataChanged {
+    -fx-border-width: 0 0 0 5;
+    -fx-border-color: yellowgreen;
+}
+
+.check-box.dataChanged > .box {
+    -fx-border-width: 0 0 0 5;
+    -fx-border-color: yellowgreen;
+}
+
+.table-cell.dataChanged {
+    -fx-border-width: 0 0 0 5;
+    -fx-border-color: yellowgreen;
+}
+
+/* Ausstehende Änderungen und Validierung fehlgeschlagen */
+.tab.validationFailed,
+.tab.dataChanged.validationFailed {
+    -fx-background-color: -fx-outer-border, -fx-inner-border, linear-gradient(to bottom,
+    ladder(
+            white,
+            derive(#fa8072, 8%) 75%,
+            derive(#fa8072, 10%) 80%
+    ),
+    derive(#EEEEEE, -8%));
+}
+
+.text-input.dataChanged.validationFailed, .combo-box.dataChanged.validationFailed {
+    -fx-border-width: 0 0 0 5, 1;
+    -fx-border-color: #fa8072, #fa8072;
+}
+
+.check-box.dataChanged.validationFailed > .box {
+    -fx-border-width: 0 0 0 5, 1;
+    -fx-border-color: #fa8072, #fa8072;
+}
+
+/* Validierung fehlgeschlagen oder ausstehende Änderungen und Validierung fehlgeschlagen */
+.tab.validationFailed:hover, .tab.validationFailed:focused, .tab.validationFailed:selected,
+.tab.dataChanged.validationFailed:hover, .tab.dataChanged.validationFailed:focused, .tab.dataChanged.validationFailed:selected {
+    -fx-background-color: -fx-outer-border, -fx-inner-border, linear-gradient(to bottom,
+    ladder(
+            white,
+            derive(#fa8072, 8%) 75%,
+            derive(#ff5454, 10%) 80%
+    ),
+    derive(#EEEEEE, -8%));
+}
+
+.tab-pane > .tab-header-area > .headers-region > .tab.validationFailed > .tab-container > .tab-close-button,
+.tab-pane > .tab-header-area > .headers-region > .tab.dataChanged.validationFailed > .tab-container > .tab-close-button {
+    -fx-background-color: #fa8072;    
+}
+
+/* Drag and Drop */
+.dragging {
+    -fx-background-color: slategray !important;
+}
+
+/* Icon-Pfade */
+#add-to-favourites {
+    -fx-background-color: #006284;
+    -fx-background-insets: 1.0 1.0 1.0 1.0, 0.0;
+    -fx-shape: "m 0,0 -8.197,-7.99 1.934,-11.282 c 0.168,-0.986 -0.236,-1.982 -1.046,-2.571 -0.457,-0.333 -1.001,-0.502 -1.545,-0.502 -0.418,0 -0.839,0.1 -1.222,0.303 l -10.132,5.327 -10.131,-5.327 c -0.384,-0.203 -0.805,-0.303 -1.222,-0.303 -0.547,0 -1.089,0.169 -1.543,0.502 -0.81,0.589 -1.214,1.585 -1.046,2.571 L -32.216,-7.99 -40.413,0 c -0.718,0.699 -0.975,1.742 -0.665,2.694 0.307,0.951 1.13,1.645 2.121,1.79 l 11.327,1.645 5.065,10.263 c 0.444,0.899 1.356,1.466 2.357,1.466 1.001,0 1.913,-0.567 2.358,-1.466 L -12.783,6.129 -1.456,4.484 C -0.468,4.339 0.355,3.645 0.665,2.694 0.972,1.742 0.715,0.696 0,0 m -20.207,28.757 c -17.673,0 -32,-14.327 -32,-32 0,-17.673 14.327,-32 32,-32 17.673,0 32,14.327 32,32 0,17.673 -14.327,32 -32,32"
+}
+
+#add-to-favourites-and-share {
+    -fx-background-color: #006284;
+    -fx-background-insets: 1.0 1.0 1.0 1.0, 0.0;
+    -fx-rotate: 180;
+    -fx-shape: "m 0,0 -30,0 c -5.523,0 -10,4.477 -10,10 0,5.009 3.687,9.146 8.492,9.874 C -29.773,26.835 -23.498,32 -16,32 -7.163,32 0,24.837 0,16 4.418,16 8,12.418 8,8 8,3.582 4.418,0 0,0 m -16,46 c -17.673,0 -32,-14.327 -32,-32 0,-17.673 14.327,-32 32,-32 17.673,0 32,14.327 32,32 0,17.673 -14.327,32 -32,32"
+}
+
+#move-to-start {
+    -fx-background-color: #006284;
+    -fx-background-insets: 1.0 1.0 1.0 1.0, 0.0;
+    -fx-rotate: 90;
+    -fx-shape: "m 0,0 -7.839,0 0,-12 c 0,-2.209 -1.79,-4 -4,-4 l -8,0 c -2.209,0 -4,1.791 -4,4 l 0,12 -7.838,0 c -2.722,0 -3.472009,1.8563994 -1.69,4.145 l 11.552396,14.836524 c 0.445502,0.572149 -12.600925,0 -12.600925,0 l 0,6.232209 c 0,0 19.520106,0 19.815481,0 0.295375,0 17.3380772,0 17.3380772,0 l 0,-6.232209 c 0,0 -13.0663822,0.571777 -12.6204004,0 L 1.69,4.145 C 3.4739255,1.8578929 2.722,0 0,0 m -15.839,36 c -17.673,0 -32,-14.327 -32,-32 0,-17.673 14.327,-32 32,-32 17.674,0 32,14.327 32,32 0,17.673 -14.326,32 -32,32"
+}
+
+#move-left {
+    -fx-background-color: #006284;
+    -fx-background-insets: 1.0 1.0 1.0 1.0, 0.0;
+    -fx-rotate: 90;
+    -fx-shape: "m 0,0 -7.839,0 0,-12 c 0,-2.209 -1.79,-4 -4,-4 l -8,0 c -2.209,0 -4,1.791 -4,4 l 0,12 -7.838,0 c -2.722,0 -3.483,1.865 -1.69,4.145 l 14.269,18.145 c 1.793,2.28 4.726,2.28 6.519,0 L 1.69,4.145 C 3.483,1.865 2.722,0 0,0 m -15.839,36 c -17.673,0 -32,-14.327 -32,-32 0,-17.673 14.327,-32 32,-32 17.674,0 32,14.327 32,32 0,17.673 -14.326,32 -32,32"
+}
+
+#move-right {
+    -fx-background-color: #006284;
+    -fx-background-insets: 1.0 1.0 1.0 1.0, 0.0;
+    -fx-rotate: 270;
+    -fx-shape: "m 0,0 -7.839,0 0,-12 c 0,-2.209 -1.79,-4 -4,-4 l -8,0 c -2.209,0 -4,1.791 -4,4 l 0,12 -7.838,0 c -2.722,0 -3.483,1.865 -1.69,4.145 l 14.269,18.145 c 1.793,2.28 4.726,2.28 6.519,0 L 1.69,4.145 C 3.483,1.865 2.722,0 0,0 m -15.839,36 c -17.673,0 -32,-14.327 -32,-32 0,-17.673 14.327,-32 32,-32 17.674,0 32,14.327 32,32 0,17.673 -14.326,32 -32,32"
+}
+
+#move-to-end {
+    -fx-background-color: #006284;
+    -fx-background-insets: 1.0 1.0 1.0 1.0, 0.0;
+    -fx-rotate: 270;
+    -fx-shape: "m 0,0 -7.839,0 0,-12 c 0,-2.209 -1.79,-4 -4,-4 l -8,0 c -2.209,0 -4,1.791 -4,4 l 0,12 -7.838,0 c -2.722,0 -3.472009,1.8563994 -1.69,4.145 l 11.552396,14.836524 c 0.445502,0.572149 -12.600925,0 -12.600925,0 l 0,6.232209 c 0,0 19.520106,0 19.815481,0 0.295375,0 17.3380772,0 17.3380772,0 l 0,-6.232209 c 0,0 -13.0663822,0.571777 -12.6204004,0 L 1.69,4.145 C 3.4739255,1.8578929 2.722,0 0,0 m -15.839,36 c -17.673,0 -32,-14.327 -32,-32 0,-17.673 14.327,-32 32,-32 17.674,0 32,14.327 32,32 0,17.673 -14.326,32 -32,32"
+}
+
+#remove {
+    -fx-background-color: #006284;
+    -fx-background-insets: 1.0 1.0 1.0 1.0, 0.0;
+    -fx-shape: "m 0,0 -22.215,22.215 c 2.563,1.747 5.657,2.771 8.986,2.771 8.823,0 16,-7.177 16,-16 C 2.771,5.657 1.747,2.564 0,0 m -13.229,-7.014 c -8.822,0 -16,7.178 -16,16 0,3.33 1.025,6.423 2.772,8.987 L -4.242,-4.242 c -2.564,-1.747 -5.657,-2.772 -8.987,-2.772 m 0,38 c -12.15,0 -22,-9.849 -22,-22 0,-12.15 9.85,-22 22,-22 12.151,0 22,9.85 22,22 0,12.151 -9.849,22 -22,22"
+}
+
+#dropZone {
+    /*-fx-background-color: #3e9ade;*/
+    -fx-background-insets: 1.0 1.0 1.0 1.0, 0.0;
+}
+
+/*
+#dropIcon {
+    -fx-image: url("../icons/medium/dropzone_48x48.png");
+}
+*/
+
+.menu-item:hover > .graphic-container > #add-to-favourites,
+.menu-item:hover > .graphic-container > #add-to-favourites-and-share,
+.menu-item:hover > .graphic-container > #move-to-start,
+.menu-item:hover > .graphic-container > #move-left,
+.menu-item:hover > .graphic-container > #move-right,
+.menu-item:hover > .graphic-container > #move-to-end,
+.menu-item:hover > .graphic-container > #remove {
+    -fx-background-color: yellowgreen;
+}
+
+.menu-item:focused .graphic-container > HBox#breadcrumbPane > .label {
+    -fx-text-fill: black;
+}
+
+.check-box:disabled > .box {
+    -fx-background-color: lightgray;
+}
+
+/* Die Grösse der ComboBox für eine Tabelle so einschränken, 
+dass keine Vergrösserung der Zeile beim Editieren auftritt */
+.combo-box-table-cell .combo-box {
+	-fx-background-insets: 0;
+	-fx-padding: 0;
+	-fx-min-height: 18;
+	-fx-max-height: 18
+}
+
+.combo-box-table-cell .combo-box > .text-field,
+.combo-box-table-cell .combo-box > .list-cell {
+	-fx-background-insets: 0;
+	-fx-padding: 0;
+}

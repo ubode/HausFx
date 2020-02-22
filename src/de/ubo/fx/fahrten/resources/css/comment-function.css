@@ -1,0 +1,21 @@
+/*
+    comment-function.css
+
+    Layout für die Kommentar-Funktion
+
+    Des weiteren werden folgende CSS Definitonen von der Kommentar-Funktion benutzt:
+    ribbonpane.css: Button-Leiste mit Funktionen (analog zur Haupt-Anwendung)
+
+    TODO CSS Include ?
+ */
+
+.comment-function {
+    -fx-border-color: #006384;
+    -fx-border-width: 1 1 1 1;
+}
+
+.buttonbar {
+    -fx-background-color: #DDDDDD;
+}
+
+

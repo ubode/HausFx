@@ -1,0 +1,41 @@
+.progress-glasspane#view {
+	-fx-background-color: rgb(235.0, 235.0, 235.0, 0.6);
+}
+
+.progress-glasspane #label {
+    -fx-text-fill: rgb(255, 255, 255, 0.7);
+}
+
+.progress-glasspane #leftPane {
+	-fx-shape: "m 0,0.28125 0,44.4375 c 0,0 0,21.22523 24.243661,21.22523 l 0,-65.65992 z";
+    -fx-background-color: rgb(62, 152, 222, 0.2);
+}
+
+.progress-glasspane #leftInnerPane {
+    -fx-background-color: rgb(62, 152, 222, 0.2);
+}
+
+.progress-glasspane #rightInnerPane {
+    -fx-background-color: rgb(62, 152, 222, 0.2);
+}
+
+.progress-glasspane #rightPane {
+	-fx-shape: "m 24.243661,284.64343 0,44.4375 c 0,0 0,21.22523 -24.243661,21.22523 l 0,-65.65992 z";
+    -fx-background-color: rgb(62, 152, 222, 0.2);
+}
+
+.progress-glasspane #vbox {
+	-fx-shape: "m 161.11933,381.11581 0,65.53208 c 17.4521,0 17.4521,0 17.4521,20 l 0,247.85715 c 0,17.14285 0,17.14285 17.14286,17.14285 l 305.71428,0 c 17.85714,0 17.85714,0 17.85714,-17.14285 l 0,-247.85715 c 0,-20 0,-20 17.10529,-20 l 0,-65.53208 z";
+    -fx-background-color: rgb(62, 152, 222, 0.2);
+}
+
+.progress-glasspane .progress-bar > .bar {
+    -fx-background-color: linear-gradient(
+        from 0px .75em to .75em 0px,
+        repeat,
+        -fx-accent 0%,
+        -fx-accent 49%,
+        derive(-fx-accent, 30%) 50%,
+        derive(-fx-accent, 30%) 99%
+    );
+}

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="de.ubo.fx.fahrten.gui.MietenBuchungController">
+    <center>
+        <TableView fx:id="zuordnungTableView" editable="true" minHeight="-Infinity" minWidth="-Infinity">
+            <columns>
+            <TableColumn fx:id="buchungCol" prefWidth="75.0" text="B u c h u n g">
+               <columns>
+                      <TableColumn fx:id="datumCol" editable="false" maxWidth="100.0" minWidth="80" prefWidth="90.0" text="Datum" />
+                      <TableColumn fx:id="empfaengerCol" editable="false" maxWidth="400.0" minWidth="200" prefWidth="200.0" text="Buchung Empfänger" />
+                      <TableColumn fx:id="betragCol" editable="false" maxWidth="200.0" minWidth="80.0" prefWidth="100.0" text="Betrag" />
+                      <TableColumn fx:id="kategorieCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="150.0" text="Kategorie" />
+               </columns>
+            </TableColumn>
+            <TableColumn prefWidth="75.0" text="M i e t z a h l u n g">
+               <columns>
+                      <TableColumn fx:id="wohnungCol" maxWidth="100.0" minWidth="80.0" onEditCommit="#handleWohnungChangedAction" text="Wohnung" />
+                      <TableColumn fx:id="mieterCol" editable="false" maxWidth="400.0" minWidth="150.0" prefWidth="150.0" text="Mieter" />
+                      <TableColumn fx:id="anteilCol" maxWidth="200.0" minWidth="80.0" onEditCommit="#handleAnteilChangedAction" prefWidth="100.0" text="Betrag" />
+                      <TableColumn fx:id="verwendungCol" maxWidth="300.0" minWidth="100.0" onEditCommit="#handleZahlungskategorieChangedAction" prefWidth="150.0" text="Verwendung" />
+                      <TableColumn fx:id="jahrCol" maxWidth="90.0" onEditCommit="#handleJahrChangedAction" prefWidth="60.0" text="Jahr" />
+               </columns>
+            </TableColumn>
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="UNCONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
+    </center>
+    <top>
+    </top>
+    <top>
+        <AnchorPane maxHeight="70.0" minHeight="70.0" prefHeight="70.0" BorderPane.alignment="TOP_LEFT">
+            <children>
+                <Label layoutX="28.0" layoutY="28.0" text="Filterkriterien">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </Label>
+                <ChoiceBox fx:id="jahrChoiceBox" accessibleHelp="Haus wählen" layoutX="184.0" layoutY="25.0" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+                <ChoiceBox fx:id="monatChoiceBox" accessibleHelp="Haus wählen" layoutX="293.0" layoutY="25.0" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+                <ChoiceBox fx:id="kategorieChoiceBox" layoutX="402.0" layoutY="25.0" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
+                <Button fx:id="searchButton" layoutX="822.0" layoutY="25.0" maxWidth="130.0" minWidth="80.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="25.0" prefWidth="130.0" text="Wohnung zuordnen" AnchorPane.rightAnchor="110.0" />
+                <Button fx:id="saveButton" layoutX="912.0" layoutY="25.0" maxWidth="100.0" minWidth="80.0" mnemonicParsing="false" onAction="#handleSaveAction" prefWidth="80.0" text="Speichern" AnchorPane.rightAnchor="20.0" />
+            </children>
+        </AnchorPane>
+    </top>
+</BorderPane>

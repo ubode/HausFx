@@ -1,0 +1,83 @@
+/* Hintergrund des Split-Panes, der Split-Pane hat die id view */
+.dashboard#view {
+   -fx-background-color: whitesmoke;
+}
+
+/* Wo zieht der style? */
+.dashboard .button {
+    -fx-padding: 0;
+    -fx-border-color: white;
+    -fx-border-radius: 32px;
+    -fx-border-insets: 0;
+    -fx-border-image-insets: 0;
+    -fx-background-radius: 32px;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
+    -fx-background-color: radial-gradient(focus-angle 160deg, focus-distance 36%, center 50% 50%, radius 55%, #DDDDDD, #FFFFFF);
+}
+
+.dashboard .button:hover {
+    -fx-background-color: radial-gradient(focus-angle 160deg, focus-distance 36%, center 50% 50%, radius 55%, #CCCCCC, #EEEEFF);
+}
+
+.dashboard .button:pressed {
+    -fx-background-color: radial-gradient(focus-angle 160deg, focus-distance 36%, center 50% 50%, radius 55%, #999999, #BBBBBB);
+}
+
+.dashboard .table-view {
+    /* Constants used throughout the tableview. */
+    -fx-table-cell-border-color: none;
+}
+
+.dashboard .table-view:focused {
+    -fx-background-color: transparent, -fx-box-border, -fx-control-inner-background;
+}
+
+.dashboard .table-view .cell {
+    -fx-background-color: transparent;
+}
+
+.dashboard .table-view .column-header-background {
+    -fx-background-color: #006384;
+}
+
+.dashboard .table-view .column-header .label {
+    -fx-background-insets: 0.0, 0.0 0.0 0.0 0.0;
+    -fx-padding: 0.0;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.dashboard .table-view .column-header,
+.dashboard .table-view .filler,
+.dashboard .table-view > .column-header-background > .show-hide-columns-button,
+.dashboard .table-view:constrained-resize .filler {
+    -fx-background-color: transparent;
+    -fx-font-weight: normal;
+    -fx-background-insets: 0.0, 0.0 0.0 0.0 0.0;
+    -fx-padding: 0.0;
+    -fx-size: 10.0px;
+}
+
+/* Checkbox */
+.dashboard .table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled > .check-box-table-cell:selected > .check-box > .box,
+.dashboard .table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled:selected > .check-box-table-cell > .check-box > .box {
+    -fx-background-color: snow, lightgray;
+}
+
+.dashboard .table-view:focused > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled:selected > .cell {
+    -fx-border-color: null;
+    -fx-text-fill: black;
+}
+
+.dashboard .table-view > .virtual-flow > .clipped-container > .sheet > .table-row-cell:filled > .cell {
+    -fx-border-color: null;
+}
+
+/* Funktioniert zur Zeit noch nicht: siehe auch RT-25004 
+.web-view {
+    -fx-background: derive(-fx-base,26.4%);
+} */
+
+.dashboard #anchorPaneImageView {
+    -fx-image: url("../icons/medium/globe_inv_2.png");
+}

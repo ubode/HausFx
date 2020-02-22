@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ubo.fx.fahrten.gui.BuchungsKatalogController">
+    <center>
+        <TableView fx:id="buchungTableView" editable="true" minHeight="-Infinity" minWidth="-Infinity">
+            <columns>
+                <TableColumn fx:id="datumCol" editable="false" maxWidth="100.0" minWidth="80" prefWidth="90.0" text="Datum" />
+                <TableColumn fx:id="buchNrCol" editable="false" maxWidth="400.0" minWidth="80.0" text="Nummer" />
+                <TableColumn fx:id="empfaengerCol" editable="false" maxWidth="400.0" minWidth="200" prefWidth="200.0" text="Empfänger" />
+                <TableColumn fx:id="betragCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="80.0" prefWidth="100.0" text="Betrag" />
+                <TableColumn fx:id="kategorieCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="100.0" text="Kategorie" />
+                <TableColumn fx:id="verwendungCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="400.0" text="Verwendung" />
+                <TableColumn fx:id="hausCol" editable="false" maxWidth="100.0" prefWidth="75.0" text="Haus" />
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="UNCONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
+    </center>
+    <top>
+    </top>
+    <top>
+        <AnchorPane maxHeight="100.0" minHeight="100.0" prefHeight="100.0" BorderPane.alignment="TOP_LEFT">
+            <children>
+                <Label layoutX="28.0" layoutY="28.0" text="Filterkriterien">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </Label>
+
+                <ChoiceBox fx:id="hausChoiceBox" accessibleHelp="Haus wählen" layoutX="184.0" layoutY="25.0" prefWidth="120.0" />
+
+                <ChoiceBox fx:id="kriteriumEinsChoiceBox" accessibleHelp="Haus wählen" layoutX="314.0" layoutY="26.0" prefWidth="100.0" />
+                <ChoiceBox fx:id="operatorEinsChoiceBox" layoutX="417.0" layoutY="26.0" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+
+                <ChoiceBox fx:id="kriteriumZweiChoiceBox" accessibleHelp="Haus wählen" layoutX="600.0" layoutY="26.0" prefWidth="100.0" />
+                <ChoiceBox fx:id="operatorZweiChoiceBox" layoutX="703.0" layoutY="26.0" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+
+
+                <ChoiceBox fx:id="kriteriumDreiChoiceBox" accessibleHelp="Haus wählen" layoutX="313.0" layoutY="57.0" prefWidth="100.0" />
+                <ChoiceBox fx:id="operatorDreiChoiceBox" layoutX="416.0" layoutY="57.0" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+
+                <ChoiceBox fx:id="kriteriumVierChoiceBox" accessibleHelp="Haus wählen" layoutX="599.0" layoutY="57.0" prefWidth="100.0" />
+                <ChoiceBox fx:id="operatorVierChoiceBox" layoutX="702.0" layoutY="57.0" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+
+                <Button fx:id="suchenButton" layoutX="933.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleSuchenAction" prefWidth="80.0" text="Suchen" />
+            <ComboBox fx:id="argumentEinsComboBox" editable="true" layoutX="469.0" layoutY="26.0" prefWidth="120.0" />
+            <ComboBox fx:id="argumentZweiComboBox" editable="true" layoutX="755.0" layoutY="26.0" prefWidth="120.0" />
+            <ComboBox fx:id="argumentDreiComboBox" editable="true" layoutX="469.0" layoutY="57.0" prefWidth="120.0" />
+            <ComboBox fx:id="argumentVierComboBox" editable="true" layoutX="755.0" layoutY="57.0" prefWidth="120.0" />
+            </children>
+        </AnchorPane>
+    </top>
+</BorderPane>

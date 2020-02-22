@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="de.ubo.fx.fahrten.gui.WohnungenController">
+    <top>
+    </top>
+    <center>
+        <TabPane BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab fx:id="datenTab" closable="false" onSelectionChanged="#handleDatenTab" text="Daten">
+                    <content>
+                        <SplitPane dividerPositions="0.3" orientation="VERTICAL">
+                            <items>
+                                <GridPane maxHeight="220.0" minHeight="220.0" prefHeight="220.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="10.0" prefWidth="60.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="10.0" prefWidth="50.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="10.0" prefWidth="20.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="10.0" prefWidth="50.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="10.0" prefWidth="20.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="10.0" prefWidth="50.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="5.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="Hausmeister" GridPane.rowIndex="2">
+                                            <GridPane.margin>
+                                                <Insets left="10.0" />
+                                            </GridPane.margin>
+                                        </Label>
+                                        <Label text="Telefon" GridPane.rowIndex="3">
+                                            <GridPane.margin>
+                                                <Insets left="10.0" />
+                                            </GridPane.margin>
+                                        </Label>
+                                        <Label text="Bemerkung" GridPane.rowIndex="4">
+                                            <GridPane.margin>
+                                                <Insets left="10.0" />
+                                            </GridPane.margin>
+                                        </Label>
+                                        <Label text="Strasse / Nr." GridPane.rowIndex="5">
+                                            <GridPane.margin>
+                                                <Insets left="10.0" />
+                                            </GridPane.margin>
+                                        </Label>
+                                        <Label text="PLZ / Ort" GridPane.rowIndex="6">
+                                            <GridPane.margin>
+                                                <Insets left="10.0" />
+                                            </GridPane.margin>
+                                        </Label>
+                                        <Label text="Land" GridPane.rowIndex="7">
+                                            <GridPane.margin>
+                                                <Insets left="10.0" />
+                                            </GridPane.margin>
+                                        </Label>
+                                        <Label text="Baujahr" GridPane.rowIndex="1">
+                                            <GridPane.margin>
+                                                <Insets left="10.0" />
+                                            </GridPane.margin>
+                                        </Label>
+                                        <TextField fx:id="baujahrTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                            <GridPane.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <TextField fx:id="nameTextField" editable="false" promptText="Name" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                                            <GridPane.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <TextField fx:id="vornameTextField" editable="false" promptText="Vorname" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                                            <GridPane.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <TextField fx:id="telVorwahlTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                            <GridPane.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <TextField fx:id="telefonTextField" editable="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                            <GridPane.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <TextField fx:id="handyVorwahlTextField" editable="false" GridPane.columnIndex="7" GridPane.rowIndex="3">
+                                            <GridPane.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <TextField fx:id="handyTextField" editable="false" GridPane.columnIndex="8" GridPane.rowIndex="3">
+                                            <GridPane.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <TextField fx:id="faxVorwahlTextField" editable="false" GridPane.columnIndex="11" GridPane.rowIndex="3">
+                                            <GridPane.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <TextField fx:id="faxTextField" editable="false" GridPane.columnIndex="12" GridPane.rowIndex="3">
+                                            <GridPane.margin>
+                                                <Insets left="2.0" right="5.0" />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <TextField fx:id="bemerkungTextField" editable="false" GridPane.columnIndex="1" GridPane.columnSpan="12" GridPane.rowIndex="4">
+                                            <GridPane.margin>
+                                                <Insets left="2.0" right="5.0" />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <TextField fx:id="strasseTextField" editable="false" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
+                                            <GridPane.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <TextField fx:id="hausnummerTextField" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                                            <GridPane.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                            </GridPane.margin>
+                                        </TextField>
+                              <TextField fx:id="regexTextField" editable="false" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                                        <TextField fx:id="plzTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                            <GridPane.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <TextField fx:id="ortTextField" editable="false" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="6">
+                                            <GridPane.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <TextField fx:id="landTextField" editable="false" prefHeight="25.0" prefWidth="89.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
+                                            <GridPane.margin>
+                                                <Insets left="2.0" right="2.0" />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <Label text="Handy" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                                        <Label text="Fax " GridPane.columnIndex="10" GridPane.rowIndex="3" />
+                              <Label text="Regex" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+                                    </children>
+                                </GridPane>
+                                <SplitPane dividerPositions="0.5" orientation="VERTICAL">
+                                    <items>
+                                        <GridPane maxHeight="90.0" minHeight="90.0" prefHeight="90.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="70.0" minWidth="10.0" prefWidth="60.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="10.0" prefWidth="50.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="10.0" prefWidth="50.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Label text="Wohnungs-Nr." GridPane.rowIndex="1">
+                                                    <GridPane.margin>
+                                                        <Insets left="10.0" />
+                                                    </GridPane.margin>
+                                                </Label>
+                                                <Label text="Wohnfläche" GridPane.rowIndex="2">
+                                                    <GridPane.margin>
+                                                        <Insets left="10.0" />
+                                                    </GridPane.margin>
+                                                </Label>
+                                                <TextField fx:id="nummerTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                    <GridPane.margin>
+                                                        <Insets left="2.0" right="2.0" />
+                                                    </GridPane.margin>
+                                                </TextField>
+                                                <TextField fx:id="geschossTextField" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                    <GridPane.margin>
+                                                        <Insets left="2.0" right="2.0" />
+                                                    </GridPane.margin>
+                                                </TextField>
+                                                <TextField fx:id="lageTextField" editable="false" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                                    <GridPane.margin>
+                                                        <Insets left="2.0" right="2.0" />
+                                                    </GridPane.margin>
+                                                </TextField>
+                                                <TextField fx:id="lagebeschreibungTextField" editable="false" prefHeight="25.0" prefWidth="160.0" GridPane.columnIndex="6" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                                    <GridPane.margin>
+                                                        <Insets left="2.0" right="2.0" />
+                                                    </GridPane.margin>
+                                                </TextField>
+                                                <TextField fx:id="wohnflaecheTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                    <GridPane.margin>
+                                                        <Insets left="2.0" right="2.0" />
+                                                    </GridPane.margin>
+                                                </TextField>
+                                                <Label text="Geschoss" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                                    <padding>
+                                                        <Insets right="5.0" />
+                                                    </padding>
+                                                </Label>
+                                                <Label text="Lage" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                                                    <GridPane.margin>
+                                                        <Insets right="5.0" />
+                                                    </GridPane.margin>
+                                                </Label>
+                                            </children>
+                                        </GridPane>
+                                        <TabPane>
+                                            <tabs>
+                                                <Tab fx:id="zimmerTab" onSelectionChanged="#handleZimmerTab" text="Zimmer">
+                                                    <content>
+                                                        <TableView fx:id="zimmerTableView" editable="true" prefHeight="200.0" prefWidth="200.0">
+                                                            <columns>
+                                                                <TableColumn fx:id="nameCol" maxWidth="200.0" minWidth="80.0" onEditCommit="#handleZimmerCellEdit" prefWidth="120.0" text="Wohnraum" />
+                                                                <TableColumn fx:id="flaecheCol" maxWidth="100.0" minWidth="50.0" onEditCommit="#handleZimmerCellEdit" prefWidth="75.0" text="Größe in qm" />
+                                                                <TableColumn fx:id="renovierungCol" onEditCommit="#handleZimmerCellEdit" prefWidth="100.0" text="Renovierung" />
+                                                                <TableColumn fx:id="bemerkungCol" minWidth="300.0" onEditCommit="#handleZimmerCellEdit" prefWidth="500.0" text="Bemerkung" />
+                                                            </columns>
+                                                        </TableView>
+                                                    </content>
+                                                </Tab>
+                                                <Tab fx:id="vertragTab" onSelectionChanged="#handleVertragTab" text="Verträge">
+                                                    <content>
+                                                        <TableView fx:id="vertragTableView" editable="true" prefHeight="200.0" prefWidth="200.0">
+                                                            <columns>
+                                                                <TableColumn fx:id="beginnCol" maxWidth="100.0" onEditCommit="#handleVertragCellEdit" prefWidth="100.0" text="Vertragsbeginn" />
+                                                                <TableColumn fx:id="endeCol" maxWidth="100.0" onEditCommit="#handleVertragCellEdit" prefWidth="100.0" text="Vertragsende" />
+                                                                <TableColumn fx:id="mieterCol" maxWidth="500.0" minWidth="100.0" onEditCommit="#handleVertragCellEdit" prefWidth="150.0" text="Mieter" />
+                                                                <TableColumn fx:id="regExpCol" maxWidth="500.0" minWidth="100.0" onEditCommit="#handleVertragCellEdit" prefWidth="110.0" text="Kennung (RegExp)" />
+                                                                <TableColumn fx:id="kautionCol" maxWidth="100.0" onEditCommit="#handleVertragCellEdit" text="Kaution" />
+                                                                <TableColumn fx:id="mietzinsCol" maxWidth="100.0" onEditCommit="#handleVertragCellEdit" text="Mietzins" />
+                                                                <TableColumn fx:id="nebenkostenCol" maxWidth="100.0" onEditCommit="#handleVertragCellEdit" text="Nebenkosten" />
+                                                                <TableColumn fx:id="heizkostenCol" maxWidth="100.0" onEditCommit="#handleVertragCellEdit" text="Heizkosten" />
+                                                                <TableColumn fx:id="gesamtkostenCol" maxWidth="100.0" onEditCommit="#handleVertragCellEdit" text="Gesamt" />
+                                                            </columns>
+                                                        </TableView>
+                                                    </content>
+                                                </Tab>
+                                            </tabs>
+                                        </TabPane>
+                                    </items>
+                                </SplitPane>
+                            </items>
+                        </SplitPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="mietenTab" closable="false" onSelectionChanged="#handleMietenTab" text="Mietzahlungen">
+                    <content>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                            <center>
+                                <TableView fx:id="mietenTableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                    <columns>
+                                        <TableColumn fx:id="mietenDatumCol" editable="false" maxWidth="100.0" minWidth="80" prefWidth="90.0" text="Datum" />
+                                        <TableColumn fx:id="mietenMieterCol" editable="false" maxWidth="400.0" minWidth="200" prefWidth="200.0" text="Mieter" />
+                                        <TableColumn fx:id="mietenSollCol" editable="false" maxWidth="400.0" minWidth="80.0" text="Soll" />
+                                        <TableColumn fx:id="mietenIstCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="80.0" prefWidth="100.0" text="Ist" />
+                                        <TableColumn fx:id="mietenGrundmieteCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="100.0" text="Grundmiete" />
+                                        <TableColumn fx:id="mietenNebenkostenCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="100.0" text="Nebenkosten" />
+                                        <TableColumn fx:id="mietenAbgleichCol" maxWidth="100.0" prefWidth="75.0" text="Abgleich" />
+                                    </columns>
+                                </TableView>
+                            </center>
+                            <top>
+                                <AnchorPane BorderPane.alignment="CENTER">
+                                    <children>
+                                        <ChoiceBox fx:id="jahrChoiceBox" layoutX="501.0" layoutY="5.0" prefWidth="150.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                            <opaqueInsets>
+                                                <Insets />
+                                            </opaqueInsets>
+                                        </ChoiceBox>
+                                    </children>
+                                </AnchorPane>
+                            </top>
+                            <bottom>
+                                <HBox BorderPane.alignment="CENTER">
+                                    <children>
+                                        <Label maxWidth="100.0" minWidth="80.0" prefWidth="90.0" text="Summe Soll:">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets left="10.0" />
+                                            </padding>
+                                            <HBox.margin>
+                                                <Insets top="3.0" />
+                                            </HBox.margin>
+                                        </Label>
+                                        <TextField fx:id="summeSollTextField" editable="false" minWidth="100.0" prefWidth="100.0" />
+                                        <Label minWidth="80.0" prefWidth="70.0" text="Summe Ist:">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="20.0" top="3.0" />
+                                            </HBox.margin>
+                                        </Label>
+                                        <TextField fx:id="summeIstTextField" editable="false" prefWidth="100.0" />
+                                    </children>
+                                </HBox>
+                            </bottom>
+                        </BorderPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="kautionTab" closable="false" onSelectionChanged="#handleKautionTab" text="Mietkautionen">
+                    <content>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                            <center>
+                                <TableView fx:id="kautionTableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                    <columns>
+                                        <TableColumn fx:id="kautionDatumCol" editable="false" maxWidth="100.0" minWidth="80" prefWidth="90.0" text="Datum" />
+                                        <TableColumn fx:id="kautionMieterCol" editable="false" maxWidth="400.0" minWidth="200" prefWidth="300.0" text="Mieter" />
+                                        <TableColumn fx:id="kautionSollCol" editable="false" maxWidth="400.0" minWidth="80.0" prefWidth="100.0" text="Soll" />
+                                        <TableColumn fx:id="kautionIstCol" editable="false" maxWidth="200.0" minWidth="80.0" prefWidth="100.0" text="Ist" />
+                                        <TableColumn fx:id="kautionAbgleichCol" maxWidth="100.0" prefWidth="75.0" text="Abgleich" />
+                                    </columns>
+                                </TableView>
+                            </center>
+                            <top>
+                                <AnchorPane BorderPane.alignment="CENTER">
+                                    <children>
+                                        <ChoiceBox fx:id="mieterChoiceBox" layoutX="501.0" layoutY="5.0" prefWidth="150.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                            <opaqueInsets>
+                                                <Insets />
+                                            </opaqueInsets>
+                                        </ChoiceBox>
+                                    </children>
+                                </AnchorPane>
+                            </top>
+                            <bottom>
+                                <HBox BorderPane.alignment="CENTER">
+                                    <children>
+                                        <Label maxWidth="100.0" minWidth="80.0" prefWidth="90.0" text="Summe Soll:">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                            <padding>
+                                                <Insets left="10.0" />
+                                            </padding>
+                                            <HBox.margin>
+                                                <Insets top="3.0" />
+                                            </HBox.margin>
+                                        </Label>
+                                        <TextField fx:id="kautionSummeSollTextField" editable="false" minWidth="100.0" prefWidth="100.0" />
+                                        <Label minWidth="80.0" prefWidth="70.0" text="Summe Ist:">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets left="20.0" top="3.0" />
+                                            </HBox.margin>
+                                        </Label>
+                                        <TextField fx:id="kautionSummeIstTextField" editable="false" prefWidth="100.0" />
+                                    </children>
+                                </HBox>
+                            </bottom>
+                        </BorderPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+    <bottom>
+        <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <buttons>
+                <Button fx:id="pruefButton" disable="true" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#handlePruefButton" prefWidth="130.0" text="Prüfe" />
+            <Button fx:id="kopierButton" disable="true" mnemonicParsing="false" onAction="#handleKopierButton" text="Kopieren" />
+                <Button fx:id="neuButton" mnemonicParsing="false" onAction="#handleNeuButton" text="Neu" />
+                <Button fx:id="loeschButton" mnemonicParsing="false" onAction="#handleDeleteButton" text="Löschen" />
+                <Button fx:id="abbruchButton" mnemonicParsing="false" onAction="#handleAbbrechenButton" text="Abbrechen" />
+                <Button fx:id="saveButton" mnemonicParsing="false" onAction="#handleSaveButton" text="Speichern" />
+            </buttons>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <padding>
+                <Insets right="10.0" />
+            </padding>
+        </ButtonBar>
+    </bottom>
+    <left>
+        <TreeView fx:id="wohnungTreeView" prefHeight="276.0" prefWidth="236.0" showRoot="false" BorderPane.alignment="CENTER" />
+    </left>
+</BorderPane>

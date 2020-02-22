@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="de.ubo.fx.fahrten.gui.XlsxImportController">
+    <center>
+        <TableView fx:id="ausgabePositionTableView" editable="true" minHeight="-Infinity" minWidth="-Infinity">
+            <columns>
+                <TableColumn fx:id="datumCol" editable="false" maxWidth="100.0" minWidth="80" prefWidth="90.0" text="Datum" />
+                <TableColumn fx:id="vorgangCol" editable="false" maxWidth="400.0" minWidth="40.0" prefWidth="40.0" text="Ref" />
+                <TableColumn fx:id="empfaengerCol" editable="false" maxWidth="400.0" minWidth="200" prefWidth="200.0" text="Empfänger" />
+                <TableColumn fx:id="verwendungCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="400.0" text="Verwendung" />
+                <TableColumn fx:id="kategorieCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="100.0" text="Kategorie" />
+                <TableColumn fx:id="betragCol" editable="false" maxWidth="1.7976931348623157E308" minWidth="80.0" prefWidth="100.0" text="Betrag" />
+                <TableColumn fx:id="buchNrCol" maxWidth="-Infinity" minWidth="90.0" onEditCommit="#handleBuchungsNrAction" prefWidth="90.0" text="Buchungs-Nr." />
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="UNCONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
+    </center>
+    <top>
+    </top>
+    <top>
+        <AnchorPane maxHeight="100.0" minHeight="100.0" prefHeight="100.0" BorderPane.alignment="TOP_LEFT">
+            <children>
+                <Label layoutX="29.0" layoutY="28.0" text="Import Ausgaben im xlsx-Format">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </Label>
+                <Label layoutX="29.0" layoutY="63.0" text="Excel" />
+                <TextField fx:id="dateiNameTextField" layoutX="65.0" layoutY="59.0" prefHeight="25.0" prefWidth="234.0" />
+                <Button layoutX="304.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleFileChooserAction" prefWidth="30.0" text="..." />
+                <Button fx:id="importButton" layoutX="732.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleImportAction" prefWidth="80.0" text="Import" />
+                <Button fx:id="sichernButton" layoutX="929.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleSichernAction" prefWidth="80.0" text="Sichern" />
+                <ChoiceBox fx:id="hausChoiceBox" accessibleHelp="Haus wählen" layoutX="507.0" layoutY="59.0" prefWidth="150.0" />
+            <Button fx:id="buchungButton" layoutX="823.0" layoutY="60.0" maxWidth="80.0" minWidth="80.0" mnemonicParsing="false" onAction="#handleBuchungAction" prefWidth="80.0" text="Buchungen" />
+            <ChoiceBox fx:id="sheetChoiceBox" accessibleHelp="Excel-Tabelle wählen" layoutX="351.0" layoutY="59.0" prefWidth="150.0" />
+            </children>
+        </AnchorPane>
+    </top>
+</BorderPane>

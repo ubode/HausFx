@@ -1,0 +1,62 @@
+.standard-label {
+	-fx-alignment: center-right;
+	-fx-padding: 0 0 0 0;
+	-fx-font-weight: bold;
+	-fx-pref-height: 30;
+	-fx-pref-width: 182;
+}
+
+.header-label {
+	-fx-alignment: center-left;
+	-fx-padding: 0 0 0 0;
+	-fx-font-weight: bold;
+	-fx-font-size: 16;
+	-fx-pref-height: 30;
+	-fx-pref-width: 370;
+}
+
+.standard-textfield {
+	-fx-padding: 0 0 0 0;
+	-fx-pref-height: 30;
+	-fx-pref-width: 182;
+}
+
+.standard-textfield-2x {
+	-fx-padding: 0 0 0 0;
+	-fx-pref-height: 30;
+	-fx-pref-width: 370;
+}
+
+.standard-textfield-4x {
+	-fx-padding: 0 0 0 0;
+	-fx-pref-height: 30;
+	-fx-pref-width: 746;
+}
+
+.standard-textfield-cb {
+	-fx-padding: 0 0 0 0;
+	-fx-pref-height: 30;
+	-fx-pref-width: 155;
+}
+
+.standard-textarea {
+	-fx-padding: 0 0 0 0;
+	-fx-pref-height: 90;
+	-fx-pref-width: 370;
+}
+
+.standard-combobox {
+	-fx-padding: 0 0 0 0;
+	-fx-pref-height: 30;
+	-fx-pref-width: 182;
+}
+
+.standard-toggle {
+	-fx-padding: 0 0 0 0;
+	-fx-pref-height: 30;
+	-fx-pref-width: 91;
+}
+
+.seperator {
+	-fx-pref-width: 735;
+}

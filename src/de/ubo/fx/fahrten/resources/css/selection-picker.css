@@ -1,0 +1,27 @@
+/**
+ * SelectionPicker.css
+ * 
+ * CSS-Layout für den Selection-Picker.
+ * Das Grundlayout wurde übernommen vom Java FX date-picker (modena.css) 
+ * 
+ * @author eexbezz
+ * @since 1.12.2014
+ */
+
+.selection-picker-popup {
+     -fx-background-color:
+        linear-gradient(to bottom,
+            derive(-fx-color,-17%),
+            derive(-fx-color,-30%)
+        ),
+        -fx-control-inner-background;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 0;
+    -fx-alignment: CENTER; /* VBox */
+    -fx-spacing: 0; /* VBox */
+    -fx-padding: 0.083333em; /* 1 1 1 1 */
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 12, 0.0 , 0 , 8 );
+}
+
+
+ 

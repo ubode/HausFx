@@ -1,0 +1,90 @@
+/* Alle Elemente, die auf dem Panel der Anwendung zu finden sind. */
+
+.root {
+    -fx-padding: 0.0;
+}
+
+ .split-pane {
+    -fx-background-color: white;
+}
+
+ .button {
+    -fx-border-color: -fx-outer-border;
+    -fx-padding: 3.0 3.0 4.0 3.0;
+    -fx-background-color: white;
+    -fx-background-radius: 0.0, 0.0;
+}
+
+ .button:hover {
+    -fx-border-color: darkblue;
+    -fx-background-color: #F3F3F3;
+}
+
+ .button:pressed {
+    -fx-background-color: #E5E5E5;
+}
+
+ .choice-box {
+    -fx-border-color: -fx-outer-border;
+    -fx-background-color: white;
+    -fx-background-radius: 0.0, 0.0;
+}
+
+ .text-field {
+    -fx-border-color: -fx-outer-border;
+    -fx-padding: 0.0 0.0 0.0 0.0;
+    -fx-background-color: white;
+    -fx-background-radius: 0.0, 0.0;
+}
+
+ .text-field:hover {
+    -fx-border-color: darkblue;
+    -fx-background-color: #F3F3F3;
+}
+
+ .radio-button {
+    -fx-border-color: white;
+    -fx-padding: 3.0 3.0 4.0 3.0;
+    -fx-background-color: white;
+}
+ .radio-button:hover {
+    -fx-border-color: darkblue;
+    -fx-background-color: #F3F3F3;
+}
+
+ .control:hover {
+    -fx-border-color: darkblue;
+    -fx-background-color: #F3F3F3;
+}
+
+.applayout#breadcrumPlaceholder {
+    -fx-border-color: -fx-outer-border;
+    -fx-background-color: white;
+}
+
+ .button#dashboardButton {
+    -fx-padding: 0;
+    -fx-border-color: white;
+    -fx-border-radius: 32px;
+    -fx-border-insets: 0;
+    -fx-border-image-insets: 0;
+    -fx-background-radius: 32px;
+    -fx-background-insets: 0 0 0 0, 0, 0, 0;
+    -fx-background-color: radial-gradient(focus-angle 160deg, focus-distance 36%, center 50% 50%, radius 55%, #DDDDDD, #FFFFFF);
+}
+
+ .button#dashboardButton:hover {
+    -fx-background-color: radial-gradient(focus-angle 160deg, focus-distance 36%, center 50% 50%, radius 55%, #CCCCCC, #EEEEFF);
+}
+
+ .button#dashboardButton:pressed {
+    -fx-background-color: radial-gradient(focus-angle 160deg, focus-distance 36%, center 50% 50%, radius 55%, #999999, #BBBBBB);
+}
+
+ #bildHintergrund {
+    -fx-background-color: #C1CDC6;
+ }
+
+ #dashboardButtonImageView {
+    -fx-image: url("../icons/medium/globe_inv_2.png");
+}

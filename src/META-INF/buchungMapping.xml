@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm
+http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
+                 version="1.0">
+    <description>JPA mapping for table buchung</description>
+    <package>de.ubo.fx.fahrten.business</package>
+    <!-- persistence-unit-metadata>
+        <persistence-unit-defaults>
+            <cascade-persist/>
+        </persistence-unit-defaults>
+    </persistence-unit-metadata -->
+
+    <entity name="Buchung" class="de.ubo.fx.fahrten.business.Buchung" access="FIELD">
+        <table name="buchung"/>
+        <attributes>
+            <id name="id">
+                <column name="buc_id"/>
+            </id>
+            <basic name="buchungsNummer">
+                <column name="buc_nummer"/>
+            </basic>
+            <basic name="datum">
+                <column name="buc_datum"/>
+            </basic>
+            <basic name="empfaenger">
+                <column name="buc_empfaenger"/>
+            </basic>
+            <basic name="betrag">
+                <column name="buc_betrag"/>
+            </basic>
+            <basic name="verwendung">
+                <column name="buc_verwendung"/>
+            </basic>
+            <basic name="kategorie">
+                <column name="buc_kategorie"/>
+            </basic>
+            <basic name="buchungsArt">
+                <column name="buc_art"/>
+            </basic>
+        </attributes>
+    </entity>
+
+    <entity name="Haus" class="de.ubo.fx.fahrten.business.Haus" access="FIELD">
+        <table name="haus"/>
+    </entity>
+
+    <entity name="Adresse" class="de.ubo.fx.fahrten.business.Adresse" access="FIELD">
+        <table name="adresse"/>
+        <attributes>
+            <id name="id">
+                <column name="adr_id"/>
+            </id>
+            <basic name="postleitzahl">
+                <column name="adr_postleitzahl"/>
+            </basic>
+            <basic name="ort">
+                <column name="adr_ort"/>
+            </basic>
+            <basic name="strasse">
+                <column name="adr_strasse"/>
+            </basic>
+            <basic name="hausnummer">
+                <column name="adr_hausnummer"/>
+            </basic>
+            <basic name="land">
+                <column name="adr_land"/>
+            </basic>
+            <basic name="kuerzel">
+                <column name="adr_kuerzel"/>
+            </basic>
+        </attributes>
+    </entity>
+
+    <entity name="Ausgabe" class="de.ubo.fx.fahrten.business.Ausgabe" access="FIELD">
+        <table name="ausgabe"/>
+    </entity>
+
+    <entity name="AusgabePosition" class="de.ubo.fx.fahrten.business.AusgabePosition" access="FIELD">
+        <table name="ausgabenposition"/>
+    </entity>
+
+    <entity name="Person" class="de.ubo.fx.fahrten.business.Person" access="FIELD">
+        <table name="person"/>
+    </entity>
+
+    <entity name="Wohnung" class="de.ubo.fx.fahrten.business.Wohnung" access="FIELD">
+        <table name="wohnung"/>
+    </entity>
+
+    <entity name="Zimmer" class="de.ubo.fx.fahrten.business.Zimmer" access="FIELD">
+        <table name="zimmer"/>
+    </entity>
+
+    <entity name="MietVertrag" class="de.ubo.fx.fahrten.business.MietVertrag" access="FIELD">
+        <table name="mietvertrag"/>
+    </entity>
+
+    <entity name="Mietzahlung" class="de.ubo.fx.fahrten.business.Mietzahlung" access="FIELD">
+        <table name="mietzahlung"/>
+    </entity>
+
+    <entity name="Versorgungsvertrag" class="de.ubo.fx.fahrten.business.VersorgungsVertrag" access="FIELD">
+        <table name="versorgungsvertrag"/>
+    </entity>
+
+</entity-mappings>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ubo.fx.fahrten.gui.StammdatenController">
+    <children>
+        <SplitPane dividerPositions="0.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <TableView fx:id="zielTableView" editable="true" onDragDropped="#handleDropEvent" onMouseDragEntered="#handleDropEvent" onMouseDragExited="#handleDropEvent" onMouseDragOver="#handleDropEvent" onMouseDragReleased="#handleDropEvent" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <columns>
+                                <TableColumn prefWidth="-1.0" text="Fahrtziel">
+                                    <columns>
+                              <TableColumn fx:id="zielPositionCol" onEditCommit="#handleZielCellEdit" prefWidth="50.0" text="Pos." />
+                                        <TableColumn fx:id="zielNameCol" minWidth="100.0" onEditCommit="#handleZielCellEdit" prefWidth="100.0" text="Name" />
+                                        <TableColumn fx:id="zielTextCol" minWidth="100.0" onEditCommit="#handleZielCellEdit" prefWidth="170.0" text="Text" />
+                                        <TableColumn fx:id="zielKurzCol" minWidth="80.0" onEditCommit="#handleZielCellEdit" text="Kurztext" />
+                                        <TableColumn fx:id="zielOrtCol" minWidth="80.0" onEditCommit="#handleZielCellEdit" text="Ort" />
+                                        <TableColumn fx:id="zielAnlassNrCol" onEditCommit="#handleZielCellEdit" prefWidth="50.0" text="Anl.-Pos." />
+                                    </columns>
+                                </TableColumn>
+                            </columns>
+                        </TableView>
+                        <Button fx:id="zielNeuButton" alignment="CENTER" layoutX="57.0" layoutY="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleZielButton" prefHeight="25.0" prefWidth="80.0" text="Neu" textAlignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="175.0" />
+                        <Button fx:id="zielOkButton" layoutX="227.0" layoutY="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleZielButton" prefHeight="25.0" prefWidth="80.0" text="OK" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                        <Button fx:id="zielLoeschButton" alignment="CENTER" layoutX="142.0" layoutY="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleZielButton" prefHeight="25.0" prefWidth="80.0" text="Löschen" textAlignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="90.0" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane>
+                    <children>
+                        <TableView fx:id="anlassTableView" editable="true" layoutY="8.0" onDragDetected="#handleDragEvent" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
+                            <columns>
+                                <TableColumn prefWidth="-1.0" text="Fahrtanlass">
+                                    <columns>
+                                        <TableColumn fx:id="anlassPositionCol" onEditCommit="#handleAnlassCellEdit" prefWidth="50.0" text="Pos." />
+                                        <TableColumn fx:id="anlassNameCol" minWidth="100.0" onEditCommit="#handleAnlassCellEdit" prefWidth="100.0" text="Name" />
+                                        <TableColumn fx:id="anlassTextCol" minWidth="100.0" onEditCommit="#handleAnlassCellEdit" prefWidth="200.0" text="Text" />
+                                        <TableColumn fx:id="anlassKurzCol" minWidth="80.0" onEditCommit="#handleAnlassCellEdit" text="Kurztext" />
+                                    </columns>
+                                </TableColumn>
+                            </columns>
+                        </TableView>
+                        <Button fx:id="anlassLoeschButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAnlassButton" prefHeight="25.0" prefWidth="80.0" text="Löschen" textAlignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="90.0" />
+                        <Button fx:id="anlassOkButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAnlassButton" prefHeight="25.0" prefWidth="80.0" text="OK" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                        <Button fx:id="anlassNeuButton" alignment="CENTER" layoutX="118.0" layoutY="380.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAnlassButton" prefHeight="25.0" prefWidth="80.0" text="Neu" textAlignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="175.0" />
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

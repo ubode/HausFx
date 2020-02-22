@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="commons-collections4-4.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/commons-collections4-4.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/eclipselink.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/haus.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/log4j-1.2.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/db4o-7.11.110.13604-all-java5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/poi-ooxml-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/poi-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/xmlbeans-2.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/poi-ooxml-schemas-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/mysql-connector-java-5.1.48-bin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/javax.persistence.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/haus.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,17 @@
+/*
+ * Globale css Klassendefinitionen, die zur Beschreibung von UI Komponenten verwendet werden.
+ * Die Klassen werden innerhalb der Module verwendet, um die Detailansichten einheitlich zu 
+ * gestalten. 
+ */
+
+.grid-pane  {
+    /* -fx-background-color: green; */
+   /*  -fx-background-radius: 5.0; */
+    -fx-background-insets: 0.0 0.0 0.0 0.0;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 5;
+}
+
+.grid-pane-label {
+}

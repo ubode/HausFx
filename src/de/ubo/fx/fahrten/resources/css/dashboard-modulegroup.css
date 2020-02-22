@@ -1,0 +1,49 @@
+/* Details, siehe modena.css in den FX-sourcen. */
+
+.dashboard-modulegroup {
+    -fx-border-color: white, white;
+    -fx-border-insets: 10, 10;
+    -fx-border-width: 0, 3;
+    -fx-border-radius: 0, 5;
+}
+
+.dashboard-modulegroup .hyperlink {
+    -fx-label-padding: 1 0 1 0;
+    -fx-border-insets: 2 0 2 0;
+    -fx-border-width: 1;
+    -fx-text-fill: #006384;
+}
+
+.dashboard-modulegroup .hyperlink:hover {
+    -fx-border-color: #006384;
+    -fx-border-insets: 2 0 2 0;
+    -fx-border-style: segments(0.166667em, 0.166667em);
+    -fx-text-fill: #006384;
+}
+
+.dashboard-modulegroup .hyperlink:visited {
+    -fx-underline: false;
+}
+
+/* Bei Mausklick oder <Shift> */
+.dashboard-modulegroup .hyperlink:armed,
+.dashboard-modulegroup .hyperlink:hover:armed,
+.dashboard-modulegroup .hyperlink:visited:armed {
+    -fx-text-fill: #FFB67F;
+}
+
+.dashboard-modulegroup .hyperlink:hover,
+.dashboard-modulegroup .hyperlink:visited,
+.dashboard-modulegroup .hyperlink:hover:visited {
+    -fx-underline: false;
+}
+
+.dashboard-modulegroup-grouplink {
+    -fx-font-size: 20px;
+}
+
+.dashboard-modulegroup-modulelink {
+    -fx-font-size: 15px;
+    -fx-border-insets: 0;
+/*    -fx-text-fill: #000000;*/
+}

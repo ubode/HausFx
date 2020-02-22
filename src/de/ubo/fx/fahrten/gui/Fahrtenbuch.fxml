@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<StackPane alignment="TOP_LEFT" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ubo.fx.fahrten.gui.FahrtenbuchController">
+    <children>
+        <SplitPane fx:id="fahrtenbuchSplitPane" dividerPositions="0.7" orientation="VERTICAL" BorderPane.alignment="CENTER">
+            <items>
+                <AnchorPane maxHeight="390.0" prefHeight="390.0" prefWidth="695.0">
+                    <children>
+                        <GridPane alignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                            <columnConstraints>
+                                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="180.0" minWidth="10.0" prefWidth="180.0" />
+                                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="95.0" prefWidth="100.0" />
+                                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="95.0" prefWidth="100.0" />
+                                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="95.0" prefWidth="100.0" />
+                                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="20.0" minWidth="20.0" prefWidth="20.0" />
+                                <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="200.0" prefWidth="200.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints prefHeight="35.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <DatePicker fx:id="eingabeDatePicker" onAction="#handleDateAction" GridPane.rowIndex="1" />
+                                <TextField GridPane.rowIndex="8" />
+                                <Button mnemonicParsing="false" prefWidth="80.0" text="km +" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+                                <RadioButton fx:id="handwerker" mnemonicParsing="false" onAction="#handleRadioButton" text="Handwerker" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <RadioButton fx:id="mieter" alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#handleRadioButton" text="Mieter" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                                <RadioButton fx:id="uebergabe" mnemonicParsing="false" onAction="#handleRadioButton" text="Wohnungsübergabe" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                                <RadioButton fx:id="besichtigung" mnemonicParsing="false" onAction="#handleRadioButton" text="Wohnungsbesichtigung" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                                <RadioButton fx:id="schluessel" mnemonicParsing="false" onAction="#handleRadioButton" text="Schlüsselübergabe" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                                <RadioButton fx:id="interessenten" mnemonicParsing="false" onAction="#handleRadioButton" text="Interessenten" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                                <RadioButton fx:id="hausUndGrund" mnemonicParsing="false" onAction="#handleRadioButton" text="Haus + Grund" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+                                <RadioButton fx:id="ablesung" mnemonicParsing="false" onAction="#handleRadioButton" text="Zählerablesung" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+                                <Label text="Fahrtenbuch für Jahr">
+                                    <font>
+                                        <Font name="System Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <ChoiceBox fx:id="jahrChoiceBox" onMouseClicked="#handleJahrChoice" onScrollFinished="#handleJahrChoice" prefWidth="80.0" GridPane.columnIndex="1" />
+                                <GridPane fx:id="buttonGridPane" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="7">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Button fx:id="Ziel1" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B1" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel2" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B2" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel3" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B3" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel4" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B4" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel5" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B5" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel6" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B6" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel7" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B7" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel8" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B8" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel9" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B9" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel10" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B10" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel11" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B11" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel12" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B12" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel13" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B13" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel14" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B14" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel15" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B15" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel16" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B16" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel17" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B17" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel18" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B18" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel19" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B19" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel20" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B20" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                                        <Button fx:id="Ziel21" mnemonicParsing="false" onAction="#handleOrtButtonAction" prefWidth="80.0" text="B21" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </GridPane>
+                        <TextField fx:id="routeErgebnis" layoutX="104.0" layoutY="336.0" prefWidth="475.0" text="" AnchorPane.topAnchor="330.0" />
+                        <Button fx:id="plusButton" disable="true" layoutX="609.0" layoutY="340.0" maxHeight="16.0" maxWidth="16.0" minHeight="16.0" minWidth="16.0" mnemonicParsing="false" onAction="#handleActionButton" prefHeight="16.0" prefWidth="16.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="70.0">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="@../resources/16x16/old/plus.gif" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <TextField fx:id="kmErgebnis" alignment="CENTER_RIGHT" layoutX="582.0" layoutY="319.0" prefWidth="50.0" AnchorPane.topAnchor="330.0" />
+                        <Label layoutX="635.0" layoutY="340.0" text="km" AnchorPane.topAnchor="330.0" />
+                        <TextField fx:id="datumErgebnis" layoutX="10.0" layoutY="319.0" prefWidth="90.0" AnchorPane.topAnchor="330.0" />
+                        <TextField fx:id="anlassErgebnis" layoutX="105.0" layoutY="339.0" prefHeight="25.0" prefWidth="475.0" AnchorPane.topAnchor="295.0" />
+                        <Button fx:id="minusButton" disable="true" layoutX="668.0" layoutY="340.0" maxHeight="16.0" maxWidth="16.0" minHeight="16.0" minWidth="16.0" mnemonicParsing="false" onAction="#handleActionButton" prefHeight="16.0" prefWidth="16.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="50.0">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="@../resources/16x16/old/delete.gif" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="saveButton" disable="true" maxHeight="16.0" maxWidth="316.0" minHeight="16.0" minWidth="16.0" mnemonicParsing="false" onAction="#handleActionButton" prefHeight="16.0" prefWidth="16.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="@../resources/16x16/old/save.gif" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="clearButton" disable="true" maxHeight="16.0" maxWidth="16.0" minHeight="16.0" minWidth="16.0" mnemonicParsing="false" onAction="#handleActionButton" prefHeight="16.0" prefWidth="16.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="30.0">
+                            <graphic>
+                                <ImageView>
+                                    <image>
+                                        <Image url="@../resources/16x16/papierkorb.gif" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </AnchorPane>
+                <AnchorPane>
+                    <children>
+                            <TableView fx:id="fahrtenTableView" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                    <TableColumn fx:id="datumCol" maxWidth="100.0" minWidth="80" prefWidth="90.0" text="Datum">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="datum" />
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn fx:id="routeCol" maxWidth="600" minWidth="200" prefWidth="370.0" text="Route">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="route" />
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn fx:id="anlassCol" maxWidth="600" minWidth="200" prefWidth="350.0" text="Anlass">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="anlass" />
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn fx:id="kmCol" maxWidth="80" minWidth="70" prefWidth="70" text="km">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="strecke" />
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                </columns>
+                            </TableView>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</StackPane>
