@@ -229,18 +229,6 @@
                                         </GridPane>
                                         <TabPane>
                                             <tabs>
-                                                <Tab fx:id="zimmerTab" onSelectionChanged="#handleZimmerTab" text="Zimmer">
-                                                    <content>
-                                                        <TableView fx:id="zimmerTableView" editable="true" prefHeight="200.0" prefWidth="200.0">
-                                                            <columns>
-                                                                <TableColumn fx:id="nameCol" maxWidth="200.0" minWidth="80.0" onEditCommit="#handleZimmerCellEdit" prefWidth="120.0" text="Wohnraum" />
-                                                                <TableColumn fx:id="flaecheCol" maxWidth="100.0" minWidth="50.0" onEditCommit="#handleZimmerCellEdit" prefWidth="75.0" text="Größe in qm" />
-                                                                <TableColumn fx:id="renovierungCol" onEditCommit="#handleZimmerCellEdit" prefWidth="100.0" text="Renovierung" />
-                                                                <TableColumn fx:id="bemerkungCol" minWidth="300.0" onEditCommit="#handleZimmerCellEdit" prefWidth="500.0" text="Bemerkung" />
-                                                            </columns>
-                                                        </TableView>
-                                                    </content>
-                                                </Tab>
                                                 <Tab fx:id="vertragTab" onSelectionChanged="#handleVertragTab" text="Verträge">
                                                     <content>
                                                         <TableView fx:id="vertragTableView" editable="true" prefHeight="200.0" prefWidth="200.0">
@@ -254,6 +242,18 @@
                                                                 <TableColumn fx:id="nebenkostenCol" maxWidth="100.0" onEditCommit="#handleVertragCellEdit" text="Nebenkosten" />
                                                                 <TableColumn fx:id="heizkostenCol" maxWidth="100.0" onEditCommit="#handleVertragCellEdit" text="Heizkosten" />
                                                                 <TableColumn fx:id="gesamtkostenCol" maxWidth="100.0" onEditCommit="#handleVertragCellEdit" text="Gesamt" />
+                                                            </columns>
+                                                        </TableView>
+                                                    </content>
+                                                </Tab>
+                                                <Tab fx:id="zimmerTab" onSelectionChanged="#handleZimmerTab" text="Zimmer">
+                                                    <content>
+                                                        <TableView fx:id="zimmerTableView" editable="true" prefHeight="200.0" prefWidth="200.0">
+                                                            <columns>
+                                                                <TableColumn fx:id="nameCol" maxWidth="200.0" minWidth="80.0" onEditCommit="#handleZimmerCellEdit" prefWidth="120.0" text="Wohnraum" />
+                                                                <TableColumn fx:id="flaecheCol" maxWidth="100.0" minWidth="50.0" onEditCommit="#handleZimmerCellEdit" prefWidth="75.0" text="Größe in qm" />
+                                                                <TableColumn fx:id="renovierungCol" onEditCommit="#handleZimmerCellEdit" prefWidth="100.0" text="Renovierung" />
+                                                                <TableColumn fx:id="bemerkungCol" minWidth="300.0" onEditCommit="#handleZimmerCellEdit" prefWidth="500.0" text="Bemerkung" />
                                                             </columns>
                                                         </TableView>
                                                     </content>
