@@ -1,4 +1,5 @@
-package de.ubo.fx.fahrten.gui;/**
+package de.ubo.fx.fahrten.gui;
+/**
  * Created by ulrichbode on 13.02.16.
  */
 
