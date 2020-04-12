@@ -22,7 +22,6 @@ public class BuchungsReader {
                 case 'D': //Datum
                     buchung = new Buchung();
                     buchung.setDatum(scanDate(inhalt));
-                    buchung.setBuchungsNummer(inhalt.substring(0,2));
                     break;
 
                 case 'U': // Betrag
