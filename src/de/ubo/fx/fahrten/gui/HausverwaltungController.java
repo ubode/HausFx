@@ -184,8 +184,8 @@ public class HausverwaltungController implements Initializable, CloseRequestable
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AusgabenBuchung.fxml"));
             this.ausgabenBuchungParent = loader.load();
             ausgabenBuchungStage = new Stage();
-            ausgabenBuchungStage.setTitle("Buchung Mieten");
-            ausgabenBuchungStage.setScene(new Scene(ausgabenBuchungParent, 1100, 800));
+            ausgabenBuchungStage.setTitle("Buchung Ausgaben");
+            ausgabenBuchungStage.setScene(new Scene(ausgabenBuchungParent, 1200, 800));
             AusgabenBuchungController controller = loader.getController();
             ausgabenBuchungStage.setOnCloseRequest(event -> controller.closeRequest());
         }
