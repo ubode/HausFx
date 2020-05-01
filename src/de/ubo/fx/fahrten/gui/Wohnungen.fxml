@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="de.ubo.fx.fahrten.gui.WohnungenController">
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ubo.fx.fahrten.gui.WohnungenController">
     <top>
     </top>
     <center>
@@ -229,18 +245,6 @@
                                         </GridPane>
                                         <TabPane>
                                             <tabs>
-                                                <Tab fx:id="zimmerTab" onSelectionChanged="#handleZimmerTab" text="Zimmer">
-                                                    <content>
-                                                        <TableView fx:id="zimmerTableView" editable="true" prefHeight="200.0" prefWidth="200.0">
-                                                            <columns>
-                                                                <TableColumn fx:id="nameCol" maxWidth="200.0" minWidth="80.0" onEditCommit="#handleZimmerCellEdit" prefWidth="120.0" text="Wohnraum" />
-                                                                <TableColumn fx:id="flaecheCol" maxWidth="100.0" minWidth="50.0" onEditCommit="#handleZimmerCellEdit" prefWidth="75.0" text="Größe in qm" />
-                                                                <TableColumn fx:id="renovierungCol" onEditCommit="#handleZimmerCellEdit" prefWidth="100.0" text="Renovierung" />
-                                                                <TableColumn fx:id="bemerkungCol" minWidth="300.0" onEditCommit="#handleZimmerCellEdit" prefWidth="500.0" text="Bemerkung" />
-                                                            </columns>
-                                                        </TableView>
-                                                    </content>
-                                                </Tab>
                                                 <Tab fx:id="vertragTab" onSelectionChanged="#handleVertragTab" text="Verträge">
                                                     <content>
                                                         <TableView fx:id="vertragTableView" editable="true" prefHeight="200.0" prefWidth="200.0">
@@ -254,6 +258,18 @@
                                                                 <TableColumn fx:id="nebenkostenCol" maxWidth="100.0" onEditCommit="#handleVertragCellEdit" text="Nebenkosten" />
                                                                 <TableColumn fx:id="heizkostenCol" maxWidth="100.0" onEditCommit="#handleVertragCellEdit" text="Heizkosten" />
                                                                 <TableColumn fx:id="gesamtkostenCol" maxWidth="100.0" onEditCommit="#handleVertragCellEdit" text="Gesamt" />
+                                                            </columns>
+                                                        </TableView>
+                                                    </content>
+                                                </Tab>
+                                                <Tab fx:id="zimmerTab" onSelectionChanged="#handleZimmerTab" text="Zimmer">
+                                                    <content>
+                                                        <TableView fx:id="zimmerTableView" editable="true" prefHeight="200.0" prefWidth="200.0">
+                                                            <columns>
+                                                                <TableColumn fx:id="nameCol" maxWidth="200.0" minWidth="80.0" onEditCommit="#handleZimmerCellEdit" prefWidth="120.0" text="Wohnraum" />
+                                                                <TableColumn fx:id="flaecheCol" maxWidth="100.0" minWidth="50.0" onEditCommit="#handleZimmerCellEdit" prefWidth="75.0" text="Größe in qm" />
+                                                                <TableColumn fx:id="renovierungCol" onEditCommit="#handleZimmerCellEdit" prefWidth="100.0" text="Renovierung" />
+                                                                <TableColumn fx:id="bemerkungCol" minWidth="300.0" onEditCommit="#handleZimmerCellEdit" prefWidth="500.0" text="Bemerkung" />
                                                             </columns>
                                                         </TableView>
                                                     </content>

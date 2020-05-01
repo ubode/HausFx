@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ubo.fx.fahrten.gui.BuchungsKatalogController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ubo.fx.fahrten.gui.BuchungsKatalogController">
     <center>
         <TableView fx:id="buchungTableView" editable="true" minHeight="-Infinity" minWidth="-Infinity">
             <columns>
@@ -58,6 +58,7 @@
             <ComboBox fx:id="argumentZweiComboBox" editable="true" layoutX="755.0" layoutY="26.0" prefWidth="120.0" />
             <ComboBox fx:id="argumentDreiComboBox" editable="true" layoutX="469.0" layoutY="57.0" prefWidth="120.0" />
             <ComboBox fx:id="argumentVierComboBox" editable="true" layoutX="755.0" layoutY="57.0" prefWidth="120.0" />
+            <Label fx:id="summeLabel" layoutX="28.0" layoutY="74.0" text="Summe" />
             </children>
         </AnchorPane>
     </top>
