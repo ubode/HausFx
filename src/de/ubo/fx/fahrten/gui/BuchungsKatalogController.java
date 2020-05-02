@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.*;
 import java.util.logging.Logger;
 
@@ -52,6 +53,7 @@ public class BuchungsKatalogController implements Initializable, CloseRequestabl
     public ChoiceBox<Operator> operatorDreiChoiceBox;
     public ChoiceBox<Operator> operatorVierChoiceBox;
     public ChoiceBox<Haus> hausChoiceBox;
+    public Label summeLabel;
     private ObservableList<Haus> haeuser;
     private ObservableList<Buchung> buchungen;
     private ObservableList<Kriterium> kriterienEins;
@@ -98,11 +100,24 @@ public class BuchungsKatalogController implements Initializable, CloseRequestabl
         Collection<Buchung> buchungsColl = HausJpaPersistence.getInstance().selectBuchungen(bedingungen);
         ArrayList<Buchung> buchungsList = new ArrayList<>(buchungsColl);
         Collections.sort(buchungsList, buchungsComparator);
+
+        String summenString = berechneSummenString(buchungsColl);
+
         buchungen.clear();
         buchungen.addAll(buchungsList);
         buchungTableView.setItems(buchungen);
+        summeLabel.setText(summenString);
 
         pruefeButtons();
+    }
+
+    private String berechneSummenString(Collection<Buchung> buchungsColl) {
+        double summe = 0.0;
+        for (Buchung buchung: buchungsColl) {
+            summe += buchung.getBetrag();
+        }
+        DecimalFormat betragFormat = new DecimalFormat("###,##0.00 €");
+        return "Summe Beträge:  " + betragFormat.format(summe);
     }
 
     private void ermittleBedingung(Collection<Bedingung>  bedingungen, ChoiceBox<Kriterium> kriteriumChoiceBox, ChoiceBox<Operator> operatorChoiceBox, ComboBox argumentComboBox) {
@@ -405,6 +420,9 @@ public class BuchungsKatalogController implements Initializable, CloseRequestabl
                     }
                 }
         );
+
+        // momentan kein Auswahlkriterium
+        hausChoiceBox.setVisible(false);
 
     }
 

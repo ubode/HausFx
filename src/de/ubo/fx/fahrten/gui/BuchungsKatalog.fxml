@@ -38,7 +38,7 @@
                     </font>
                 </Label>
 
-                <ChoiceBox fx:id="hausChoiceBox" accessibleHelp="Haus wählen" layoutX="184.0" layoutY="25.0" prefWidth="120.0" />
+                <ChoiceBox fx:id="hausChoiceBox" accessibleHelp="Haus wählen" layoutX="893.0" layoutY="25.0" prefWidth="120.0" />
 
                 <ChoiceBox fx:id="kriteriumEinsChoiceBox" accessibleHelp="Haus wählen" layoutX="314.0" layoutY="26.0" prefWidth="100.0" />
                 <ChoiceBox fx:id="operatorEinsChoiceBox" layoutX="417.0" layoutY="26.0" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
@@ -53,12 +53,15 @@
                 <ChoiceBox fx:id="kriteriumVierChoiceBox" accessibleHelp="Haus wählen" layoutX="599.0" layoutY="57.0" prefWidth="100.0" />
                 <ChoiceBox fx:id="operatorVierChoiceBox" layoutX="702.0" layoutY="57.0" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
 
-                <Button fx:id="suchenButton" layoutX="933.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleSuchenAction" prefWidth="80.0" text="Suchen" />
+                <Button fx:id="suchenButton" layoutX="895.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleSuchenAction" prefHeight="25.0" prefWidth="118.0" text="Suchen" />
             <ComboBox fx:id="argumentEinsComboBox" editable="true" layoutX="469.0" layoutY="26.0" prefWidth="120.0" />
             <ComboBox fx:id="argumentZweiComboBox" editable="true" layoutX="755.0" layoutY="26.0" prefWidth="120.0" />
             <ComboBox fx:id="argumentDreiComboBox" editable="true" layoutX="469.0" layoutY="57.0" prefWidth="120.0" />
             <ComboBox fx:id="argumentVierComboBox" editable="true" layoutX="755.0" layoutY="57.0" prefWidth="120.0" />
-            <Label fx:id="summeLabel" layoutX="28.0" layoutY="74.0" text="Summe" />
+            <Label fx:id="summeLabel" layoutX="28.0" layoutY="62.0" text="Summe">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
             </children>
         </AnchorPane>
     </top>
