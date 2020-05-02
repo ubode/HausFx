@@ -92,7 +92,7 @@ public class BuchungsReader {
 
             /* ab dem Kalenderjahr 2019 wird der Buchungsnummer das Jahr hinzugefügt, um
             doppelt vergebene Buchungsnummern eindeutig zu machen */
-            if (jahr > 2018) {
+            if (jahr > 2018 || jahr < 2011) {
                 buchungsNummerStr.append(jahr);
                 buchungsNummerStr.append('-');
             }

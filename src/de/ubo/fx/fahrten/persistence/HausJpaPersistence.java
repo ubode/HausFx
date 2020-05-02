@@ -520,7 +520,7 @@ public class HausJpaPersistence {
      * @return true, wenn ok, sonst false
      */
     public boolean updateEntity(Object object) {
-        getEntityManager().persist(object);
+        getEntityManager().merge(object);
         return true;
     }
 
