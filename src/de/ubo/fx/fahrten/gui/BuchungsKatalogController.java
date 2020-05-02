@@ -20,6 +20,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
+import javax.swing.text.StyledEditorKit;
 import java.net.URL;
 import java.util.*;
 import java.util.logging.Logger;
@@ -98,6 +99,7 @@ public class BuchungsKatalogController implements Initializable, CloseRequestabl
         Collection<Buchung> buchungsColl = HausJpaPersistence.getInstance().selectBuchungen(bedingungen);
         ArrayList<Buchung> buchungsList = new ArrayList<>(buchungsColl);
         Collections.sort(buchungsList, buchungsComparator);
+        double summe = berechneSumme(buchungsList);
         buchungen.clear();
         buchungen.addAll(buchungsList);
         buchungTableView.setItems(buchungen);
@@ -186,6 +188,14 @@ public class BuchungsKatalogController implements Initializable, CloseRequestabl
         argumentEinsComboBox.setValue(suchArgument);
 
         suchenButton.fire();
+    }
+
+    private double berechneSumme(List<Buchung> buchungList) {
+        double summe =0.0;
+        for (Buchung buchung : buchungList) {
+            summe+=buchung.getBetrag();
+        }
+        return summe;
     }
 
     /**
