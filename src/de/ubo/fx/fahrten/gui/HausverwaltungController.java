@@ -19,6 +19,7 @@ import javax.persistence.Persistence;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
@@ -58,10 +59,13 @@ public class HausverwaltungController implements Initializable, CloseRequestable
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ControllerRegistry.getInstance().add(this);
-        HausJpaPersistence persist = HausJpaPersistence.getInstance();
 
-        datenbank.setText("Datumsbank");
+        ControllerRegistry.getInstance().add(this);
+
+        Map<String, Object> props = HausJpaPersistence.getInstance().getEntityManager().getProperties();
+        String dbName = props.get("javax.persistence.jdbc.url").toString();
+        String[] teile = dbName.split("/");
+        datenbank.setText("db: " + teile[3]);
     }
 
     public void handleMenu(ActionEvent event) {
