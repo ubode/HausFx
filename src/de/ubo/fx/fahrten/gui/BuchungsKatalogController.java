@@ -323,6 +323,7 @@ public class BuchungsKatalogController implements Initializable, CloseRequestabl
         operatorChoiceBox.getItems().remove(0, operatorChoiceBox.getItems().size());
         // operatorChoiceBox.setDisable(true);
         argumentComboBox.setValue("");
+        argumentComboBox.getItems().remove(0, argumentComboBox.getItems().size());
         // argumentComboBox.setDisable(true);
     }
 
@@ -331,6 +332,7 @@ public class BuchungsKatalogController implements Initializable, CloseRequestabl
         operatorChoiceBox.getItems().addAll(Operator.values());
         operatorChoiceBox.getItems().remove(Operator.REGEX);
         operatorChoiceBox.getSelectionModel().select(Operator.GROESSER);
+        argumentComboBox.getItems().remove(0, argumentComboBox.getItems().size());
         argumentComboBox.setValue("JJJJ-MM-TT");
     }
 
@@ -338,6 +340,8 @@ public class BuchungsKatalogController implements Initializable, CloseRequestabl
         operatorChoiceBox.getItems().remove(0, operatorChoiceBox.getItems().size());
         operatorChoiceBox.getItems().add(Operator.GLEICH);
         operatorChoiceBox.getSelectionModel().select(0);
+        argumentComboBox.getItems().remove(0, argumentComboBox.getItems().size());
+        argumentComboBox.setValue("");
     }
 
     private void prepareKategorieBoxes(ChoiceBox<Operator> operatorChoiceBox, ComboBox<String> argumentComboBox) {
@@ -349,6 +353,7 @@ public class BuchungsKatalogController implements Initializable, CloseRequestabl
         for (BuchungsKategorie buchungsKategorie : BuchungsKategorie.values()) {
             argumentComboBox.getItems().add(buchungsKategorie.getBeschreibung());
         }
+        argumentComboBox.getSelectionModel().select(0);
     }
 
     private void prepareBetragBoxes(ChoiceBox<Operator> operatorChoiceBox, ComboBox<String> argumentComboBox) {
@@ -356,6 +361,7 @@ public class BuchungsKatalogController implements Initializable, CloseRequestabl
         operatorChoiceBox.getItems().addAll(Operator.values());
         operatorChoiceBox.getItems().remove(Operator.REGEX);
         operatorChoiceBox.getSelectionModel().select(0);
+        argumentComboBox.getItems().remove(0, argumentComboBox.getItems().size());
         argumentComboBox.setValue("0,00");
     }
 
@@ -363,6 +369,8 @@ public class BuchungsKatalogController implements Initializable, CloseRequestabl
         operatorChoiceBox.getItems().remove(0, operatorChoiceBox.getItems().size());
         operatorChoiceBox.getItems().add(Operator.GLEICH);
         operatorChoiceBox.getSelectionModel().select(0);
+        argumentComboBox.getItems().remove(0, argumentComboBox.getItems().size());
+        argumentComboBox.setValue("");
     }
 
 
