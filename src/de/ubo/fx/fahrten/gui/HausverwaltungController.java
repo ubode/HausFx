@@ -1,18 +1,24 @@
 package de.ubo.fx.fahrten.gui;
 
 import de.ubo.fx.fahrten.helper.ControllerRegistry;
+import de.ubo.fx.fahrten.persistence.HausJpaPersistence;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
@@ -25,6 +31,7 @@ public class HausverwaltungController implements Initializable, CloseRequestable
     private final static Logger LOGGER = Logger.getLogger(HausverwaltungController.class.getName());
     public StackPane hauptPane;
     public AnchorPane bildHintergrund;
+    public Label datenbank;
     private Region wohnungenParent;
     private Region fahrtenParent;
     private Region stationenParent;
@@ -52,6 +59,9 @@ public class HausverwaltungController implements Initializable, CloseRequestable
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ControllerRegistry.getInstance().add(this);
+        HausJpaPersistence persist = HausJpaPersistence.getInstance();
+
+        datenbank.setText("Datumsbank");
     }
 
     public void handleMenu(ActionEvent event) {
