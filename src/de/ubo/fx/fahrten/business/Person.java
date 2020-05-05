@@ -225,7 +225,7 @@ public class Person implements Persistable, Cloneable {
         return getGeburtstag() == null ? "--.--.----" : DATE_FORMAT.format(getGeburtstag());
     }
 
-        public boolean isVollstaendig() {
+    public boolean isVollstaendig() {
         if (getName() == null || getName().isEmpty()) return false;
         if (getVorname() == null || getVorname().isEmpty()) return false;
         if (getAdresse() == null) return false;
@@ -270,6 +270,14 @@ public class Person implements Persistable, Cloneable {
                 this.getGeburtstag() != null &&
                 !otherPerson.getGeburtstag().equals(this.getGeburtstag())) return false;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer stringBuffer = new StringBuffer(getName());
+        stringBuffer.append(", ");
+        stringBuffer.append(getVorname());
+        return stringBuffer.toString();
     }
 
 }

@@ -38,7 +38,8 @@ public class PersonManager {
             String[] teile = ident.split(",");
             suchPersonen = HausJpaPersistence.getInstance().selectPerson(teile[0].trim(), teile[1].trim());
         } else {
-            suchPersonen = HausJpaPersistence.getInstance().selectPerson(ident.trim());
+            String regex = "^" + ident.trim() + ".*";
+            suchPersonen = HausJpaPersistence.getInstance().selectPerson(regex);
         }
 
         return suchPersonen;

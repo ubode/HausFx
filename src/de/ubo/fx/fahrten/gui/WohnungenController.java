@@ -342,8 +342,10 @@ public class WohnungenController implements Initializable, CloseRequestable {
                 break;
             case ("mieterCol"):
                 Collection<Person> personen = PersonManager.getInstance().suchePersonen((String)inhalt);
-                if (personen.size() == 1) vertrag.setMieter(personen.iterator().next());
-                else vertrag.setMieter(waehlePerson(personen));
+                if (personen.size() == 1)
+                    vertrag.setMieter(personen.iterator().next());
+                else
+                    vertrag.setMieter(waehlePerson(personen));
                 break;
             case ("regExpCol"):
                 vertrag.setRegularExpression((String) inhalt);
@@ -934,15 +936,15 @@ public class WohnungenController implements Initializable, CloseRequestable {
 
     /**
      * Dialog zur Auswahl einer Person aus der Collection
-     * @param Collection<Person> von Personen
+     * @param personen Collection der Auswahl an Personen
      * @return die gewählte Person
      */
     private Person waehlePerson(Collection<Person> personen) {
 
         ChoiceDialog<Person> choiceDialog = new ChoiceDialog<>(null, personen);
         choiceDialog.setTitle("Wähle Person");
-        choiceDialog.setHeaderText("Header");
-        choiceDialog.setContentText("Content Text");
+        choiceDialog.setHeaderText("Es gibt mehrere Personen zum Auswahlkriterium. Bitte wählen Sie eine Person aus.");
+        choiceDialog.setContentText("Person");
 
         choiceDialog.showAndWait();
 
