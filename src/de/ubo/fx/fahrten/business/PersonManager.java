@@ -30,4 +30,18 @@ public class PersonManager {
 
         return null;
     }
+
+    public Collection<Person> suchePersonen(String ident) {
+        Collection<Person> suchPersonen;
+
+        if (ident.contains(",")) {
+            String[] teile = ident.split(",");
+            suchPersonen = HausJpaPersistence.getInstance().selectPerson(teile[0].trim(), teile[1].trim());
+        } else {
+            suchPersonen = HausJpaPersistence.getInstance().selectPerson(ident.trim());
+        }
+
+        return suchPersonen;
+    }
+
 }
