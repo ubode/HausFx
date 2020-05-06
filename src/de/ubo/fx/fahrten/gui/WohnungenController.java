@@ -690,7 +690,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
         if (sichern) {
             vertragUpdateManager.saveUpdates();
         } else {
-            vertragUpdateManager.clear();
+            cancelVertragUpdate();
         }
     }
 
