@@ -127,7 +127,7 @@ public class UpdateManager<T extends  Persistable> {
         }
 
         persistence.getEntityManager().getTransaction().commit();
-        persistence.getEntityManager().clear();
+        // persistence.getEntityManager().clear();
 
         getUpdates().clear();
 

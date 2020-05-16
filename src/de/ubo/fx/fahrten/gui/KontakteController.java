@@ -20,6 +20,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
+import org.eclipse.persistence.internal.helper.JPAClassLoaderHolder;
 
 import java.net.URL;
 import java.time.Instant;
@@ -86,7 +87,6 @@ public class KontakteController implements Initializable, CloseRequestable {
     public Button neuButton;
     public Button abbruchButton;
     private Person aktuellePerson;
-    private Person dbPerson;
     private ObservableList<Person> personenObservableList;
     private UpdateManager<Person> personUpdateManager = new UpdateManager<>(50);
     private Comparator<Person> personenComparator = (person1, person2) ->
@@ -98,6 +98,7 @@ public class KontakteController implements Initializable, CloseRequestable {
 
     private void fillPersonTextFields(Person person) {
 
+        aktuellePerson = person;
         removePersonChangeListener();
 
         nameTextField.setText(person.getName());
@@ -122,17 +123,25 @@ public class KontakteController implements Initializable, CloseRequestable {
         faxDienstTextField.setText(faxDienstTeile[1]);
         emailTextField.setText(person.getEmail());
         bemerkungTextField.setText(person.getBemerkung());
-        strasseTextField.setText(person.getAdresse().getStrasse());
-        hausnummerTextField.setText(person.getAdresse().getHausnummer());
-        plzTextField.setText(person.getAdresse().getPostleitzahl());
-        ortTextField.setText(person.getAdresse().getOrt());
-        landTextField.setText(person.getAdresse().getLand());
+        if (person.getAdresse() == null) {
+            strasseTextField.setText("");
+            hausnummerTextField.setText("");
+            plzTextField.setText("");
+            ortTextField.setText("");
+            landTextField.setText("");
+        } else {
+            strasseTextField.setText(person.getAdresse().getStrasse());
+            hausnummerTextField.setText(person.getAdresse().getHausnummer());
+            plzTextField.setText(person.getAdresse().getPostleitzahl());
+            ortTextField.setText(person.getAdresse().getOrt());
+            landTextField.setText(person.getAdresse().getLand());
+        }
+
         anredeChoiceBox.setValue(person.getAnrede());
         titelChoiceBox.setValue(person.getTitel());
         adresseChoiceBox.getSelectionModel().clearSelection();
         geburtstagDatePicker.getEditor().setText(person.getGeburtstagFormatiert());
 
-        aktuellePerson = person;
         enablePersonFields();
         addPersonChangeListener();
         checkButtons();
@@ -168,7 +177,6 @@ public class KontakteController implements Initializable, CloseRequestable {
         geburtstagDatePicker.getEditor().setText("");
 
         aktuellePerson = null;
-        dbPerson = null;
         enablePersonFields();
         addPersonChangeListener();
         checkButtons();
@@ -420,16 +428,17 @@ public class KontakteController implements Initializable, CloseRequestable {
         }
 
         if (newPerson != null) {
-            dbPerson = newPerson.clone();
-            fillPersonTextFields(dbPerson);
+            fillPersonTextFields(newPerson);
             fillBuchungsTable();
         }
     }
 
     public void handleNeuButton(ActionEvent event) {
-        clearPersonFields();
-        personenTableView.getSelectionModel().clearSelection();
         aktuellePerson = new Person();
+        fillPersonTextFields(aktuellePerson);
+        // clearPersonFields();
+        personenTableView.getSelectionModel().clearSelection();
+
         checkButtons();
 
         System.out.println("neue Person anlegen");
@@ -450,7 +459,10 @@ public class KontakteController implements Initializable, CloseRequestable {
     }
 
     private void abbrechenUpdate() {
-        aktuellePerson = dbPerson;
+
+        //Todo : abbrechen über EntityManager realisieren
+        // aktuellePerson = dbPerson;
+
         personUpdateManager.clear();
         if (aktuellePerson == null) {
             clearPersonFields();
@@ -521,7 +533,7 @@ public class KontakteController implements Initializable, CloseRequestable {
     }
 
     public void handleGeburtstagChanged(ActionEvent event) {
-        if (dbPerson == null) {
+        if (aktuellePerson.getId() == null) {
             personUpdateManager.addUpdate(aktuellePerson);
         } else {
             personUpdateManager.addInsert(aktuellePerson);

@@ -258,6 +258,26 @@ public class Person implements Persistable, Cloneable {
         return clone;
     }
 
+    public Person() {
+        super();
+        this.setName("");
+        this.setVorname("");
+        this.setAnrede("");
+        this.setTitel(null);
+        this.setId(null);
+        this.setAdresse(null);
+        this.setGeburtstag(null);
+        this.setBemerkung(null);
+        this.setEmail(null);
+        this.setAktiv(true);
+        this.setFaxDienst(null);
+        this.setFaxPrivat(null);
+        this.setTelefonDienst(null);
+        this.setTelefonPrivat(null);
+        this.setHandyDienst(null);
+        this.setHandyPrivat(null);
+    }
+
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof Person)) return false;
