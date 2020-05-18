@@ -461,12 +461,13 @@ public class KontakteController implements Initializable, CloseRequestable {
     private void abbrechenUpdate() {
 
         //Todo : abbrechen über EntityManager realisieren
-        // aktuellePerson = dbPerson;
-
         personUpdateManager.clear();
-        if (aktuellePerson == null) {
+
+        if (aktuellePerson.getId() == null) {
+            aktuellePerson = null;
             clearPersonFields();
         } else {
+            HausJpaPersistence.getInstance().refreshObject(aktuellePerson);
             fillPersonTextFields(aktuellePerson);
         }
     }

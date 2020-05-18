@@ -69,6 +69,14 @@ public class HausJpaPersistence {
     }
 
     /**
+     * Methode erzwingt das erneute Lesen des Objects
+     */
+    public void refreshObject(Object object) {
+
+        getEntityManager().refresh(object);
+    }
+
+    /**
      * Methode liefert sämtliche Anlässe des Fahrtenbuchs (komplette Tabelle)
      */
     public Collection<Anlass> selectAnlaesse() {
