@@ -89,10 +89,8 @@ public class KontakteController implements Initializable, CloseRequestable {
     private Person aktuellePerson;
     private ObservableList<Person> personenObservableList;
     private UpdateManager<Person> personUpdateManager = new UpdateManager<>(50);
-    private Comparator<Person> personenComparator = (person1, person2) ->
-            person1.getName().compareTo(person2.getName());
-    private Comparator<Buchung> buchungsComparator = (buchung1, buchung2) ->
-            buchung2.getDatum().compareTo(buchung1.getDatum());
+    private Comparator<Person> personenComparator = Comparator.comparing(Person::getName);
+    private Comparator<Buchung> buchungsComparator = Comparator.comparing(Buchung::getDatum);
     private ChangeListener<String> personFieldChangeListener = (observable, oldValue, newValue) -> handlePersonFieldChanged(observable, oldValue, newValue);
     private ChangeListener<String> adressFieldChangeListener = (observable, oldValue, newValue) -> handleAdresseFieldChanged(observable, oldValue, newValue);
 
@@ -180,6 +178,10 @@ public class KontakteController implements Initializable, CloseRequestable {
         enablePersonFields();
         addPersonChangeListener();
         checkButtons();
+    }
+
+    private void clearBuchungsTab() {
+        buchungsTableView.getItems().clear();
     }
 
     private void disablePersonFields() {
@@ -338,7 +340,7 @@ public class KontakteController implements Initializable, CloseRequestable {
 
         Collection<Person> personenColl = HausJpaPersistence.getInstance().selectAllPersonen();
         ArrayList<Person> personenList = new ArrayList<>(personenColl);
-        Collections.sort(personenList, personenComparator);
+        personenList.sort(personenComparator);
 
         personenObservableList.addAll(personenList);
         personenTableView.setItems(personenObservableList);
@@ -361,7 +363,7 @@ public class KontakteController implements Initializable, CloseRequestable {
 
         Collection<Buchung> buchungsColl = HausJpaPersistence.getInstance().selectBuchungen(bedingungen, aktuellePerson.getName(), aktuellePerson.getVorname());
         ArrayList<Buchung> buchungsList = new ArrayList<>(buchungsColl);
-        Collections.sort(buchungsList, buchungsComparator);
+        buchungsList.sort(buchungsComparator);
 
         buchungsTableView.getItems().addAll(buchungsList);
         buchungsTableView.refresh();
@@ -370,7 +372,7 @@ public class KontakteController implements Initializable, CloseRequestable {
 
     private Collection<Buchung> ermittleBuchungenZu(Collection<Bedingung> bedingungen, String name, String vorname) {
 
-        Collection<Buchung> buchungsColl = null;
+        Collection<Buchung> buchungsColl;
 
         String nameRegex = "*" + name + "*";
         Bedingung bedName = new Bedingung(Kriterium.EMPFAENGER, Operator.GLEICH, nameRegex);
@@ -403,9 +405,11 @@ public class KontakteController implements Initializable, CloseRequestable {
     }
 
     public void handleBuchungenTab() {
-        if (aktuellePerson != null) {
+        if (aktuellePerson.getId() != null) {
             fillBuchungsTable();
             checkBuchungsTabButtons();
+        } else {
+            clearBuchungsTab();
         }
     }
 
@@ -427,7 +431,7 @@ public class KontakteController implements Initializable, CloseRequestable {
             }
         }
 
-        if (newPerson != null) {
+        if (newPerson.getId() != null) {
             fillPersonTextFields(newPerson);
             fillBuchungsTable();
         }
@@ -436,11 +440,10 @@ public class KontakteController implements Initializable, CloseRequestable {
     public void handleNeuButton(ActionEvent event) {
         aktuellePerson = new Person();
         fillPersonTextFields(aktuellePerson);
-        // clearPersonFields();
+        clearBuchungsTab();
         personenTableView.getSelectionModel().clearSelection();
-
+        nameTextField.requestFocus();
         checkButtons();
-
         System.out.println("neue Person anlegen");
 
     }
@@ -458,9 +461,11 @@ public class KontakteController implements Initializable, CloseRequestable {
         System.out.println("handleAbbruchButton");
     }
 
+    /** Update abbrechen
+     * Neuaufnahme: alle Felder löschen
+     * Änderung: Zustand der Datenbank wieder herstellen
+     */
     private void abbrechenUpdate() {
-
-        //Todo : abbrechen über EntityManager realisieren
         personUpdateManager.clear();
 
         if (aktuellePerson.getId() == null) {
@@ -551,7 +556,9 @@ public class KontakteController implements Initializable, CloseRequestable {
     }
 
     private void handleJahrSelection() {
-        fillBuchungsTable();
+        if (aktuellePerson.getId() != null) {
+            fillBuchungsTable();
+        }
     }
 
     private void checkButtons() {
@@ -568,29 +575,13 @@ public class KontakteController implements Initializable, CloseRequestable {
             saveButton.setDisable(true);
             abbruchButton.setDisable(true);
         } else {
-            if (!personUpdateManager.isEmpty()) {
-                abbruchButton.setDisable(false);
-            } else {
-                abbruchButton.setDisable(true);
-            }
-            if (aktuellePerson.isVollstaendig() && !personUpdateManager.isEmpty()) {
-                saveButton.setDisable(false);
-            } else {
-                saveButton.setDisable(true);
-            }
+            abbruchButton.setDisable(personUpdateManager.isEmpty());
+            saveButton.setDisable(!aktuellePerson.isVollstaendig() || personUpdateManager.isEmpty());
         }
 
-        if (personUpdateManager.isEmpty()) {
-            neuButton.setDisable(false);
-        } else {
-            neuButton.setDisable(true);
-        }
+        neuButton.setDisable(!personUpdateManager.isEmpty());
 
-        if (personenTableView.getSelectionModel().getSelectedIndex() < 0) {
-            loeschButton.setDisable(true);
-        } else {
-            loeschButton.setDisable(false);
-        }
+        loeschButton.setDisable(personenTableView.getSelectionModel().getSelectedIndex() < 0);
     }
 
     private void checkBuchungsTabButtons() {
@@ -630,11 +621,7 @@ public class KontakteController implements Initializable, CloseRequestable {
         alert.getButtonTypes().setAll(buttonTypeOK, buttonTypeReload);
 
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == buttonTypeReload) {
-            return false;
-        } else {
-            return true;
-        }
+        return result.get() != buttonTypeReload;
     }
 
     /**
@@ -655,11 +642,7 @@ public class KontakteController implements Initializable, CloseRequestable {
         alert.getButtonTypes().setAll(buttonTypeOK, buttonTypeReload);
 
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == buttonTypeReload) {
-            return false;
-        } else {
-            return true;
-        }
+        return result.get() != buttonTypeReload;
     }
 
     /**
@@ -679,11 +662,7 @@ public class KontakteController implements Initializable, CloseRequestable {
         alert.getButtonTypes().setAll(buttonTypeOK, buttonTypeReload);
 
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == buttonTypeReload) {
-            return false;
-        } else {
-            return true;
-        }
+        return result.get() != buttonTypeReload;
     }
 
     @Override
