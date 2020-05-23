@@ -306,8 +306,25 @@ public class WohnungenController implements Initializable, CloseRequestable {
         checkButtons();
     }
 
-
     public void handleWohnObjektSelected(TreeItem<WohnObjekt> treeItem) {
+
+        if (treeItem.isLeaf()) {
+            mietenTab.setDisable(false);
+            kautionTab.setDisable(false);
+            vertragTab.setDisable(false);
+            zimmerTab.setDisable(false);
+            wohnungSelected(treeItem);
+        } else {
+            mietenTab.setDisable(true);
+            kautionTab.setDisable(true);
+            vertragTab.setDisable(true);
+            zimmerTab.setDisable(true);
+            wohnungSelected(treeItem);
+        }
+    }
+
+
+    public void wohnungSelected(TreeItem treeItem) {
 
         if (datenTab.isSelected()) {
             fillDatenTab(treeItem);
