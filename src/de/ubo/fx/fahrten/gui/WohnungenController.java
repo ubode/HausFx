@@ -308,7 +308,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
 
     public void handleWohnObjektSelected(TreeItem<WohnObjekt> treeItem) {
 
-        if (treeItem.isLeaf()) {
+        if (treeItem.getValue().getWohnung() != null) {
             mietenTab.setDisable(false);
             kautionTab.setDisable(false);
             vertragTab.setDisable(false);
@@ -1246,6 +1246,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
         initializeKautionsTab();
         summeSollTextField.setAlignment(Pos.CENTER_RIGHT);
         summeIstTextField.setAlignment(Pos.CENTER_RIGHT);
+        wohnungTreeView.getSelectionModel().selectFirst();
         checkButtons();
     }
 
