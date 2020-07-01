@@ -27,6 +27,8 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.util.Comparator.reverseOrder;
+
 /**
  * Created by ulric on 01.08.2016.
  */
@@ -185,13 +187,21 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
 
         Zuordnung zuordnung = (Zuordnung) event.getRowValue();
         Wohnung wohnung = (Wohnung) event.getNewValue();
-        Collection<MietVertrag> vertraegs = HausJpaPersistence.getInstance().selectMietvertraege(wohnung);
+        Collection<MietVertrag> vertraege = HausJpaPersistence.getInstance().selectMietvertraege(wohnung);
 
-        for (MietVertrag vertrag: vertraegs) {
+        if (vertraege.size() == 1)
+            zuordnung.setMietVertrag(vertraege.iterator().next());
+        else {
+            MietVertrag mietvertrag = waehleVertrag(vertraege);
+            zuordnung.setMietVertrag(mietvertrag);
+        }
+        /*
+        for (MietVertrag vertrag: vertraege) {
             if (vertrag.getEnde() == null) {
                 zuordnung.setMietVertrag(vertrag);
             }
         }
+        */
 
         Mietzahlung mietzahlung;
         if (zuordnung.getMietzahlung() == null) {
@@ -205,6 +215,25 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
         }
 
         zuordnungTableView.refresh();
+    }
+
+    /**
+     * Dialog zur Auswahl einer Person aus der Collection
+     * @param vertraege Collection der Auswahl an Mietverträgen
+     * @return der gewählte Mietvertrag
+     */
+    private MietVertrag waehleVertrag(Collection<MietVertrag> vertraege) {
+        List vertraegeList = new ArrayList(vertraege);
+        Collections.sort(vertraegeList, Comparator.comparing((MietVertrag::getBeginn), reverseOrder()));
+
+        ChoiceDialog<MietVertrag> choiceDialog = new ChoiceDialog<>(null, vertraegeList);
+        choiceDialog.setTitle("Wähle passenden Mietvertrag");
+        choiceDialog.setHeaderText("Es gibt mehrere Mietverträge für die Wohnung. Bitte wählen Sie einen Vertrag aus.");
+        choiceDialog.setContentText("Mietverträge");
+
+        choiceDialog.showAndWait();
+
+        return choiceDialog.getSelectedItem();
     }
 
     public void handleAnteilChangedAction(TableColumn.CellEditEvent event) {

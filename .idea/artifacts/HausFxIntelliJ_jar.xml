@@ -3,11 +3,8 @@
     <output-path>$PROJECT_DIR$/out/artifacts/HausFxIntelliJ_jar</output-path>
     <root id="archive" name="HausFxIntelliJ.jar">
       <element id="module-output" name="HausFxIntelliJ" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/commons-collections4-4.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/eclipselink.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/log4j-1.2.8.jar" path-in-jar="/" />
       <element id="library" level="project" name="commons-collections4-4.1" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/javax.persistence.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

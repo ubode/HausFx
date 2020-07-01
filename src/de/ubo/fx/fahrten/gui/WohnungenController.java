@@ -20,6 +20,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -112,6 +113,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
     public TableColumn<GuiMietzahlung, Double> kautionSollCol;
     public TableColumn<GuiMietzahlung, Double> kautionIstCol;
     public TableColumn<GuiMietzahlung, String> kautionAbgleichCol;
+    public GridPane wohnungDetailPane;
     private UpdateManager<MietVertrag> vertragUpdateManager;
     private UpdateManager<Zimmer> zimmerUpdateManager;
     private ObservableList<MietVertrag> vertraegeOL;
@@ -309,18 +311,20 @@ public class WohnungenController implements Initializable, CloseRequestable {
     public void handleWohnObjektSelected(TreeItem<WohnObjekt> treeItem) {
 
         if (treeItem.getValue().getWohnung() != null) {
+            nameTextField.setEditable(true);
+            wohnungDetailPane.setDisable(false);
             mietenTab.setDisable(false);
             kautionTab.setDisable(false);
             vertragTab.setDisable(false);
             zimmerTab.setDisable(false);
-            wohnungSelected(treeItem);
         } else {
+            wohnungDetailPane.setDisable(true);
             mietenTab.setDisable(true);
             kautionTab.setDisable(true);
             vertragTab.setDisable(true);
             zimmerTab.setDisable(true);
-            wohnungSelected(treeItem);
         }
+        wohnungSelected(treeItem);
     }
 
 
@@ -787,7 +791,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
         Collection<Wohnung> wohnungen = HausJpaPersistence.getInstance().selectAllWohnungen();
         Map<Long, Double[]> wohnungsMap = new HashMap<>(100);
         for (Wohnung wohnung : wohnungen) {
-            wohnungsMap.put(wohnung.getId(), new Double[]{0.0d, 0.0d});
+            wohnungsMap.put(wohnung.getId(), new Double[]{0.0d, 0.0d, 0.0d, 0.0d});
 
         }
         return wohnungsMap;
@@ -897,15 +901,15 @@ public class WohnungenController implements Initializable, CloseRequestable {
 
         for (MietVertrag mietVertrag : mietVertraege) {
             Date vertragEnde = mietVertrag.getEnde();
+            Long wohnungsId = mietVertrag.getWohnung().getId();
+            Double[] werte = wohnungsMap.get(wohnungsId);
+
             if (vertragEnde == null || vertragEnde.after(heute)) {
-                Long wohnungsId = mietVertrag.getWohnung().getId();
-                Double[] werte = wohnungsMap.get(wohnungsId);
+                // aktueller Mietvertrag
                 werte[0] += mietVertrag.getKaution();
-            }
-            if (vertragEnde != null && vertragEnde.before(heute)) {
-                Long wohnungsId = mietVertrag.getWohnung().getId();
-                Double[] werte = wohnungsMap.get(wohnungsId);
-                werte[0] -= mietVertrag.getKaution();
+            } else {
+                // alter Mietvertrag
+                werte[2] += mietVertrag.getKaution();
             }
         }
 
@@ -918,13 +922,20 @@ public class WohnungenController implements Initializable, CloseRequestable {
      */
     private void aggregiereIstKautionen(Map<Long, Double[]> wohnungsMap) {
 
-
         Collection<Mietzahlung> mietzahlungen = HausJpaPersistence.getInstance().selectKautionszahlungen();
+        Date heute = new Date();
 
         for (Mietzahlung mietzahlung: mietzahlungen) {
             Wohnung wohnung = mietzahlung.getMietVertrag().getWohnung();
+            Date vertragEnde = mietzahlung.getMietVertrag().getEnde();
             Double[] werte = wohnungsMap.get(wohnung.getId());
-            werte[1] += mietzahlung.getBetrag();
+            if (vertragEnde == null || vertragEnde.after(heute)) {
+                // aktueller Mietvertrag
+                werte[1] += mietzahlung.getBetrag();
+            } else {
+                // alter Mietvertrag
+                werte[3] += mietzahlung.getBetrag();
+            }
         }
 
     }

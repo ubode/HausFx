@@ -1,5 +1,6 @@
 package de.ubo.fx.fahrten.business;
 
+import de.ubo.fx.fahrten.helper.DatumHelper;
 import de.ubo.fx.fahrten.persistence.Persistable;
 
 import javax.persistence.*;
@@ -166,5 +167,19 @@ public class MietVertrag implements Persistable {
     @Override
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(DatumHelper.getDatumInternational(getBeginn()));
+        if (getEnde() != null) {
+            sb.append("  bis  ");
+            sb.append(DatumHelper.getDatumInternational(getEnde()));
+        }
+        sb.append(" ");
+        sb.append(getMieter().getName());
+        sb.append(", ");
+        sb.append(getMieter().getVorname());
+        return sb.toString();
     }
 }
