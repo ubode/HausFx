@@ -7,14 +7,18 @@ import de.ubo.fx.fahrten.helper.ControllerRegistry;
 import de.ubo.fx.fahrten.helper.DatumHelper;
 import de.ubo.fx.fahrten.persistence.HausJpaPersistence;
 import de.ubo.fx.fahrten.persistence.UpdateManager;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Background;
@@ -24,6 +28,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -94,6 +99,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
     public TableColumn<MietVertrag, Double> nebenkostenCol;
     public TableColumn<MietVertrag, Double> heizkostenCol;
     public TableColumn<MietVertrag, String> gesamtkostenCol;
+    public TableColumn<MietVertrag, Boolean> anpassungCol;
     public TableView<Zimmer> zimmerTableView;
     public TableColumn<Zimmer, String> nameCol;
     public TableColumn<Zimmer, Double> flaecheCol;
@@ -157,6 +163,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
         aktuellerVertrag.setMietzins(0.0d);
         aktuellerVertrag.setNebenkosten(0.0d);
         aktuellerVertrag.setHeizkosten(0.0d);
+        aktuellerVertrag.setAnpassung(false);
         vertraegeOL.add(aktuellerVertrag);
 
         getVertragUpdateManager().addInsert(aktuellerVertrag);
@@ -382,6 +389,9 @@ public class WohnungenController implements Initializable, CloseRequestable {
                 break;
             case ("heizkostenCol"):
                 vertrag.setHeizkosten((Double)inhalt);
+                break;
+            case ("folgeVertragCol"):
+                vertrag.setAnpassung((Boolean)inhalt);
                 break;
             default:
                 System.out.println("nichts zu tun");
@@ -900,16 +910,19 @@ public class WohnungenController implements Initializable, CloseRequestable {
         Date heute = new Date();
 
         for (MietVertrag mietVertrag : mietVertraege) {
-            Date vertragEnde = mietVertrag.getEnde();
-            Long wohnungsId = mietVertrag.getWohnung().getId();
-            Double[] werte = wohnungsMap.get(wohnungsId);
+            // Mietkaution einer Mietvertragsanpassung nicht berücksichtigen
+            if (mietVertrag.isAnpassung() != true) {
+                Date vertragEnde = mietVertrag.getEnde();
+                Long wohnungsId = mietVertrag.getWohnung().getId();
+                Double[] werte = wohnungsMap.get(wohnungsId);
 
-            if (vertragEnde == null || vertragEnde.after(heute)) {
-                // aktueller Mietvertrag
-                werte[0] += mietVertrag.getKaution();
-            } else {
-                // alter Mietvertrag
-                werte[2] += mietVertrag.getKaution();
+                if (vertragEnde == null || vertragEnde.after(heute)) {
+                    // aktueller Mietvertrag
+                    werte[0] += mietVertrag.getKaution();
+                } else {
+                    // alter Mietvertrag
+                    werte[2] += mietVertrag.getKaution();
+                }
             }
         }
 
@@ -1120,25 +1133,23 @@ public class WohnungenController implements Initializable, CloseRequestable {
                 Collection<Mietzahlung> mietzahlungen = ermittleMietzahlungen(jahr, mietVertragNeu);
                 for (Mietzahlung mietzahlung : mietzahlungen) {
                     Buchung buchung = mietzahlung.getBuchung();
-                    if (buchung.getBetrag() > 0) {
-                        GuiMietzahlung istZahlung = new GuiMietzahlung();
-                        istZahlung.setMieter(mietVertragNeu.getMieter());
-                        istZahlung.setDatum(buchung.getDatum());
-                        istZahlung.setIst(mietzahlung.getBetrag());
-                        double faktor = buchung.getBetrag() / mietVertragNeu.getGesamtkosten();
-                        if (faktor >= 1.0d) {
-                            istZahlung.setGrundMiete(mietVertragNeu.getMietzins());
-                            istZahlung.setNebenKosten(mietzahlung.getBetrag() - mietVertragNeu.getMietzins());
-                        } else if (faktor == 0.5d) {
-                            istZahlung.setGrundMiete(mietVertragNeu.getMietzins() * faktor);
-                            istZahlung.setNebenKosten(((mietVertragNeu.getHeizkosten() + mietVertragNeu.getNebenkosten()) * faktor));
-                        } else {
-                            istZahlung.setGrundMiete(buchung.getBetrag());
-                            istZahlung.setNebenKosten(0.0d);
-                        }
-                        istZahlungen.add(istZahlung);
-                        summe += mietzahlung.getBetrag();
+                    GuiMietzahlung istZahlung = new GuiMietzahlung();
+                    istZahlung.setMieter(mietVertragNeu.getMieter());
+                    istZahlung.setDatum(buchung.getDatum());
+                    istZahlung.setIst(mietzahlung.getBetrag());
+                    double faktor = buchung.getBetrag() / mietVertragNeu.getGesamtkosten();
+                    if (faktor >= 1.0d) {
+                        istZahlung.setGrundMiete(mietVertragNeu.getMietzins());
+                        istZahlung.setNebenKosten(mietzahlung.getBetrag() - mietVertragNeu.getMietzins());
+                    } else if (faktor == 0.5d) {
+                        istZahlung.setGrundMiete(mietVertragNeu.getMietzins() * faktor);
+                        istZahlung.setNebenKosten(((mietVertragNeu.getHeizkosten() + mietVertragNeu.getNebenkosten()) * faktor));
+                    } else {
+                        istZahlung.setGrundMiete(buchung.getBetrag());
+                        istZahlung.setNebenKosten(0.0d);
                     }
+                    istZahlungen.add(istZahlung);
+                    summe += mietzahlung.getBetrag();
                 }
                 mietVertragAlt = mietVertragNeu;
             }
@@ -1181,21 +1192,23 @@ public class WohnungenController implements Initializable, CloseRequestable {
         Date heute = new Date();
 
         for (MietVertrag vertrag: vertraege) {
-            if (mieterName.equals(ALLE_MIETER) || vertrag.getMieter().getName().equals(mieterName)) {
-                GuiMietzahlung sollZahlung = new GuiMietzahlung();
-                sollZahlung.setDatum(vertrag.getBeginn());
-                sollZahlung.setMieter(vertrag.getMieter());
-                sollZahlung.setSoll(vertrag.getKaution());
-                summe += vertrag.getKaution();
-                zahlungenList.add(sollZahlung);
-                if (vertrag.getEnde() != null && vertrag.getEnde().before(heute)) {
-                    GuiMietzahlung sollRueckzahlung = new GuiMietzahlung();
-                    sollRueckzahlung.setDatum(vertrag.getEnde());
-                    sollRueckzahlung.setMieter(vertrag.getMieter());
-                    sollRueckzahlung.setSoll(vertrag.getKaution() * -1);
-                    summe -= vertrag.getKaution();
-                    if (sollRueckzahlung.getSoll() != 0) {
-                        zahlungenList.add(sollRueckzahlung);
+            if (vertrag.isAnpassung() == false) {
+                if (mieterName.equals(ALLE_MIETER) || vertrag.getMieter().getName().equals(mieterName)) {
+                    GuiMietzahlung sollZahlung = new GuiMietzahlung();
+                    sollZahlung.setDatum(vertrag.getBeginn());
+                    sollZahlung.setMieter(vertrag.getMieter());
+                    sollZahlung.setSoll(vertrag.getKaution());
+                    summe += vertrag.getKaution();
+                    zahlungenList.add(sollZahlung);
+                    if (vertrag.getEnde() != null && vertrag.getEnde().before(heute)) {
+                        GuiMietzahlung sollRueckzahlung = new GuiMietzahlung();
+                        sollRueckzahlung.setDatum(vertrag.getEnde());
+                        sollRueckzahlung.setMieter(vertrag.getMieter());
+                        sollRueckzahlung.setSoll(vertrag.getKaution() * -1);
+                        summe -= vertrag.getKaution();
+                        if (sollRueckzahlung.getSoll() != 0) {
+                            zahlungenList.add(sollRueckzahlung);
+                        }
                     }
                 }
             }
@@ -1311,6 +1324,14 @@ public class WohnungenController implements Initializable, CloseRequestable {
 
     private void initializeMietvertragTableViewColumns() {
 
+        vertraegeOL.addListener((ListChangeListener<MietVertrag>) c -> {
+            while (c.next()) {
+                if (c.wasUpdated()) {
+                    System.out.println("here we are");
+                }
+            }
+        });
+
         beginnCol.setCellFactory(
                 TextFieldTableCell.forTableColumn()
         );
@@ -1337,6 +1358,24 @@ public class WohnungenController implements Initializable, CloseRequestable {
                     }
                     return property;
                 });
+
+        // nkCol.setCellFactory(CheckBoxTableCell.forTableColumn(nkCol));
+        anpassungCol.setCellFactory(CheckBoxTableCell.forTableColumn(new Callback<Integer, ObservableValue<Boolean>>() {
+            @Override
+            public ObservableValue<Boolean> call(Integer param) {
+                System.out.println("hier bin ich");
+                SimpleBooleanProperty property = new SimpleBooleanProperty();
+                property.setValue(vertraegeOL.get(param).isAnpassung());
+                return property;
+            }
+        }));
+
+        anpassungCol.setCellValueFactory(
+                cellData -> {
+                    SimpleBooleanProperty property = new SimpleBooleanProperty();
+                    property.setValue(cellData.getValue().isAnpassung());
+                    return property;
+        });
 
         mieterCol.setCellFactory(
                 TextFieldTableCell.forTableColumn()
