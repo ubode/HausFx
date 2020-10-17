@@ -54,6 +54,10 @@ public class MietVertrag implements Persistable {
     @Column(name = "mvg_kaution")
     private double kaution;
 
+    @Basic
+    @Column(name = "mvg_anpassung")
+    private boolean anpassung;
+
     private static String betragToString(double betrag) {
         DecimalFormat betragFormat = new DecimalFormat("###,##0.00");
         return betragFormat.format(betrag);
@@ -148,6 +152,10 @@ public class MietVertrag implements Persistable {
     public void setHeizkosten(double heizkosten) {
         this.heizkosten = heizkosten;
     }
+
+    public boolean isAnpassung() { return anpassung; }
+
+    public void setAnpassung(boolean anpassung) { this.anpassung = anpassung; }
 
     public double getGesamtkosten() {
         return getMietzins() + getNebenkosten() + getHeizkosten();

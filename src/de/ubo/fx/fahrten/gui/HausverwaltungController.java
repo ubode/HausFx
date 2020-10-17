@@ -13,12 +13,8 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
@@ -129,7 +125,7 @@ public class HausverwaltungController implements Initializable, CloseRequestable
             this.wohnungenParent = loader.load();
             wohnungenStage = new Stage();
             wohnungenStage.setTitle("Wohnungen");
-            wohnungenStage.setScene(new Scene(wohnungenParent, 1100, 800));
+            wohnungenStage.setScene(new Scene(wohnungenParent, 1150, 800));
             WohnungenController controller = loader.getController();
             wohnungenStage.setOnCloseRequest(event -> controller.closeRequest());
         }

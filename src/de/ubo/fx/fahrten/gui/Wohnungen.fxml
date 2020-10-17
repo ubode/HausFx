@@ -20,7 +20,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ubo.fx.fahrten.gui.WohnungenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="1150.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ubo.fx.fahrten.gui.WohnungenController">
     <top>
     </top>
     <center>
@@ -251,6 +251,7 @@
                                                             <columns>
                                                                 <TableColumn fx:id="beginnCol" maxWidth="100.0" onEditCommit="#handleVertragCellEdit" prefWidth="100.0" text="Vertragsbeginn" />
                                                                 <TableColumn fx:id="endeCol" maxWidth="100.0" onEditCommit="#handleVertragCellEdit" prefWidth="100.0" text="Vertragsende" />
+                                                                <TableColumn fx:id="anpassungCol" maxWidth="30.0" onEditCommit="#handleVertragCellEdit" prefWidth="30.0" text="Änd" />
                                                                 <TableColumn fx:id="mieterCol" maxWidth="500.0" minWidth="100.0" onEditCommit="#handleVertragCellEdit" prefWidth="150.0" text="Mieter" />
                                                                 <TableColumn fx:id="regExpCol" maxWidth="500.0" minWidth="100.0" onEditCommit="#handleVertragCellEdit" prefWidth="110.0" text="Kennung (RegExp)" />
                                                                 <TableColumn fx:id="kautionCol" maxWidth="100.0" onEditCommit="#handleVertragCellEdit" text="Kaution" />
