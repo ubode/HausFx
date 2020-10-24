@@ -45,10 +45,12 @@ public class WohnungenController implements Initializable, CloseRequestable {
     private static String RGB_BLUE = "#cceeff";
     private static String RGB_GREEN = "#d4f2d2";
     private static String RGB_GREY = "#dddddd";
-    private static String RGB_RED = "#ffcccc";
+    private static String RGB_RED = "#ffd9cc";
+    private static String RGB_YELLOW = "#ffffe6";
     private static Background BG_RED = new Background(new BackgroundFill(Color.web(RGB_RED), CornerRadii.EMPTY, Insets.EMPTY));
     private static Background BG_GREEN = new Background(new BackgroundFill(Color.web(RGB_GREEN), CornerRadii.EMPTY, Insets.EMPTY));
     private static Background BG_BLUE = new Background(new BackgroundFill(Color.web(RGB_BLUE), CornerRadii.EMPTY, Insets.EMPTY));
+    private static Background BG_YELLOW = new Background(new BackgroundFill(Color.web(RGB_YELLOW), CornerRadii.EMPTY, Insets.EMPTY));
     private static String ALLE_MIETER = "alle Mieter";
     private static NumberFormat BETRAG_FORMATTER = DecimalFormat.getCurrencyInstance(Locale.FRANCE);
     public TreeView<WohnObjekt> wohnungTreeView;
@@ -507,6 +509,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
     }
 
     public void handleDatenTab() {
+
         if (wohnungTreeView != null) initializeItemGraphics(wohnungTreeView.getRoot());
 
         if (pruefButton != null) {
@@ -523,6 +526,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
     }
 
     public void handleMietenTab() {
+        pruefeUngesicherteUpdates();
         initializeItemGraphics(wohnungTreeView.getRoot());
         pruefButton.setText("Prüfe Mieteingang");
         fillMietenTable();
@@ -530,11 +534,17 @@ public class WohnungenController implements Initializable, CloseRequestable {
     }
 
     public void handleKautionTab() {
+        pruefeUngesicherteUpdates();
         initializeItemGraphics(wohnungTreeView.getRoot());
         pruefButton.setText("Prüfe Kautionen");
         fillMieterChoiceBox();
         fillKautionsTable();
         checkButtons();
+    }
+
+    public void pruefeUngesicherteUpdates() {
+        pruefeVertragUpdate();
+        pruefeZimmerUpdate();
     }
 
     public void handleVertragTab() {
@@ -548,6 +558,9 @@ public class WohnungenController implements Initializable, CloseRequestable {
     }
 
     public void handleZimmerTab() {
+
+        // Tab gewechselt --> gibt es ungesicherte Verträge?
+        pruefeUngesicherteUpdates();
 
         try {
             WohnObjekt wohnObjekt = wohnungTreeView.getSelectionModel().getSelectedItem().getValue();
@@ -1137,15 +1150,19 @@ public class WohnungenController implements Initializable, CloseRequestable {
                     istZahlung.setMieter(mietVertragNeu.getMieter());
                     istZahlung.setDatum(buchung.getDatum());
                     istZahlung.setIst(mietzahlung.getBetrag());
-                    double faktor = buchung.getBetrag() / mietVertragNeu.getGesamtkosten();
-                    if (faktor >= 1.0d) {
+                    double faktor = 0.0d;
+                    Date mvEnde = mietVertragNeu.getEnde();
+                    if (mvEnde == null || istZahlung.getDatum().before(mvEnde)) {
+                        faktor = buchung.getBetrag() / mietVertragNeu.getGesamtkosten();
+                    }
+                    if (faktor >= 0.75d) {
                         istZahlung.setGrundMiete(mietVertragNeu.getMietzins());
                         istZahlung.setNebenKosten(mietzahlung.getBetrag() - mietVertragNeu.getMietzins());
                     } else if (faktor == 0.5d) {
                         istZahlung.setGrundMiete(mietVertragNeu.getMietzins() * faktor);
                         istZahlung.setNebenKosten(((mietVertragNeu.getHeizkosten() + mietVertragNeu.getNebenkosten()) * faktor));
                     } else {
-                        istZahlung.setGrundMiete(buchung.getBetrag());
+                        istZahlung.setGrundMiete(0.0d); 
                         istZahlung.setNebenKosten(0.0d);
                     }
                     istZahlungen.add(istZahlung);
@@ -1504,9 +1521,31 @@ public class WohnungenController implements Initializable, CloseRequestable {
 
     private void initializeMietenTab() {
         mietZahlungOL = FXCollections.observableArrayList();
+        initializeMietenTableView();
         initializeMietenTableViewColumns();
         initializeJahrChoiceBox();
         checkButtons();
+    }
+
+    private void initializeMietenTableView() {
+        mietenTableView.setRowFactory(row -> new TableRow<GuiMietzahlung>(){
+            @Override
+            public void updateItem(GuiMietzahlung item, boolean empty){
+                super.updateItem(item, empty);
+
+                if (item == null || empty || item.getGrundMiete() == null) {
+                    setStyle("");
+                } else {
+                    if(item.getGrundMiete() <= 0) {
+                        setStyle("-fx-background-color:" + RGB_YELLOW);
+                    } else if (item.getIst() != null) {
+                        setStyle("-fx-background-color:" + RGB_GREEN);
+                    } else {
+                        setStyle("-fx-background-color:" + RGB_RED);
+                    }
+                }
+            }
+        });
     }
 
     private void initializeKautionsTab() {
@@ -1593,7 +1632,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
                     TableRow<GuiMietzahlung> currentRow = getTableRow();
                     if (!isEmpty() && getItem() != null && getItem() > 0.0d) {
                             setText(BETRAG_FORMATTER.format(getItem()));
-                            currentRow.setStyle("-fx-background-color:" + RGB_RED);
+                            // currentRow.setStyle("-fx-background-color:" + RGB_RED);
                     } else {
                         setText("");
                     }
@@ -1632,7 +1671,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
                     TableRow<GuiMietzahlung> currentRow = getTableRow();
                     if (!isEmpty() && getItem() != null) {
                         setText(BETRAG_FORMATTER.format(getItem()));
-                        currentRow.setStyle("-fx-background-color:" + RGB_GREEN);
+ //                       currentRow.setStyle("-fx-background-color:" + RGB_GREEN);
                     } else {
                         setText("");
                     }
@@ -1675,7 +1714,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
                     TableRow<GuiMietzahlung> currentRow = getTableRow();
                     if (isEmpty() || getItem() == null || !(getItem() > 0.0d) ) {
                         setText("");
-                        currentRow.setStyle("-fx-background-color:" + RGB_GREY);
+                        // currentRow.setStyle("-fx-background-color:" + RGB_GREY);
                     } else {
                         setText(BETRAG_FORMATTER.format(getItem()));
                     }

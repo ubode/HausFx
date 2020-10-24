@@ -245,7 +245,7 @@
                                         </GridPane>
                                         <TabPane>
                                             <tabs>
-                                                <Tab fx:id="vertragTab" onSelectionChanged="#handleVertragTab" text="Verträge">
+                                                <Tab fx:id="vertragTab" onCloseRequest="#pruefeUngesicherteUpdates" onSelectionChanged="#handleVertragTab" text="Verträge">
                                                     <content>
                                                         <TableView fx:id="vertragTableView" editable="true" prefHeight="200.0" prefWidth="200.0">
                                                             <columns>
@@ -402,7 +402,7 @@
         <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <buttons>
                 <Button fx:id="pruefButton" disable="true" maxWidth="150.0" minWidth="100.0" mnemonicParsing="false" onAction="#handlePruefButton" prefWidth="130.0" text="Prüfe" />
-            <Button fx:id="kopierButton" disable="true" mnemonicParsing="false" onAction="#handleKopierButton" text="Kopieren" />
+                <Button fx:id="kopierButton" disable="true" mnemonicParsing="false" onAction="#handleKopierButton" text="Kopieren" />
                 <Button fx:id="neuButton" mnemonicParsing="false" onAction="#handleNeuButton" text="Neu" />
                 <Button fx:id="loeschButton" mnemonicParsing="false" onAction="#handleDeleteButton" text="Löschen" />
                 <Button fx:id="abbruchButton" mnemonicParsing="false" onAction="#handleAbbrechenButton" text="Abbrechen" />
