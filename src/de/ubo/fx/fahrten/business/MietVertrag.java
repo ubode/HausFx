@@ -12,10 +12,9 @@ import java.util.*;
  */
 public class MietVertrag implements Persistable {
 
-    @Basic
-    @Column(name = "mvg_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "mvg_id")
     private Long id;
 
     @ManyToOne
