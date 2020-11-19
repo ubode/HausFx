@@ -14,32 +14,6 @@ http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
 
     <entity name="Buchung" class="de.ubo.fx.fahrten.business.Buchung" access="FIELD">
         <table name="buchung"/>
-        <attributes>
-            <id name="id">
-                <column name="buc_id"/>
-            </id>
-            <basic name="buchungsNummer">
-                <column name="buc_nummer"/>
-            </basic>
-            <basic name="datum">
-                <column name="buc_datum"/>
-            </basic>
-            <basic name="empfaenger">
-                <column name="buc_empfaenger"/>
-            </basic>
-            <basic name="betrag">
-                <column name="buc_betrag"/>
-            </basic>
-            <basic name="verwendung">
-                <column name="buc_verwendung"/>
-            </basic>
-            <basic name="kategorie">
-                <column name="buc_kategorie"/>
-            </basic>
-            <basic name="buchungsArt">
-                <column name="buc_art"/>
-            </basic>
-        </attributes>
     </entity>
 
     <entity name="Haus" class="de.ubo.fx.fahrten.business.Haus" access="FIELD">
@@ -48,29 +22,6 @@ http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
 
     <entity name="Adresse" class="de.ubo.fx.fahrten.business.Adresse" access="FIELD">
         <table name="adresse"/>
-        <attributes>
-            <id name="id">
-                <column name="adr_id"/>
-            </id>
-            <basic name="postleitzahl">
-                <column name="adr_postleitzahl"/>
-            </basic>
-            <basic name="ort">
-                <column name="adr_ort"/>
-            </basic>
-            <basic name="strasse">
-                <column name="adr_strasse"/>
-            </basic>
-            <basic name="hausnummer">
-                <column name="adr_hausnummer"/>
-            </basic>
-            <basic name="land">
-                <column name="adr_land"/>
-            </basic>
-            <basic name="kuerzel">
-                <column name="adr_kuerzel"/>
-            </basic>
-        </attributes>
     </entity>
 
     <entity name="Ausgabe" class="de.ubo.fx.fahrten.business.Ausgabe" access="FIELD">

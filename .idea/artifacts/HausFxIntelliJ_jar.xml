@@ -4,7 +4,7 @@
     <root id="archive" name="HausFxIntelliJ.jar">
       <element id="module-output" name="HausFxIntelliJ" />
       <element id="extracted-dir" path="$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/eclipselink.jar" path-in-jar="/" />
-      <element id="library" level="project" name="commons-collections4-4.1" />
+      <element id="library" level="project" name="library01" />
     </root>
   </artifact>
 </component>

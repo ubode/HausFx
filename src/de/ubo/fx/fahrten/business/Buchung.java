@@ -2,6 +2,7 @@ package de.ubo.fx.fahrten.business;
 
 import de.ubo.fx.fahrten.persistence.Persistable;
 
+import javax.persistence.*;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -11,14 +12,41 @@ import java.util.Date;
  * Created by ulric on 01.08.2016.
  */
 public class Buchung implements Comparable, Persistable {
+
+    @Basic
+    @Column(name = "buc_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
+
+    @Basic
+    @Column(name = "buc_nummer")
     private String buchungsNummer;
+
+    @Basic
+    @Column(name = "buc_datum")
     private Date datum;
+
+    @Basic
+    @Column(name = "buc_empfaenger")
     private String empfaenger;
+
+    @Basic
+    @Column(name = "buc_betrag")
     private double betrag;
+
+    @Basic
+    @Column(name = "buc_verwendung")
     private String verwendung;
+
+    @Basic
+    @Column(name = "buc_kategorie")
     private String kategorie;
+
+    @Basic
+    @Column(name = "buc_art")
     private String buchungsArt;
+
     private static DateFormat dateInternational = new SimpleDateFormat("yyyy-MM-dd");
 
     public Buchung() {
