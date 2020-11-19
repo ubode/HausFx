@@ -72,6 +72,8 @@ http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
             </basic>
         </attributes>
     </entity>
+
+    <!--
     <entity name="Entfernung" class="de.ubo.fx.fahrten.business.Entfernung" access="FIELD">
         <table name="entfernung"/>
         <attributes>
@@ -89,4 +91,9 @@ http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
             </one-to-one>
         </attributes>
     </entity>
+    -->
+    <entity name="Entfernung" class="de.ubo.fx.fahrten.business.Entfernung" access="FIELD">
+        <table name="entfernung"/>
+    </entity>
+
 </entity-mappings>
