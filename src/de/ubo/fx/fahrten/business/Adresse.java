@@ -2,18 +2,42 @@ package de.ubo.fx.fahrten.business;
 
 import de.ubo.fx.fahrten.persistence.Persistable;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by Bode on 22.02.2016.
  */
 public class Adresse implements Persistable, Serializable {
+
+    @Basic
+    @Column(name = "adr_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
+
+    @Basic
+    @Column(name = "adr_postleitzahl")
     private String postleitzahl;
+
+    @Basic
+    @Column(name = "adr_ort")
     private String ort;
+
+    @Basic
+    @Column(name = "adr_strasse")
     private String strasse;
+
+    @Basic
+    @Column(name = "adr_hausnummer")
     private String hausnummer;
+
+    @Basic
+    @Column(name = "adr_land")
     private String land;
+
+    @Basic
+    @Column(name = "adr_kuerzel")
     private String kuerzel;
 
     public Adresse() {

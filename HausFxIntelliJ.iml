@@ -16,7 +16,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" exported="" name="commons-collections4-4.1" level="project" />
+    <orderEntry type="library" exported="" name="fahrtenLib" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>

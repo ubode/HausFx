@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="commons-collections4-4.1">
+  <library name="fahrtenLib">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/commons-collections4-4.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/eclipselink.jar!/" />
