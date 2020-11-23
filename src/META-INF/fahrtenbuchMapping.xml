@@ -6,87 +6,21 @@ http://java.sun.com/xml/ns/persistence/orm_1_0.xsd"
                  version="1.0">
     <description>JPA mapping for table ziel</description>
     <package>de.ubo.fx.fahrten.business</package>
+
     <entity name="Ziel" class="de.ubo.fx.fahrten.business.Ziel" access="FIELD">
         <table name="ziel"/>
-        <attributes>
-            <id name="id">
-                <column name="zie_id"/>
-            </id>
-            <basic name="position">
-                <column name="zie_position"/>
-            </basic>
-            <basic name="name">
-                <column name="zie_name"/>
-            </basic>
-            <basic name="text">
-                <column name="zie_text"/>
-            </basic>
-            <basic name="kurzText">
-                <column name="zie_kurztext"/>
-            </basic>
-            <basic name="ort">
-                <column name="zie_ort"/>
-            </basic>
-            <basic name="anlassId">
-                <column name="zie_anlass_default"/>
-            </basic>
-        </attributes>
     </entity>
-    <entity name="Anlass" class="de.ubo.fx.fahrten.business.Anlass" access="FIELD">
-        <table name="anlass"/>
-        <attributes>
-            <id name="id">
-                <column name="anl_id"/>
-            </id>
-            <basic name="position">
-                <column name="anl_position"/>
-            </basic>
-            <basic name="name">
-                <column name="anl_name"/>
-            </basic>
-            <basic name="text">
-                <column name="anl_text"/>
-            </basic>
-            <basic name="kurzText">
-                <column name="anl_kurztext"/>
-            </basic>
-        </attributes>
-    </entity>
+
     <entity name="Fahrt" class="de.ubo.fx.fahrten.business.Fahrt" access="FIELD">
         <table name="fahrtenbuch"/>
-        <attributes>
-            <id name="id">
-                <column name="fab_id"/>
-            </id>
-            <basic name="datum">
-                <column name="fab_datum"/>
-            </basic>
-            <basic name="route">
-                <column name="fab_route"/>
-            </basic>
-            <basic name="anlass">
-                <column name="fab_anlass"/>
-            </basic>
-            <basic name="strecke">
-                <column name="fab_km"/>
-            </basic>
-        </attributes>
     </entity>
+
     <entity name="Entfernung" class="de.ubo.fx.fahrten.business.Entfernung" access="FIELD">
         <table name="entfernung"/>
-        <attributes>
-            <id name="id">
-                <column name="ent_id"/>
-            </id>
-            <basic name="entfernung">
-                <column name="ent_entfernung"/>
-            </basic>
-            <one-to-one name="startZiel" fetch="EAGER">
-                <join-column name="ent_zie_id_1"/>
-            </one-to-one>
-            <one-to-one name="endZiel" fetch="EAGER">
-                <join-column name="ent_zie_id_2"/>
-            </one-to-one>
-        </attributes>
     </entity>
+
+    <entity name="Anlass" class="de.ubo.fx.fahrten.business.Anlass" access="FIELD">
+        <table name="anlass"/>
+    </entity>
+
 </entity-mappings>

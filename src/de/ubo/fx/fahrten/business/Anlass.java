@@ -2,14 +2,33 @@ package de.ubo.fx.fahrten.business;
 
 import de.ubo.fx.fahrten.persistence.Persistable;
 
+import javax.persistence.*;
+
 /**
  * Created by ulrichbode on 16.02.16.
  */
 public class Anlass implements Comparable, Persistable {
+
+    @Basic
+    @Column(name = "anl_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
+
+    @Basic
+    @Column(name = "anl_position")
     private Integer position;
+
+    @Basic
+    @Column(name = "anl_name")
     private String name;
+
+    @Basic
+    @Column(name = "anl_text")
     private String text;
+
+    @Basic
+    @Column(name = "anl_kurztext")
     private String kurzText;
 
     public Anlass() {

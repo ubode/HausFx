@@ -2,6 +2,7 @@ package de.ubo.fx.fahrten.business;
 
 import de.ubo.fx.fahrten.persistence.Persistable;
 
+import javax.persistence.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,10 +12,27 @@ import java.util.GregorianCalendar;
  * Created by Bode on 28.01.2016.
  */
 public class Fahrt implements Persistable {
+
+    @Basic
+    @Column(name = "fab_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
+
+    @Basic
+    @Column(name = "fab_datum")
     private Date datum;
+
+    @Basic
+    @Column(name = "fab_route")
     private String route;
+
+    @Basic
+    @Column(name = "fab_anlass")
     private String anlass;
+
+    @Basic
+    @Column(name = "fab_km")
     private int strecke;
 
     public Fahrt() {
