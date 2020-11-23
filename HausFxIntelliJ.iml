@@ -16,8 +16,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" exported="" name="commons-collections4-4.1" level="project" />
-    <orderEntry type="module-library">
+    <orderEntry type="library" exported="" name="library01" level="project" />
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/src/de/ubo/fx/fahrten/jars/javax.persistence.jar!/" />
