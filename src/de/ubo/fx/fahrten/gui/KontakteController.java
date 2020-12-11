@@ -540,9 +540,9 @@ public class KontakteController implements Initializable, CloseRequestable {
 
     public void handleGeburtstagChanged(ActionEvent event) {
         if (aktuellePerson.getId() == null) {
-            personUpdateManager.addUpdate(aktuellePerson);
-        } else {
             personUpdateManager.addInsert(aktuellePerson);
+        } else {
+            personUpdateManager.addUpdate(aktuellePerson);
         }
         fillAktuellePersonFromTextFields();
         System.out.println("handleGeburtstagChanged");
