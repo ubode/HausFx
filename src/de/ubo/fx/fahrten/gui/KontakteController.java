@@ -441,7 +441,7 @@ public class KontakteController implements Initializable, CloseRequestable {
             }
         }
 
-        if (newPerson.getId() != null) {
+        if (newPerson != null && newPerson.getId() != null) {
             fillPersonTextFields(newPerson);
             fillBuchungsTable();
         }
@@ -449,6 +449,7 @@ public class KontakteController implements Initializable, CloseRequestable {
 
     public void handleNeuButton(ActionEvent event) {
         aktuellePerson = new Person();
+        aktuellePerson.setAktiv(true);
         fillPersonTextFields(aktuellePerson);
         clearBuchungsTab();
         personenTableView.getSelectionModel().clearSelection();
