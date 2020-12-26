@@ -17,7 +17,8 @@ public class ResourceManager {
     public static enum ResourceEnum {
         LAYOUT_CSS("resources//css//layout.css"),
         USER_MALE_PNG("resources//16x16//user.png"),
-        USER_FEMALE_PNG("resources//16x16//user_female.png")
+        USER_FEMALE_PNG("resources//16x16//user_female.png"),
+        USER_INAKTIV_PNG("resources//16x16//user_inaktiv.png")
         ;
         String adresse;
         ResourceEnum(String adresse) {

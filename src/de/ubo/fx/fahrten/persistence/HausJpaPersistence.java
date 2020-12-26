@@ -713,6 +713,14 @@ public class HausJpaPersistence {
         return (Collection<Person>) query.getResultList();
     }
 
+    public Collection<Person> selectAllPersonen(Boolean aktiv) {
+        Query query = getEntityManager().createQuery("SELECT p FROM Person AS p where p.aktiv = :aktiv");
+        query.setParameter("aktiv", aktiv);
+        LOGGER.info(query.toString());
+
+        return (Collection<Person>) query.getResultList();
+    }
+
     public Collection<Person> selectPerson(String name, String vorname) {
         Query query = getEntityManager().createQuery("SELECT p FROM Person AS p where p.name = :name and p.vorname = :vorname");
         query.setParameter("name", name);

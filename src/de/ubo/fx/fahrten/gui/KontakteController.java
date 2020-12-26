@@ -20,7 +20,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
-import org.eclipse.persistence.internal.helper.JPAClassLoaderHolder;
 
 import java.net.URL;
 import java.time.Instant;
@@ -34,15 +33,17 @@ import java.util.*;
 public class KontakteController implements Initializable, CloseRequestable {
     private static Image MALE_IMAGE;
     private static Image FEMALE_IMAGE;
+    private static Image INAKTIV_IMAGE;
     private static String[] LEERE_TEL_NR = {"",""};
     private static Adresse LEERE_ADRESSE = new Adresse(null, "","","","","","...");
 
     static {
         URL urlMaleImg = ResourceManager.getInstance().get(ResourceManager.ResourceEnum.USER_MALE_PNG);
-        System.out.println(urlMaleImg.toString());
         MALE_IMAGE = new Image(urlMaleImg.toExternalForm(), false);
         URL urlFemaleImg = ResourceManager.getInstance().get(ResourceManager.ResourceEnum.USER_FEMALE_PNG);
         FEMALE_IMAGE = new Image(urlFemaleImg.toExternalForm(), false);
+        URL urlInaktivImg = ResourceManager.getInstance().get(ResourceManager.ResourceEnum.USER_INAKTIV_PNG);
+        INAKTIV_IMAGE = new Image(urlInaktivImg.toExternalForm(), false);
     }
 
     public Tab datenTab;
@@ -77,6 +78,8 @@ public class KontakteController implements Initializable, CloseRequestable {
     public TextField plzTextField;
     public TextField ortTextField;
     public TextField landTextField;
+    public CheckBox aktivCheckBox;
+    public CheckBox selAktivCheckBox;
     public ChoiceBox<String> anredeChoiceBox;
     public ChoiceBox<String> titelChoiceBox;
     public ChoiceBox<Adresse> adresseChoiceBox;
@@ -93,6 +96,8 @@ public class KontakteController implements Initializable, CloseRequestable {
     private Comparator<Buchung> buchungsComparator = Comparator.comparing(Buchung::getDatum);
     private ChangeListener<String> personFieldChangeListener = (observable, oldValue, newValue) -> handlePersonFieldChanged(observable, oldValue, newValue);
     private ChangeListener<String> adressFieldChangeListener = (observable, oldValue, newValue) -> handleAdresseFieldChanged(observable, oldValue, newValue);
+    private ChangeListener<Boolean> aktivCheckBoxListener = (observable, oldValue, newValue) -> handleAktivCheckBoxChanged(observable, oldValue, newValue);
+    private ChangeListener<Boolean> selAktivCheckBoxListener = (observable, oldValue, newValue) -> handleSelAktivCheckBoxChanged(observable, oldValue, newValue);
 
     private void fillPersonTextFields(Person person) {
 
@@ -135,6 +140,7 @@ public class KontakteController implements Initializable, CloseRequestable {
             landTextField.setText(person.getAdresse().getLand());
         }
 
+        aktivCheckBox.setSelected(person.isAktiv());
         anredeChoiceBox.setValue(person.getAnrede());
         titelChoiceBox.setValue(person.getTitel());
         adresseChoiceBox.getSelectionModel().clearSelection();
@@ -257,6 +263,7 @@ public class KontakteController implements Initializable, CloseRequestable {
         faxDienstTextField.textProperty().addListener(personFieldChangeListener);
         emailTextField.textProperty().addListener(personFieldChangeListener);
         bemerkungTextField.textProperty().addListener(personFieldChangeListener);
+        aktivCheckBox.selectedProperty().addListener(aktivCheckBoxListener);
         strasseTextField.textProperty().addListener(adressFieldChangeListener);
         hausnummerTextField.textProperty().addListener(adressFieldChangeListener);
         plzTextField.textProperty().addListener(adressFieldChangeListener);
@@ -281,6 +288,7 @@ public class KontakteController implements Initializable, CloseRequestable {
         faxDienstTextField.textProperty().removeListener(personFieldChangeListener);
         emailTextField.textProperty().removeListener(personFieldChangeListener);
         bemerkungTextField.textProperty().removeListener(personFieldChangeListener);
+        aktivCheckBox.selectedProperty().removeListener(aktivCheckBoxListener);
         strasseTextField.textProperty().removeListener(adressFieldChangeListener);
         hausnummerTextField.textProperty().removeListener(adressFieldChangeListener);
         plzTextField.textProperty().removeListener(adressFieldChangeListener);
@@ -306,6 +314,7 @@ public class KontakteController implements Initializable, CloseRequestable {
         aktuellePerson.setFaxDienst(faxDienstVorwahlTextField.getText() + "-" + faxDienstTextField.getText());
         aktuellePerson.setEmail(emailTextField.getText());
         aktuellePerson.setBemerkung(bemerkungTextField.getText());
+        aktuellePerson.setAktiv(aktivCheckBox.isSelected());
 
         /*
         aktuellePerson.getAdresse().setStrasse(strasseTextField.getText());
@@ -335,10 +344,11 @@ public class KontakteController implements Initializable, CloseRequestable {
 
     private void fillPersonTable(Person suchPerson) {
         personenObservableList.clear();
+
         // cache löschen und neu von der DB holen
         HausJpaPersistence.getInstance().getEntityManager().clear();
 
-        Collection<Person> personenColl = HausJpaPersistence.getInstance().selectAllPersonen();
+        Collection<Person> personenColl = HausJpaPersistence.getInstance().selectAllPersonen(selAktivCheckBox.isSelected());
         ArrayList<Person> personenList = new ArrayList<>(personenColl);
         personenList.sort(personenComparator);
 
@@ -538,6 +548,17 @@ public class KontakteController implements Initializable, CloseRequestable {
 
     }
 
+    public void handleAktivCheckBoxChanged(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+        personUpdateManager.addUpdate(aktuellePerson);
+        fillAktuellePersonFromTextFields();
+        System.out.println("handleAktivCheckBoxChanged");
+    }
+
+    public void handleSelAktivCheckBoxChanged(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+        fillPersonTable(null);
+        System.out.println("handleAktivCheckBoxChanged");
+    }
+
     public void handleGeburtstagChanged(ActionEvent event) {
         if (aktuellePerson.getId() == null) {
             personUpdateManager.addInsert(aktuellePerson);
@@ -683,6 +704,8 @@ public class KontakteController implements Initializable, CloseRequestable {
     private void initializeTableView() {
         personenTableView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> handlePersonSelected(oldValue, newValue));
+        selAktivCheckBox.setSelected(true);
+        selAktivCheckBox.selectedProperty().addListener(selAktivCheckBoxListener);
     }
 
     private void initializePersonTableViewColumns() {
@@ -700,7 +723,12 @@ public class KontakteController implements Initializable, CloseRequestable {
                 cellData -> {
                     SimpleObjectProperty property = new SimpleObjectProperty();
                     Person person = (Person) ((TableColumn.CellDataFeatures) cellData).getValue();
-                    Image icon = person.getAnrede().equals("Frau") ? FEMALE_IMAGE : MALE_IMAGE;
+                    Image icon;
+                    if (person.isAktiv()) {
+                        icon = person.getAnrede().equals("Frau") ? FEMALE_IMAGE : MALE_IMAGE;
+                    } else {
+                        icon = INAKTIV_IMAGE;
+                    }
                     ImageView imageView = new ImageView(icon);
 
                     property.setValue(imageView);
@@ -808,6 +836,7 @@ public class KontakteController implements Initializable, CloseRequestable {
                     property.setValue(buchung.getVerwendung());
                     return property;
                 });
+
     }
 
     @Override
