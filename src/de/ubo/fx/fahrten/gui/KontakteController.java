@@ -415,7 +415,7 @@ public class KontakteController implements Initializable, CloseRequestable {
     }
 
     public void handleBuchungenTab() {
-        if (aktuellePerson.getId() != null) {
+        if (aktuellePerson != null && aktuellePerson.getId() != null) {
             fillBuchungsTable();
             checkBuchungsTabButtons();
         } else {
@@ -439,6 +439,10 @@ public class KontakteController implements Initializable, CloseRequestable {
             } else {
                 abbrechenUpdate();
             }
+        }
+
+        if (oldPerson == null) {
+            clearPersonFields();
         }
 
         if (newPerson != null && newPerson.getId() != null) {
@@ -557,6 +561,9 @@ public class KontakteController implements Initializable, CloseRequestable {
 
     public void handleSelAktivCheckBoxChanged(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
         fillPersonTable(null);
+        aktuellePerson = null;
+        clearPersonFields();
+        clearBuchungsTab();
         System.out.println("handleAktivCheckBoxChanged");
     }
 
