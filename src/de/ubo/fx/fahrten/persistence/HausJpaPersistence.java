@@ -227,11 +227,12 @@ public class HausJpaPersistence {
             buchungsColl = selectBuchungen(bedingungen);
         }
 
-        // Suche mit nur mit Nachnamen
+        /**
+        // Suche mit nur mit Nachnamen -- zu ungenau!!
         if (buchungsColl.isEmpty()) {
             bedingungen.remove(bedInitiale);
             buchungsColl = selectBuchungen(bedingungen);
-        }
+        }**/
 
         return buchungsColl;
     }
@@ -391,6 +392,24 @@ public class HausJpaPersistence {
         Query query = getEntityManager().createQuery(queryStr);
         query.setParameter("mietvertrag", mietvertrag);
         query.setParameter("datum", datum);
+        query.setParameter("kategorie", ZahlungsKategorie.MIETZINS);
+        LOGGER.info(query.toString());
+
+        Collection<Mietzahlung> mietzahlungen = query.getResultList();
+
+        return mietzahlungen;
+    }
+
+    /**
+     * Methode liefert die Mietzahlungen zum übergebenen Mietvertrag ab übergebenem Datum
+     */
+    public Collection<Mietzahlung> selectMietzahlungen(MietVertrag mietvertrag, int jahr) {
+
+        String queryStr = "SELECT m FROM Mietzahlung AS m where m.mietVertrag = :mietvertrag and m.jahr = :jahr and m.zahlungsKategorie = :kategorie";
+
+        Query query = getEntityManager().createQuery(queryStr);
+        query.setParameter("mietvertrag", mietvertrag);
+        query.setParameter("jahr", jahr);
         query.setParameter("kategorie", ZahlungsKategorie.MIETZINS);
         LOGGER.info(query.toString());
 

@@ -1261,8 +1261,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
 
     private Collection<Mietzahlung> ermittleMietzahlungen(int jahr, MietVertrag mietvertrag) {
         Collection<Mietzahlung> mietzahlungen;
-        String datumStr = String.valueOf(jahr - 1) + "-12-15";
-        mietzahlungen = HausJpaPersistence.getInstance().selectMietzahlungen(mietvertrag, datumStr);
+        mietzahlungen = HausJpaPersistence.getInstance().selectMietzahlungen(mietvertrag, jahr);
 
         return mietzahlungen;
     }
