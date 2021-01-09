@@ -1090,18 +1090,24 @@ public class WohnungenController implements Initializable, CloseRequestable {
     }
 
     private Double fillSollMieten(int jahr, List zahlungenList) {
-        Calendar monatsAnfang = new GregorianCalendar();
-        monatsAnfang.set(jahr, 0,1);
         double summe = 0.0d;
 
-        Calendar endeCal = new GregorianCalendar();
+        // Start mit erstem Monat des vorgegebenen Jahres
+        Calendar monat = new GregorianCalendar();
+        monat.set(jahr, 0,1);
 
-        while (!monatsAnfang.after(endeCal)) {
+        Calendar heuteCal = new GregorianCalendar();
+        Calendar endeJahrCal = new GregorianCalendar();
+        endeJahrCal.set(jahr, 11,31);
+        // laufendes Jahr : bis zum laufenden Monat summieren, sonst bis Ende des vorgegebenen Jahres
+        Calendar endeCal = heuteCal.after(endeJahrCal) ? endeJahrCal : heuteCal;
+
+        while (!monat.after(endeCal)) {
             GuiMietzahlung sollZahlung = new GuiMietzahlung();
-            Calendar monatsMitte = (Calendar) monatsAnfang.clone();
+            Calendar monatsMitte = (Calendar) monat.clone();
             monatsMitte.add(Calendar.DATE, 15);
-            sollZahlung.setDatum(monatsAnfang.getTime());
-            MietVertrag vertragAnfang = searchVertrag(monatsAnfang.getTime());
+            sollZahlung.setDatum(monat.getTime());
+            MietVertrag vertragAnfang = searchVertrag(monat.getTime());
             MietVertrag vertragMitte = searchVertrag(monatsMitte.getTime());
             MietVertrag vertrag;
             double faktor;
@@ -1127,7 +1133,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
                 summe += vertrag.getGesamtkosten() * faktor;
             }
             zahlungenList.add(sollZahlung);
-            monatsAnfang.add(Calendar.MONTH, 1);
+            monat.add(Calendar.MONTH, 1);
         }
 
         return summe;
