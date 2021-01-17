@@ -3,8 +3,6 @@
     <output-path>$PROJECT_DIR$/out/artifacts/HausFxIntelliJ_jar</output-path>
     <root id="archive" name="HausFxIntelliJ.jar">
       <element id="module-output" name="HausFxIntelliJ" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/src/de/ubo/fx/fahrten/jars/eclipselink.jar" path-in-jar="/" />
-      <element id="library" level="project" name="fahrtenLib" />
     </root>
   </artifact>
 </component>

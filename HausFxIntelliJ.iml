@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="jdk" jdkName="14" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/src/de/ubo/fx/fahrten/jars/eclipselink.jar!/" />
@@ -16,7 +16,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" exported="" name="fahrtenLib" level="project" />
+    <orderEntry type="library" name="fahrtenLib" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
