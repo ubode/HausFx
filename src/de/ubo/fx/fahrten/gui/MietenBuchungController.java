@@ -7,6 +7,8 @@ import de.ubo.fx.fahrten.converter.ZahlungsKategorieStringConverter;
 import de.ubo.fx.fahrten.helper.*;
 import de.ubo.fx.fahrten.persistence.HausJpaPersistence;
 import de.ubo.fx.fahrten.persistence.UpdateManager;
+import de.ubo.haus.business.Mietvertrag;
+import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -232,8 +234,9 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
         choiceDialog.setContentText("Mietverträge");
 
         choiceDialog.showAndWait();
+        MietVertrag mv = choiceDialog.resultProperty().getValue();
 
-        return choiceDialog.getSelectedItem();
+        return mv; /*choiceDialog.getSelectedItem();*/
     }
 
     public void handleAnteilChangedAction(TableColumn.CellEditEvent event) {
@@ -598,6 +601,8 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
 
     @Override
     public void closeRequest() {
+        zuordnungOL.clear();
+        fillZuordnungTable();
         Stage stage = (Stage) zuordnungTableView.getScene().getWindow();
         stage.close();
     }
@@ -738,4 +743,5 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
             return this.getBuchung().compareTo(o.getBuchung());
         }
     }
+
 }

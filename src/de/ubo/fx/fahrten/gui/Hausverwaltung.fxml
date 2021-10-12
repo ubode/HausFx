@@ -75,7 +75,7 @@
                         <Rectangle2D />
                      </viewport>
                   </ImageView>
-                  <Label layoutX="576.0" layoutY="416.0" text="uboo:systems">
+                  <Label layoutX="576.0" layoutY="416.0" text="uboo.systems">
                      <font>
                         <Font name="Calibri" size="18.0" />
                      </font>

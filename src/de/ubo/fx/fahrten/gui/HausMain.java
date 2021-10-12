@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.awt.*;
 import java.net.URL;
 
 public class HausMain extends Application {
@@ -41,7 +42,25 @@ public class HausMain extends Application {
             }
         });
 
+        manageSplashScreen();
         primaryStage.show();
+
+    }
+
+    private void manageSplashScreen() {
+        final SplashScreen splash = SplashScreen.getSplashScreen();
+        if (splash == null) {
+            System.out.println("SplashScreen.getSplashScreen() returned null");
+            return;
+        }
+
+        Graphics2D g = splash.createGraphics();
+        if (g == null) {
+            System.out.println("g is null");
+            return;
+        }
+
+        splash.close();
 
     }
 }
