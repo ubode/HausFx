@@ -30,9 +30,11 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import javax.persistence.*;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.logging.Logger;
@@ -91,17 +93,17 @@ public class WohnungenController implements Initializable, CloseRequestable {
     public Tab kautionTab;
     public Tab zimmerTab;
     public Tab vertragTab;
-    public TableView<MietVertrag> vertragTableView;
-    public TableColumn<MietVertrag, String> beginnCol;
-    public TableColumn<MietVertrag, String> endeCol;
-    public TableColumn<MietVertrag, String> mieterCol;
-    public TableColumn<MietVertrag, String> regExpCol;
-    public TableColumn<MietVertrag, Double> kautionCol;
-    public TableColumn<MietVertrag, Double> mietzinsCol;
-    public TableColumn<MietVertrag, Double> nebenkostenCol;
-    public TableColumn<MietVertrag, Double> heizkostenCol;
-    public TableColumn<MietVertrag, String> gesamtkostenCol;
-    public TableColumn<MietVertrag, Boolean> anpassungCol;
+    public TableView<GuiMietvertrag> vertragTableView;
+    public TableColumn<GuiMietvertrag, String> beginnCol;
+    public TableColumn<GuiMietvertrag, String> endeCol;
+    public TableColumn<GuiMietvertrag, String> mieterCol;
+    public TableColumn<GuiMietvertrag, String> regExpCol;
+    public TableColumn<GuiMietvertrag, Double> kautionCol;
+    public TableColumn<GuiMietvertrag, Double> mietzinsCol;
+    public TableColumn<GuiMietvertrag, Double> nebenkostenCol;
+    public TableColumn<GuiMietvertrag, Double> heizkostenCol;
+    public TableColumn<GuiMietvertrag, String> gesamtkostenCol;
+    public TableColumn<GuiMietvertrag, SimpleBooleanProperty> anpassungCol;
     public TableView<Zimmer> zimmerTableView;
     public TableColumn<Zimmer, String> nameCol;
     public TableColumn<Zimmer, Double> flaecheCol;
@@ -124,14 +126,14 @@ public class WohnungenController implements Initializable, CloseRequestable {
     public GridPane wohnungDetailPane;
     private UpdateManager<MietVertrag> vertragUpdateManager;
     private UpdateManager<Zimmer> zimmerUpdateManager;
-    private ObservableList<MietVertrag> vertraegeOL;
+    private ObservableList<GuiMietvertrag> vertraegeOL;
     private ObservableList<Zimmer> zimmerOL;
     private ObservableList<GuiMietzahlung> mietZahlungOL;
     private ObservableList<GuiMietzahlung> kautionsZahlungOL;
     private ObservableList<String> jahreOL;
     private ObservableList<String> mieterNamenOL;
     private ObservableList<Wohnung> wohnungOL;
-    private MietVertrag aktuellerVertrag;
+    private GuiMietvertrag aktuellerVertrag;
     private Zimmer aktuellesZimmer;
 
     private UpdateManager<MietVertrag> getVertragUpdateManager() {
@@ -155,9 +157,9 @@ public class WohnungenController implements Initializable, CloseRequestable {
 
     public void handleVertragNeuButton() {
 
-        aktuellerVertrag = new MietVertrag();
-        aktuellerVertrag.setBeginn(null);
-        aktuellerVertrag.setEnde(null);
+        aktuellerVertrag = new GuiMietvertrag();
+        aktuellerVertrag.setBeginnStr(null);
+        aktuellerVertrag.setEndeStr(null);
         aktuellerVertrag.setWohnung(wohnungTreeView.getSelectionModel().getSelectedItem().getValue().getWohnung());
         aktuellerVertrag.setMieter(null);
         aktuellerVertrag.setRegularExpression(null);
@@ -168,7 +170,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
         aktuellerVertrag.setAnpassung(false);
         vertraegeOL.add(aktuellerVertrag);
 
-        getVertragUpdateManager().addInsert(aktuellerVertrag);
+        getVertragUpdateManager().addInsert(aktuellerVertrag.getMietvertrag());
 
         vertragTableView.refresh();
 
@@ -274,7 +276,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
     private void fillVertagsTable(Wohnung wohnung) {
         LOGGER.info("fillVertagsTable");
         vertraegeOL.clear();
-        vertraegeOL.addAll(ermittleVertraege(wohnung));
+        vertraegeOL.addAll(erzeugeGuiMietvertraege(ermittleVertraege(wohnung)));
         vertragTableView.setItems(vertraegeOL);
         checkVertragButtons();
     }
@@ -307,7 +309,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
         return summenZimmer;
     }
 
-    public void handleVertragSelected(MietVertrag vertrag) {
+    public void handleVertragSelected(GuiMietvertrag vertrag) {
         aktuellerVertrag = vertrag;
         checkButtons();
     }
@@ -365,7 +367,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
         switch (id) {
             case ("beginnCol"):
                 vertrag.setBeginn(DatumHelper.stringToDate((String)inhalt));
-                MietVertrag.berechneEndeDaten(vertraegeOL);
+                GuiMietvertrag.berechneEndeDaten(vertraegeOL);
                 break;
             case ("endeCol"):
                 vertrag.setEnde(DatumHelper.stringToDate((String)inhalt));
@@ -393,7 +395,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
                 vertrag.setHeizkosten((Double)inhalt);
                 break;
             case ("folgeVertragCol"):
-                vertrag.setAnpassung((Boolean)inhalt);
+                vertrag.setAnpassung(false);
                 break;
             default:
                 System.out.println("nichts zu tun");
@@ -608,7 +610,25 @@ public class WohnungenController implements Initializable, CloseRequestable {
         Collection<MietVertrag> vertraegeColl = HausJpaPersistence.getInstance().selectMietvertraege(wohnung);
         ArrayList<MietVertrag> vertraegeList = new ArrayList<>(vertraegeColl);
         MietVertrag.berechneEndeDaten(vertraegeList);
+        List<GuiMietvertrag> guiMietvertragList = erzeugeGuiMietvertraege(vertraegeList);
         return vertraegeList;
+    }
+
+    private List<GuiMietvertrag> erzeugeGuiMietvertraege(List<MietVertrag> vertraegeList) {
+        List<GuiMietvertrag> guiMietvertragList = new ArrayList<>();
+        for (MietVertrag mv: vertraegeList) {
+            GuiMietvertrag guiMv = new GuiMietvertrag();
+            guiMv.setAnpassung(mv.isAnpassung());
+            guiMv.setBeginnStr(DatumHelper.getDatumInternational(mv.getBeginn()));
+            guiMv.setEndeStr(DatumHelper.getDatumInternational(mv.getEnde()));
+            guiMv.setMietzins(mv.getMietzins());
+            guiMv.setHeizkosten(mv.getHeizkosten());
+            guiMv.setKaution(mv.getKaution());
+            guiMv.setName(mv.toString());
+            guiMv.setNebenkosten(mv.getNebenkosten());
+            guiMv.setRegularExpression(mv.getRegularExpression());
+        }
+        return guiMietvertragList;
     }
 
     private Wohnung selektierteWohnung() {
@@ -1346,14 +1366,6 @@ public class WohnungenController implements Initializable, CloseRequestable {
 
     private void initializeMietvertragTableViewColumns() {
 
-        vertraegeOL.addListener((ListChangeListener<MietVertrag>) c -> {
-            while (c.next()) {
-                if (c.wasUpdated()) {
-                    System.out.println("here we are");
-                }
-            }
-        });
-
         beginnCol.setCellFactory(
                 TextFieldTableCell.forTableColumn()
         );
@@ -1386,8 +1398,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
             @Override
             public ObservableValue<Boolean> call(Integer param) {
                 System.out.println("hier bin ich");
-                SimpleBooleanProperty property = new SimpleBooleanProperty();
-                property.setValue(vertraegeOL.get(param).isAnpassung());
+                boolean property = vertraegeOL.get(param).isAnpassung();
                 return property;
             }
         }));
@@ -1915,5 +1926,174 @@ public class WohnungenController implements Initializable, CloseRequestable {
             this.abgleich = abgleich;
         }
 
+    }
+
+    public class GuiMietvertrag{
+
+        private SimpleStringProperty name;
+        private SimpleStringProperty beginnStr;
+        private SimpleStringProperty endeStr;
+        private SimpleBooleanProperty anpassung;
+        private SimpleStringProperty regularExpression;
+        private double mietzins;
+        private double nebenkosten;
+        private double heizkosten;
+        private double kaution;
+        private MietVertrag mietvertrag;
+        private Person mieter;
+        private Wohnung wohnung;
+
+        GuiMietvertrag() {
+            this.name = null;
+            this.beginnStr = null;
+            this.endeStr = null;
+            this.anpassung = null;
+            this.regularExpression = null;
+            this.mietzins = 0.0d;
+            this.nebenkosten = 0.0d;
+            this.heizkosten = 0.0d;
+            this.kaution = 0.0d;
+            this.mietvertrag = null;
+            this.mieter = null;
+         }
+
+        public Wohnung getWohnung() {
+            return wohnung;
+        }
+
+        public void setWohnung(Wohnung wohnung) {
+            this.wohnung = wohnung;
+        }
+
+        public MietVertrag getMietvertrag() {
+            return mietvertrag;
+        }
+
+        public void setMietvertrag(MietVertrag mietvertrag) {
+            this.mietvertrag = mietvertrag;
+        }
+
+        public Person getMieter() {
+            return mieter;
+        }
+
+        public void setMieter(Person mieter) {
+            this.mieter = mieter;
+        }
+
+        public String getName() {
+            return name.get();
+        }
+
+        public void setName(String name) {
+            this.name.set(name);
+        }
+
+        public SimpleStringProperty nameProperty() {
+            return name;
+        }
+
+        public String getBeginnStr() {
+            return beginnStr.get();
+        }
+
+        public void setBeginnStr(String beginnStr) {
+            this.beginnStr.set(beginnStr);
+        }
+
+        public SimpleStringProperty beginnStrProperty() {
+            return beginnStr;
+        }
+
+        public String getEndeStr() {
+            return endeStr.get();
+        }
+
+        public void setEndeStr(String endeStr) {
+            this.endeStr.set(endeStr);
+        }
+
+        public SimpleStringProperty endeStrProperty() {
+            return endeStr;
+        }
+
+        public boolean isAnpassung() {
+            return anpassung.get();
+        }
+
+        public void setAnpassung(boolean anpassung) {
+            this.anpassung.set(anpassung);
+        }
+
+        public SimpleBooleanProperty anpassungProperty() {
+            return anpassung;
+        }
+
+        public String getRegularExpression() {
+            return regularExpression.get();
+        }
+
+        public void setRegularExpression(String regularExpression) {
+            this.regularExpression.set(regularExpression);
+        }
+
+        public SimpleStringProperty regularExpressionProperty() {
+            return regularExpression;
+        }
+
+        public double getMietzins() {
+            return mietzins;
+        }
+
+        public void setMietzins(double mietzins) {
+            this.mietzins = mietzins;
+        }
+
+        public double getNebenkosten() {
+            return nebenkosten;
+        }
+
+        public void setNebenkosten(double nebenkosten) {
+            this.nebenkosten = nebenkosten;
+        }
+
+        public double getHeizkosten() {
+            return heizkosten;
+        }
+
+        public void setHeizkosten(double heizkosten) {
+            this.heizkosten = heizkosten;
+        }
+
+        public double getKaution() {
+            return kaution;
+        }
+
+        public void setKaution(double kaution) {
+            this.kaution = kaution;
+        }
+
+        private String betragToString(double betrag) {
+            DecimalFormat betragFormat = new DecimalFormat("###,##0.00");
+            return betragFormat.format(betrag);
+        }
+
+        public void berechneEndeDaten(List<GuiMietvertrag> mietVertraege) {
+            mietVertraege.sort(Comparator.comparing(GuiMietvertrag::getBeginnStr));
+            GuiMietvertrag vorgaenger = null;
+            for (GuiMietvertrag vertrag: mietVertraege) {
+                if (vorgaenger != null) {
+                    Calendar cal =  new GregorianCalendar();
+                    cal.setTime(vertrag.getBeginn());
+                    cal.add(Calendar.DATE, -1);
+                    Date ende = cal.getTime();
+                    vorgaenger.setEnde(ende);
+                    vertrag.setEnde(null);
+                }
+                vorgaenger = vertrag;
+            }
+        }
+
+        public static String getBetragFormatiert(Double betrag) { return betragToString(betrag);}
     }
 }
