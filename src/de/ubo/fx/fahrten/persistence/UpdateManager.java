@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  */
 public class UpdateManager<T extends  Persistable> {
     private final static Logger LOGGER = Logger.getLogger(HausJpaPersistence.class.getName());
-    private final static int MAX_UPDATES_PRO_TRANSAKTION = 50;
+    private final static int MAX_UPDATES_PRO_TRANSAKTION = 100;
     private final Map<T, Change> updates;
     public UpdateManager(int capacity) {
         updates = new HashMap<>(capacity);
@@ -103,6 +103,7 @@ public class UpdateManager<T extends  Persistable> {
 
         for (Map.Entry<T, Change> entry : getUpdates().entrySet()) {
             T object = entry.getKey();
+            LOGGER.info("Object an Persistence: " + object.toString());
             switch (entry.getValue()) {
                 case INSERT:
                     object.setId(null);
@@ -119,9 +120,9 @@ public class UpdateManager<T extends  Persistable> {
             // Nach MAX_UPDATES_PRO_TRANSAKTION Transaktion committen und neue Transaktion beginnen
             if (++updateZaehler > MAX_UPDATES_PRO_TRANSAKTION) {
                 LOGGER.info("Transaktion committen");
-                persistence.getEntityManager().getTransaction().commit();
-                persistence.getEntityManager().clear();
-                persistence.getEntityManager().getTransaction().begin();
+                persistence.getEntityManager().flush();
+                //persistence.getEntityManager().clear();
+                //persistence.getEntityManager().getTransaction().begin();
                 updateZaehler = 1;
             }
         }

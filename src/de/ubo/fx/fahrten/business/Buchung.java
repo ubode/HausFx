@@ -156,4 +156,8 @@ public class Buchung implements Comparable, Persistable {
         if (this.datum.equals(buchung.datum)) return this.buchungsNummer.compareTo(buchung.buchungsNummer);
         return this.datum.compareTo(buchung.datum);
     }
+
+    public String toString() {
+        return getBuchungsNummer();
+    }
 }

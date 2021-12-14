@@ -2,8 +2,6 @@ package de.ubo.fx.fahrten.business;
 
 import de.ubo.fx.fahrten.helper.DatumHelper;
 import de.ubo.fx.fahrten.persistence.Persistable;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 
 import javax.persistence.*;
 import java.text.DecimalFormat;
