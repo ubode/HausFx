@@ -121,8 +121,6 @@ public class UpdateManager<T extends  Persistable> {
             if (++updateZaehler > MAX_UPDATES_PRO_TRANSAKTION) {
                 LOGGER.info("Transaktion committen");
                 persistence.getEntityManager().flush();
-                //persistence.getEntityManager().clear();
-                //persistence.getEntityManager().getTransaction().begin();
                 updateZaehler = 1;
             }
         }
