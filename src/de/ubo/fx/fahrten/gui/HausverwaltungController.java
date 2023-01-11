@@ -61,7 +61,8 @@ public class HausverwaltungController implements Initializable, CloseRequestable
         Map<String, Object> props = HausJpaPersistence.getInstance().getEntityManager().getProperties();
         String dbName = props.get("javax.persistence.jdbc.url").toString();
         String[] teile = dbName.split("/");
-        datenbank.setText("db: " + teile[3]);
+        String dbPart = teile[3].split("\\?")[0];
+        datenbank.setText("db: " + dbPart);
     }
 
     public void handleMenu(ActionEvent event) {

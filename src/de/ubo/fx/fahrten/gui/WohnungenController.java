@@ -749,7 +749,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
     }
 
     /**
-     * Die Methode prüft für alle Wohnobjekte im TreeView, ob die Mietzahlungen des Jahres bis
+     * Die Methode prüft für alle Wohnobjekte im TreeView, ob die Miet-/Kautions-zahlungen des Jahres bis
      * zum aktuellen Monat eingegangen sind und kennzeichnet die IO-Wohnungen mit einer grünen,
      * die NIO-Wohnungen mit einer roten Ampel.
      * Die Methode wird rekursiv für alle Unter-Items aufgerufen.
@@ -815,7 +815,6 @@ public class WohnungenController implements Initializable, CloseRequestable {
         Map<Long, Double[]> wohnungsMap = new HashMap<>(100);
         for (Wohnung wohnung : wohnungen) {
             wohnungsMap.put(wohnung.getId(), new Double[]{0.0d, 0.0d, 0.0d, 0.0d});
-
         }
         return wohnungsMap;
     }
@@ -905,39 +904,9 @@ public class WohnungenController implements Initializable, CloseRequestable {
 
         Map<Long, Double[]> wohnungsMap = erzeugeWohnungsMap();
 
-        aggregiereSollKautionen(wohnungsMap);
-        aggregiereIstKautionen(wohnungsMap);
+        aggregiereKautionen(wohnungsMap);
 
         pruefeItem(wohnungTreeView.getRoot(), wohnungsMap);
-
-    }
-
-    /**
-     * In die Map aller Wohnungen werden die erwarteten Soll-Kautionen eingetragen
-     * @param wohnungsMap Map aller Wohnungen mit Soll- und Ist-Werten
-     *
-     */
-    private void aggregiereSollKautionen(Map<Long, Double[]> wohnungsMap) {
-
-        Collection<MietVertrag> mietVertraege = HausJpaPersistence.getInstance().selectAllMietvertraege();
-        Date heute = new Date();
-
-        for (MietVertrag mietVertrag : mietVertraege) {
-            // Mietkaution einer Mietvertragsanpassung nicht berücksichtigen
-            if (mietVertrag.isAnpassung() != true) {
-                Date vertragEnde = mietVertrag.getEnde();
-                Long wohnungsId = mietVertrag.getWohnung().getId();
-                Double[] werte = wohnungsMap.get(wohnungsId);
-
-                if (vertragEnde == null || vertragEnde.after(heute)) {
-                    // aktueller Mietvertrag
-                    werte[0] += mietVertrag.getKaution();
-                } else {
-                    // alter Mietvertrag
-                    werte[2] += mietVertrag.getKaution();
-                }
-            }
-        }
 
     }
 
@@ -946,24 +915,24 @@ public class WohnungenController implements Initializable, CloseRequestable {
      * @param wohnungsMap Map aller Wohnungen mit Soll- und Ist-Werten
      *
      */
-    private void aggregiereIstKautionen(Map<Long, Double[]> wohnungsMap) {
+    private void aggregiereKautionen(Map<Long, Double[]> wohnungsMap) {
 
-        Collection<Mietzahlung> mietzahlungen = HausJpaPersistence.getInstance().selectKautionszahlungen();
-        Date heute = new Date();
+        Collection<MietVertrag> alleVertraege = HausJpaPersistence.getInstance().selectAllMietvertraege();
 
-        for (Mietzahlung mietzahlung: mietzahlungen) {
-            Wohnung wohnung = mietzahlung.getMietVertrag().getWohnung();
-            Date vertragEnde = mietzahlung.getMietVertrag().getEnde();
-            Double[] werte = wohnungsMap.get(wohnung.getId());
-            if (vertragEnde == null || vertragEnde.after(heute)) {
-                // aktueller Mietvertrag
-                werte[1] += mietzahlung.getBetrag();
-            } else {
-                // alter Mietvertrag
-                werte[3] += mietzahlung.getBetrag();
+        for (MietVertrag vertrag: alleVertraege) {
+            if (vertrag.getEnde() == null) {
+
+                // Soll eintragen
+                Double[] werte = wohnungsMap.get(vertrag.getWohnung().getId());
+                werte[0] = vertrag.getKaution();
+
+                // Ist eintragen
+                List<MietVertrag> vertraege = ermittleVertraege(vertrag.getWohnung());
+                Double istKaution = fillIstKaution(vertraege, vertrag.getMieter(), new ArrayList<GuiMietzahlung>());
+                werte[1] = istKaution;
             }
-        }
 
+        }
     }
 
     /**
@@ -1089,13 +1058,12 @@ public class WohnungenController implements Initializable, CloseRequestable {
         }
     }
 
-    private Double fillSollMieten(int jahr, List zahlungenList) {
+    private Double fillSollMieten(int jahr, List<GuiMietzahlung> zahlungenList) {
         double summe = 0.0d;
 
         // Start mit erstem Monat des vorgegebenen Jahres
         Calendar monat = new GregorianCalendar();
         monat.set(jahr, 0,1);
-
         Calendar heuteCal = new GregorianCalendar();
         Calendar endeJahrCal = new GregorianCalendar();
         endeJahrCal.set(jahr, 11,31);
@@ -1103,40 +1071,45 @@ public class WohnungenController implements Initializable, CloseRequestable {
         Calendar endeCal = heuteCal.after(endeJahrCal) ? endeJahrCal : heuteCal;
 
         while (!monat.after(endeCal)) {
-            GuiMietzahlung sollZahlung = new GuiMietzahlung();
             Calendar monatsMitte = (Calendar) monat.clone();
             monatsMitte.add(Calendar.DATE, 15);
-            sollZahlung.setDatum(monat.getTime());
             MietVertrag vertragAnfang = searchVertrag(monat.getTime());
             MietVertrag vertragMitte = searchVertrag(monatsMitte.getTime());
             MietVertrag vertrag;
             double faktor;
 
             if (vertragAnfang == vertragMitte) {
-                vertrag = vertragAnfang;
-                faktor = 1.0d;
+                zahlungenList.add(erzeugeSollZahlung(vertragAnfang, monat, 1.0d));
             } else {
                 faktor = 0.5d;
                 if(vertragAnfang == null || vertragAnfang.getGesamtkosten() == 0.0d) {
-                    vertrag = vertragMitte;
+                    zahlungenList.add(erzeugeSollZahlung(vertragMitte, monat, 0.5d));
                 } else {
-                    vertrag = vertragAnfang;
+                    zahlungenList.add(erzeugeSollZahlung(vertragAnfang, monat, 0.5d));
+                    zahlungenList.add(erzeugeSollZahlung(vertragMitte, monat, 0.5d));
                 }
             }
-
-            if (vertrag != null) {
-                sollZahlung.setMieter(vertrag.getMieter());
-                sollZahlung.setSoll(vertrag.getGesamtkosten() * faktor);
-                sollZahlung.setGrundMiete(vertrag.getMietzins() * faktor);
-                sollZahlung.setNebenKosten((vertrag.getHeizkosten() + vertrag.getNebenkosten()) * faktor);
-                sollZahlung.setMietVertrag(vertrag);
-                summe += vertrag.getGesamtkosten() * faktor;
-            }
-            zahlungenList.add(sollZahlung);
             monat.add(Calendar.MONTH, 1);
         }
 
+        for (GuiMietzahlung sollZahlung: zahlungenList) {
+            summe += sollZahlung.getSoll();
+        }
+
         return summe;
+    }
+
+    private GuiMietzahlung erzeugeSollZahlung(MietVertrag vertrag, Calendar monat, double faktor) {
+        GuiMietzahlung sollZahlung = new GuiMietzahlung();
+        sollZahlung.setDatum(monat.getTime());
+        if (vertrag != null) {
+            sollZahlung.setMieter(vertrag.getMieter());
+            sollZahlung.setSoll(vertrag.getGesamtkosten() * faktor);
+            sollZahlung.setGrundMiete(vertrag.getMietzins() * faktor);
+            sollZahlung.setNebenKosten((vertrag.getHeizkosten() + vertrag.getNebenkosten()) * faktor);
+            sollZahlung.setMietVertrag(vertrag);
+        }
+        return sollZahlung;
     }
 
 
@@ -1159,7 +1132,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
                     double faktor = 0.0d;
                     Date mvEnde = mietVertragNeu.getEnde();
                     if (mvEnde == null || istZahlung.getDatum().before(mvEnde)) {
-                        faktor = buchung.getBetrag() / mietVertragNeu.getGesamtkosten();
+                        faktor = mietzahlung.getBetrag() / mietVertragNeu.getGesamtkosten();
                     }
                     if (faktor >= 0.75d) {
                         istZahlung.setGrundMiete(mietVertragNeu.getMietzins());
@@ -1187,10 +1160,16 @@ public class WohnungenController implements Initializable, CloseRequestable {
         LOGGER.info("fill KautionTable");
         kautionsZahlungOL.clear();
         ArrayList<GuiMietzahlung> zahlungenList = new ArrayList<>();
-        String mieterName = mieterChoiceBox.getSelectionModel().getSelectedItem();
         List<MietVertrag> vertraege = ermittleVertraege();
-        Double summeSoll = fillSollKaution(vertraege, mieterName, zahlungenList);
-        Double summeIst = fillIstKaution(vertraege, mieterName, zahlungenList);
+
+        Double summeSoll = 0.0d;
+        Double summeIst = 0.0d;
+
+        if (vertraege.size() > 0) {
+            MietVertrag aktMV = vertraege.get(vertraege.size() - 1);
+            summeSoll = fillSollKaution(aktMV, zahlungenList);
+            summeIst = fillIstKaution(vertraege, aktMV.getMieter(), zahlungenList);
+        }
 
         zahlungenList.sort(Comparator.comparing(GuiMietzahlung::getDatum));
 
@@ -1210,46 +1189,27 @@ public class WohnungenController implements Initializable, CloseRequestable {
 
     }
 
-    private Double fillSollKaution(List<MietVertrag> vertraege, String mieterName, List<GuiMietzahlung> zahlungenList) {
-        double summe = 0.0d;
-        Date heute = new Date();
+    private Double fillSollKaution(MietVertrag vertrag, List<GuiMietzahlung> zahlungenList) {
 
-        for (MietVertrag vertrag: vertraege) {
-            if (vertrag.isAnpassung() == false) {
-                if (mieterName.equals(ALLE_MIETER) || vertrag.getMieter().getName().equals(mieterName)) {
-                    GuiMietzahlung sollZahlung = new GuiMietzahlung();
-                    sollZahlung.setDatum(vertrag.getBeginn());
-                    sollZahlung.setMieter(vertrag.getMieter());
-                    sollZahlung.setSoll(vertrag.getKaution());
-                    summe += vertrag.getKaution();
-                    zahlungenList.add(sollZahlung);
-                    if (vertrag.getEnde() != null && vertrag.getEnde().before(heute)) {
-                        GuiMietzahlung sollRueckzahlung = new GuiMietzahlung();
-                        sollRueckzahlung.setDatum(vertrag.getEnde());
-                        sollRueckzahlung.setMieter(vertrag.getMieter());
-                        sollRueckzahlung.setSoll(vertrag.getKaution() * -1);
-                        summe -= vertrag.getKaution();
-                        if (sollRueckzahlung.getSoll() != 0) {
-                            zahlungenList.add(sollRueckzahlung);
-                        }
-                    }
-                }
-            }
-        }
+        GuiMietzahlung sollZahlung = new GuiMietzahlung();
+        sollZahlung.setDatum(vertrag.getBeginn());
+        sollZahlung.setMieter(vertrag.getMieter());
+        sollZahlung.setSoll(vertrag.getKaution());
+        zahlungenList.add(sollZahlung);
 
-        return summe;
+        return vertrag.getKaution();
     }
 
 
-    private Double fillIstKaution(List<MietVertrag> vertraege, String mieterName, List<GuiMietzahlung> zahlungenList) {
+    private Double fillIstKaution(List<MietVertrag> vertraege, Person mieter, List<GuiMietzahlung> zahlungenList) {
 
         List<GuiMietzahlung> istZahlungen = new ArrayList<>(50);
         double summe = 0.0d;
 
         for (MietVertrag vertrag : vertraege) {
-            Collection<Mietzahlung> kautionsZahlungen = HausJpaPersistence.getInstance().selectKautionszahlungen(vertrag);
-            for (Mietzahlung mietzahlung : kautionsZahlungen) {
-                if (mieterName.equals(ALLE_MIETER) || mietzahlung.getMietVertrag().getMieter().getName().equals(mieterName)) {
+            if (vertrag.getMieter() == mieter) {
+                Collection<Mietzahlung> kautionsZahlungen = HausJpaPersistence.getInstance().selectKautionszahlungen(vertrag);
+                for (Mietzahlung mietzahlung : kautionsZahlungen) {
                     Buchung buchung = mietzahlung.getBuchung();
                     GuiMietzahlung istZahlung = new GuiMietzahlung();
                     istZahlung.setMieter(vertrag.getMieter());
