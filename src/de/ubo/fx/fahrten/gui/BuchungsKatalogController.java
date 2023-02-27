@@ -393,6 +393,10 @@ public class BuchungsKatalogController implements Initializable, CloseRequestabl
         operatorZweiChoiceBox.setConverter(operatorKonverter);
         operatorDreiChoiceBox.setConverter(operatorKonverter);
         operatorVierChoiceBox.setConverter(operatorKonverter);
+        operatorEinsChoiceBox.setValue(Operator.KEIN_OPERATOR);
+        operatorZweiChoiceBox.setValue(Operator.KEIN_OPERATOR);
+        operatorDreiChoiceBox.setValue(Operator.KEIN_OPERATOR);
+        operatorVierChoiceBox.setValue(Operator.KEIN_OPERATOR);
 
     }
 

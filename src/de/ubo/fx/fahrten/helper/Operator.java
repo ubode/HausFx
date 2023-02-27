@@ -10,9 +10,10 @@ public enum Operator {
     GROESSER_GLEICH(">="),
     GROESSER(">"),
     REGEX("REGEX"),
+    KEIN_OPERATOR("")
     ;
 
-    String name;
+    final String name;
 
     Operator(String name) {
         this.name = name;

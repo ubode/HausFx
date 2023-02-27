@@ -272,7 +272,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
     }
 
     private void fillVertagsTable(Wohnung wohnung) {
-        LOGGER.info("fillVertagsTable");
+        LOGGER.fine("fillVertagsTable");
         vertraegeOL.clear();
         vertraegeOL.addAll(ermittleVertraege(wohnung));
         vertragTableView.setItems(vertraegeOL);
@@ -280,7 +280,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
     }
 
     private void fillZimmerTable(Wohnung wohnung) {
-        LOGGER.info("fillZimmerTable");
+        LOGGER.fine("fillZimmerTable");
         zimmerOL.clear();
         Collection<Zimmer> zimmerColl = HausJpaPersistence.getInstance().selectZimmer(wohnung);
         ArrayList<Zimmer> zimmerList = new ArrayList<>(zimmerColl);
@@ -396,7 +396,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
                 vertrag.setAnpassung((Boolean)inhalt);
                 break;
             default:
-                System.out.println("nichts zu tun");
+                LOGGER.finest("nichts zu tun");
         }
 
         aktuellerVertrag = vertrag;
@@ -427,7 +427,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
                 zimmer.setBemerkung((String) inhalt);
                 break;
             default:
-                System.out.println("nichts zu tun");
+                LOGGER.finest("nichts zu tun");
         }
 
         aktuellesZimmer = zimmer;
@@ -446,7 +446,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
         }
 
         checkButtons();
-        System.out.println("neue Mietvertraege gesichert");
+        LOGGER.info("neue Mietvertraege gesichert");
     }
 
     public void handleDeleteButton(ActionEvent event) {
@@ -474,7 +474,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
         }
 
         checkButtons();
-        System.out.println("Abbruch Verarbeitung");
+        LOGGER.info("Abbruch Verarbeitung");
     }
 
     public void handleKopierButton(ActionEvent event) {
@@ -505,7 +505,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
         }
 
         checkButtons();
-        System.out.println("Pruefe Mieteingaenge");
+        LOGGER.finest("Pruefe Mieteingaenge");
     }
 
     public void handleDatenTab() {
@@ -521,7 +521,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
             TreeItem<WohnObjekt> treeItem = wohnungTreeView.getSelectionModel().getSelectedItem();
             fillDatenTab(treeItem);
         } catch (NullPointerException e) {
-            LOGGER.info("Alles gut");
+            LOGGER.info("Nullpointer - Alles gut");
         }
     }
 
@@ -1034,7 +1034,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
     }
 
     private void fillMietenTable() {
-        LOGGER.info("fill MietenTable");
+        LOGGER.finest("fill MietenTable");
         mietZahlungOL.clear();
         ArrayList<GuiMietzahlung> zahlungenList = new ArrayList<>();
         int jahr = Integer.valueOf(jahrChoiceBox.getSelectionModel().getSelectedItem());
@@ -1157,7 +1157,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
 
 
     private void fillKautionsTable() {
-        LOGGER.info("fill KautionTable");
+        LOGGER.finest("fill KautionTable");
         kautionsZahlungOL.clear();
         ArrayList<GuiMietzahlung> zahlungenList = new ArrayList<>();
         List<MietVertrag> vertraege = ermittleVertraege();
@@ -1309,7 +1309,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
         vertraegeOL.addListener((ListChangeListener<MietVertrag>) c -> {
             while (c.next()) {
                 if (c.wasUpdated()) {
-                    System.out.println("here we are");
+                    LOGGER.finest("here we are");
                 }
             }
         });
@@ -1345,7 +1345,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
         anpassungCol.setCellFactory(CheckBoxTableCell.forTableColumn(new Callback<Integer, ObservableValue<Boolean>>() {
             @Override
             public ObservableValue<Boolean> call(Integer param) {
-                System.out.println("hier bin ich");
+                LOGGER.finest("Trigger anpaasungsCol");
                 SimpleBooleanProperty property = new SimpleBooleanProperty();
                 property.setValue(vertraegeOL.get(param).isAnpassung());
                 return property;

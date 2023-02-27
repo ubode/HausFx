@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
@@ -57,6 +59,15 @@ public class HausverwaltungController implements Initializable, CloseRequestable
     public void initialize(URL location, ResourceBundle resources) {
 
         ControllerRegistry.getInstance().add(this);
+
+        LOGGER.getParent().setLevel(Level.INFO);
+        FileHandler fileHandler = null;
+        try {
+            fileHandler = new FileHandler("hausLog.txt");
+            LOGGER.getParent().addHandler(fileHandler);
+        } catch (IOException e) {
+            LOGGER.warning("hausLog.txt kann nicht geöffnet werden");
+        }
 
         Map<String, Object> props = HausJpaPersistence.getInstance().getEntityManager().getProperties();
         String dbName = props.get("javax.persistence.jdbc.url").toString();
