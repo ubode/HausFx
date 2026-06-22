@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class HausJpaPersistence {
     private final static Logger LOGGER = Logger.getLogger(HausJpaPersistence.class.getName());
-    private static HausJpaPersistence instance = new HausJpaPersistence();
+    private static final HausJpaPersistence instance = new HausJpaPersistence();
     private final EntityManagerFactory entityManagerFactory;
     private final EntityManager entityManager;
 

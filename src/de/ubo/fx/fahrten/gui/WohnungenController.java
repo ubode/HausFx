@@ -42,17 +42,17 @@ import java.util.logging.Logger;
  */
 public class WohnungenController implements Initializable, CloseRequestable {
     private final static Logger LOGGER = Logger.getLogger(WohnungenController.class.getName());
-    private static String RGB_BLUE = "#cceeff";
-    private static String RGB_GREEN = "#d4f2d2";
-    private static String RGB_GREY = "#dddddd";
-    private static String RGB_RED = "#ffd9cc";
-    private static String RGB_YELLOW = "#ffffe6";
-    private static Background BG_RED = new Background(new BackgroundFill(Color.web(RGB_RED), CornerRadii.EMPTY, Insets.EMPTY));
-    private static Background BG_GREEN = new Background(new BackgroundFill(Color.web(RGB_GREEN), CornerRadii.EMPTY, Insets.EMPTY));
-    private static Background BG_BLUE = new Background(new BackgroundFill(Color.web(RGB_BLUE), CornerRadii.EMPTY, Insets.EMPTY));
-    private static Background BG_YELLOW = new Background(new BackgroundFill(Color.web(RGB_YELLOW), CornerRadii.EMPTY, Insets.EMPTY));
-    private static String ALLE_MIETER = "alle Mieter";
-    private static NumberFormat BETRAG_FORMATTER = DecimalFormat.getCurrencyInstance(Locale.FRANCE);
+    private final static String RGB_BLUE = "#cceeff";
+    private final static String RGB_GREEN = "#d4f2d2";
+    private final static String RGB_GREY = "#dddddd";
+    private final static String RGB_RED = "#ffd9cc";
+    private final static String RGB_YELLOW = "#ffffe6";
+    private final static Background BG_RED = new Background(new BackgroundFill(Color.web(RGB_RED), CornerRadii.EMPTY, Insets.EMPTY));
+    private final static Background BG_GREEN = new Background(new BackgroundFill(Color.web(RGB_GREEN), CornerRadii.EMPTY, Insets.EMPTY));
+    private final static Background BG_BLUE = new Background(new BackgroundFill(Color.web(RGB_BLUE), CornerRadii.EMPTY, Insets.EMPTY));
+    private final static Background BG_YELLOW = new Background(new BackgroundFill(Color.web(RGB_YELLOW), CornerRadii.EMPTY, Insets.EMPTY));
+    private final static String ALLE_MIETER = "alle Mieter";
+    private final static NumberFormat BETRAG_FORMATTER = DecimalFormat.getCurrencyInstance(Locale.FRANCE);
     public TreeView<WohnObjekt> wohnungTreeView;
     public TextField baujahrTextField;
     public TextField nameTextField;
@@ -279,6 +279,12 @@ public class WohnungenController implements Initializable, CloseRequestable {
         checkVertragButtons();
     }
 
+    private MietVertrag getAktuellenVertrag(Wohnung wohnung) {
+        LOGGER.fine("getAktuellenVertrag");
+        List<MietVertrag> mvList = ermittleVertraege(wohnung);
+        return mvList.get(mvList.size() - 1);
+    }
+
     private void fillZimmerTable(Wohnung wohnung) {
         LOGGER.fine("fillZimmerTable");
         zimmerOL.clear();
@@ -337,7 +343,7 @@ public class WohnungenController implements Initializable, CloseRequestable {
     }
 
 
-    public void wohnungSelected(TreeItem treeItem) {
+    public void wohnungSelected(TreeItem<WohnObjekt> treeItem) {
 
         if (datenTab.isSelected()) {
             fillDatenTab(treeItem);
@@ -1287,7 +1293,8 @@ public class WohnungenController implements Initializable, CloseRequestable {
 
             Collection<Wohnung> wohnungen = HausJpaPersistence.getInstance().selectWohnungen(haus);
             for (Wohnung wohnung: wohnungen) {
-                String bezeichnung = wohnung.getNummer() + " [" + wohnung.getLageBeschreibung() + "]";
+                String aktuellerMieterName = getAktuellenVertrag(wohnung).getMieter().getName();
+                String bezeichnung = wohnung.getNummer() + " [" + wohnung.getLageBeschreibung() + " - " + aktuellerMieterName + "]";
                 WohnObjekt wohnObjekt = new WohnObjekt(bezeichnung);
                 wohnObjekt.setHaus(haus);
                 wohnObjekt.setWohnung(wohnung);

@@ -776,7 +776,7 @@ public class KontakteController implements Initializable, CloseRequestable {
                 new StringConverter<Adresse>() {
                     @Override
                     public String toString(Adresse adresse) {
-                        return adresse.getKuerzel();
+                        return adresse == null ? "" : adresse.getKuerzel();
                     }
 
                     @Override

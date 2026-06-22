@@ -12,7 +12,7 @@
             <property name="javax.persistence.jdbc.driver"
                       value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:mysql://GEEKOM-WS:3306/bode_haus_prod?useSSL=false" />
+                      value="jdbc:mysql://Geekom_WS:3306/bode_haus_test?useSSL=false" />
             <property name="javax.persistence.jdbc.user" value="hausSystem" />
             <property name="javax.persistence.jdbc.password" value="mysqlU+S=mmrg#06" />
         </properties>

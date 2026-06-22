@@ -31,10 +31,10 @@ import java.util.logging.Logger;
 public class BuchungsKatalogController implements Initializable, CloseRequestable {
     private final static Logger LOGGER = Logger.getLogger(BuchungsKatalogController.class.getName());
     private final UpdateManager<Ausgabe> updateManager = new UpdateManager<>(500);
-    public ComboBox argumentEinsComboBox;
-    public ComboBox argumentZweiComboBox;
-    public ComboBox argumentDreiComboBox;
-    public ComboBox argumentVierComboBox;
+    public ComboBox<String> argumentEinsComboBox;
+    public ComboBox<String> argumentZweiComboBox;
+    public ComboBox<String> argumentDreiComboBox;
+    public ComboBox<String> argumentVierComboBox;
     public TableView<Buchung> buchungTableView;
     public TableColumn datumCol;
     public TableColumn hausCol;

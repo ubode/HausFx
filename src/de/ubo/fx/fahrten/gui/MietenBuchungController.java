@@ -7,8 +7,6 @@ import de.ubo.fx.fahrten.converter.ZahlungsKategorieStringConverter;
 import de.ubo.fx.fahrten.helper.*;
 import de.ubo.fx.fahrten.persistence.HausJpaPersistence;
 import de.ubo.fx.fahrten.persistence.UpdateManager;
-import de.ubo.haus.business.Mietvertrag;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +23,7 @@ import javafx.util.converter.IntegerStringConverter;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -53,7 +52,6 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
     public ChoiceBox<String> jahrChoiceBox;
     public ChoiceBox<Monat> monatChoiceBox;
     public ChoiceBox<BuchungsKategorie> kategorieChoiceBox;
-    private ObservableList<String> jahrOL;
     private ObservableList<Integer> jahrIntOL;
     private ObservableList<Wohnung> wohnungOL;
     private ObservableList<ZahlungsKategorie> zahlungsKategorieOL;
@@ -99,11 +97,11 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
         String kategorie = kategorieChoiceBox.getSelectionModel().getSelectedItem().getsuchBegriff();
 
         Calendar cal = new GregorianCalendar();
-        cal.set(Integer.valueOf(jahr), monatInd - 1, 1, 0, 0,0);
+        cal.set(Integer.parseInt(jahr), monatInd - 1, 1, 0, 0,0);
         cal.add(Calendar.DATE, -1);
         String vonDate = DatumHelper.getDatumInternational(cal.getTime());
         // cal.add(Calendar.DATE, +1);
-        cal.set(Integer.valueOf(jahr), monatInd, 1, 23, 59,59);
+        cal.set(Integer.parseInt(jahr), monatInd, 1, 23, 59,59);
         cal.add(Calendar.DATE, -1);
         String bisDate = DatumHelper.getDatumInternational(cal.getTime());
 
@@ -136,36 +134,73 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
     }
 
     /**
-     * Durchlauf der Verträge: suche nach Buchungen, die auf den Vertrag zutreffen
+     * Durchlauf der Buchungen: suche nach Vertrag, auf den die Buchung zutrifft
      */
     private void ordneMietvertraegeZu() {
         String jahr = jahrChoiceBox.getSelectionModel().getSelectedItem();
-        int jahrInd = Integer.valueOf(jahr);
+        int jahrInd = Integer.parseInt(jahr);
         int monatInd = monatChoiceBox.getSelectionModel().getSelectedItem().getIndex();
+        HashMap<String, MietVertrag> vertraegeRegExHM = new HashMap<String, MietVertrag>();
+        HashMap<String, MietVertrag> vertraegeNnVnHM = new HashMap<String, MietVertrag>();
+        HashMap<String, MietVertrag> vertraegeNnVHM = new HashMap<String, MietVertrag>();
+        HashMap<String, MietVertrag> vertraegeNnHM = new HashMap<String, MietVertrag>();
 
         Collection<MietVertrag> vertraege = HausJpaPersistence.getInstance().selectMietvertraege(jahrInd, monatInd - 1);
+        fuelleVertragHMs(vertraegeRegExHM, vertraegeNnVnHM, vertraegeNnVHM, vertraegeNnHM, vertraege);
 
-        Collection<Zuordnung> result;
-        for (MietVertrag vertrag : vertraege) {
-            if (vertrag.getRegularExpression() == null) {
-                String name = vertrag.getMieter().getName();
-                String vorname = vertrag.getMieter().getVorname();
-                result = sucheBuchung(name, vorname);
-            } else {
-                result = sucheBuchung(vertrag.getRegularExpression());
+        for (Zuordnung zuordnung : zuordnungOL) {
+            String empfaenger = zuordnung.getEmpfaenger();
+
+            // Suche mit regulärem Ausdruck
+            MietVertrag mietVertrag = sucheVertrag(empfaenger, vertraegeRegExHM);
+
+            // nicht gefunden -> Suche mit Vor- und Nachnamen
+            if (mietVertrag == null) {
+                mietVertrag = sucheVertrag(empfaenger, vertraegeNnVnHM);
+            }
+            // nicht gefunden -> Suche mit Nachnamen + 1. Stelle Vorname
+            if (mietVertrag == null) {
+                mietVertrag = sucheVertrag(empfaenger, vertraegeNnVHM);
+            }
+            // nicht gefunden -> Suche mit Nachnamen
+            if (mietVertrag == null) {
+                mietVertrag = sucheVertrag(empfaenger, vertraegeNnHM);
             }
 
-            for (Zuordnung zuordnung : result) {
-                // schon als Mietzahlung verbucht ==> keine Aktion
-                if (zuordnung.getMietzahlung() == null) {
-                    zuordnung.setMietVertrag(vertrag);
-                    if (result.size() == 1 || vertrag.getGesamtkosten() == zuordnung.getBuchung().getBetrag()) {
-                        zuordnung.setZahlungsKategorie(ZahlungsKategorie.MIETZINS);
-                        zuordnung.setJahr(jahrInd);
-                    }
-                    registriereDbUpdate(zuordnung);
-                }
+            if (mietVertrag != null) {
+                zuordnung.setMietVertrag(mietVertrag);
+                zuordnung.setZahlungsKategorie(ZahlungsKategorie.MIETZINS);
+                zuordnung.setJahr(jahrInd);
+                registriereDbUpdate(zuordnung);
             }
+        }
+    }
+
+    /**
+     * fülle die VertragsHashMaps mit den Verträgen
+     * 1. Verträge mit RegEx als Identifikation
+     * 2. Verträge mit Name, Vorname oder Vorname, Name als Identifikation
+     * 3. Verträge mit Name und 1. Stelle vom Vornamen und umgekehrt als Identifikation
+     * 4. Verträge nur mit Nachnamen als Identifikation
+     */
+    private void fuelleVertragHMs(HashMap<String,MietVertrag> vertraegeRegExHM,
+                                    HashMap<String,MietVertrag> vertraegeNnVnHM,
+                                    HashMap<String,MietVertrag> vertraegeNnVHM,
+                                    HashMap<String,MietVertrag> vertraegeNnHM,
+                                    Collection<MietVertrag> vertraege) {
+
+        for (MietVertrag mv : vertraege) {
+            final String name = mv.getMieter().getName().toUpperCase();
+            final String vorname = mv.getMieter().getVorname().toUpperCase();
+
+            if (mv.getRegularExpression() != null) {
+                vertraegeRegExHM.put(mv.getRegularExpression(), mv);
+            }
+            vertraegeNnVnHM.put(".*" + vorname + ".*" + name + ".*", mv);
+            vertraegeNnVnHM.put(".*" + name + ".*" + vorname + ".*", mv);
+            vertraegeNnVHM.put(".*" + vorname.charAt(0) + ".*" + name + ".*", mv);
+            vertraegeNnVHM.put(".*" + name + ".*" + vorname.charAt(0) + ".*", mv);
+            vertraegeNnHM.put(".*" + name + ".*", mv);
         }
     }
 
@@ -225,8 +260,8 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
      * @return der gewählte Mietvertrag
      */
     private MietVertrag waehleVertrag(Collection<MietVertrag> vertraege) {
-        List vertraegeList = new ArrayList(vertraege);
-        Collections.sort(vertraegeList, Comparator.comparing((MietVertrag::getBeginn), reverseOrder()));
+        List<MietVertrag> vertraegeList = new ArrayList<MietVertrag>(vertraege);
+        vertraegeList.sort(Comparator.comparing((MietVertrag::getBeginn), reverseOrder()));
 
         ChoiceDialog<MietVertrag> choiceDialog = new ChoiceDialog<>(null, vertraegeList);
         choiceDialog.setTitle("Wähle passenden Mietvertrag");
@@ -295,45 +330,8 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
     }
 
     /**
-     * Suchen von Buchungen über Nach- und Vorname
-     * @param name
-     * @param vorname
-     * @return Collection der treffenden Buchungen
-     */
-    private Collection<Zuordnung> sucheBuchung(String name, String vorname) {
-        Collection<Zuordnung> result;
-        name = name.toUpperCase();
-        vorname = vorname.toUpperCase();
-
-        String regularExpression = ".*" + vorname + ".*" + name + ".*";
-        result = sucheBuchung(regularExpression);
-
-        if (result.isEmpty()) {
-            regularExpression = ".*" + name + ".*" + vorname + ".*";
-            result = sucheBuchung(regularExpression);
-        }
-
-        if (result.isEmpty()) {
-            regularExpression = ".*" + vorname.substring(0, 1) + ".*" + name + ".*";
-            result = sucheBuchung(regularExpression);
-        }
-
-        if (result.isEmpty()) {
-            regularExpression = ".*" + name + ".*" + vorname.substring(0, 1) + ".*";
-            result = sucheBuchung(regularExpression);
-        }
-
-        if (result.isEmpty()) {
-            regularExpression = ".*" + name + ".*";
-            result = sucheBuchung(regularExpression);
-        }
-
-        return result;
-    }
-
-    /**
      * Suchen von Buchungen über einen regulären Ausdruck
-     * @param regularExpression
+     * @param regularExpression aus dem Vertrag, der getroffen werden soll
      * @return Collection der treffenden Buchungen
      */
     private Collection<Zuordnung> sucheBuchung(String regularExpression) {
@@ -348,6 +346,26 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
             }
         }
         return result;
+    }
+
+    /**
+     * Suchen eines passenden Vertrags zur Buchung
+     * @param empfaenger  Empfaenger der Buchung, zu dem ein Vertrag gesucht wird
+     * @param vertragsHM  HashMap der zu untersuchenden Vertraege
+     * @return vertrag, der den Empfaenger matched
+     */
+    private MietVertrag sucheVertrag(String empfaenger, HashMap<String, MietVertrag> vertragsHM) {
+        AtomicReference<MietVertrag> mV = new AtomicReference<>();
+
+        vertragsHM.forEach( (regEx, vertrag ) -> {
+            Pattern pattern = Pattern.compile(regEx.toUpperCase());
+            Matcher matcher = pattern.matcher(empfaenger.toUpperCase());
+            if (matcher.matches()) {
+                mV.set(vertrag);
+            }
+        } );
+
+        return mV.get();
     }
 
     /**
@@ -461,7 +479,7 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
     }
 
     public void initializeJahrChoiceBox() {
-        jahrOL = FXCollections.observableArrayList();
+        ObservableList<String> jahrOL = FXCollections.observableArrayList();
         jahrIntOL = FXCollections.observableArrayList();
 
     /* Fuellen der ChoiceBox */
