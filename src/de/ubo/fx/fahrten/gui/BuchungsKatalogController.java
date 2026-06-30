@@ -155,7 +155,7 @@ public class BuchungsKatalogController implements Initializable, CloseRequestabl
     }
     
     private void pruefeButtons() {
-        /**
+        /*
          *
 
         int selectedIndex = hausChoiceBox.getSelectionModel().getSelectedIndex();

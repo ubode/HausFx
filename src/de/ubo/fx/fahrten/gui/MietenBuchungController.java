@@ -140,6 +140,7 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
         String jahr = jahrChoiceBox.getSelectionModel().getSelectedItem();
         int jahrInd = Integer.parseInt(jahr);
         int monatInd = monatChoiceBox.getSelectionModel().getSelectedItem().getIndex();
+
         HashMap<String, MietVertrag> vertraegeRegExHM = new HashMap<String, MietVertrag>();
         HashMap<String, MietVertrag> vertraegeNnVnHM = new HashMap<String, MietVertrag>();
         HashMap<String, MietVertrag> vertraegeNnVHM = new HashMap<String, MietVertrag>();
@@ -149,7 +150,12 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
         fuelleVertragHMs(vertraegeRegExHM, vertraegeNnVnHM, vertraegeNnVHM, vertraegeNnHM, vertraege);
 
         for (Zuordnung zuordnung : zuordnungOL) {
-            String empfaenger = zuordnung.getEmpfaenger();
+
+            // Nur positive Buchungen verbuchen - Kautionsrückzahlungen nicht beachten
+            String empfaenger = "";
+            if (zuordnung.getBetrag() > 0) {
+                empfaenger = zuordnung.getEmpfaenger();
+            }
 
             // Suche mit regulärem Ausdruck
             MietVertrag mietVertrag = sucheVertrag(empfaenger, vertraegeRegExHM);
@@ -169,7 +175,11 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
 
             if (mietVertrag != null) {
                 zuordnung.setMietVertrag(mietVertrag);
-                zuordnung.setZahlungsKategorie(ZahlungsKategorie.MIETZINS);
+                if (zuordnung.getKategorie().equals("Mietkaution")) {
+                    zuordnung.setZahlungsKategorie(ZahlungsKategorie.KAUTION);
+                } else if (zuordnung.getKategorie().equals("Miete + Nebenkosten")) {
+                    zuordnung.setZahlungsKategorie(ZahlungsKategorie.MIETZINS);
+                }
                 zuordnung.setJahr(jahrInd);
                 registriereDbUpdate(zuordnung);
             }
@@ -304,7 +314,7 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
         zuordnung.setZahlungsKategorie(zahlungsKategorie);
         zuordnung.getMietzahlung().setZahlungsKategorie(zahlungsKategorie);
 
-        Integer jahr = Integer.valueOf(jahrChoiceBox.getSelectionModel().getSelectedItem());
+        int jahr = Integer.parseInt(jahrChoiceBox.getSelectionModel().getSelectedItem());
         if (zahlungsKategorie.equals(ZahlungsKategorie.NEBENKOSTENABRECHNUNG)) {
             jahr += -1;
         }
@@ -370,7 +380,7 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
 
     /**
      * Übergebene Zuordnung als Mietzahlung im Updatemanager registrieren
-     * @param zuordnung
+     * @param zuordnung die gespeichert werden soll
      */
     private void registriereDbUpdate(Zuordnung zuordnung) {
         Mietzahlung mietzahlung;
@@ -560,7 +570,7 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
     private void initializeTableViewColumns() {
        //buchungCol.setStyle("-fx-background-color: wheat;");
 
-       /** Zurdnung Spalte Datum */
+       /* Zurdnung Spalte Datum */
        //datumCol.setStyle("-fx-background-color: beige;");
        datumCol.setCellValueFactory(
                 cellData -> {
@@ -570,25 +580,25 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
                     return property;
                 });
 
-        /** Zurdnung Spalte Empfänger */
+        /* Zurdnung Spalte Empfänger */
         //empfaengerCol.setStyle("-fx-background-color: beige;");
         empfaengerCol.setCellValueFactory(new PropertyValueFactory<>("empfaenger"));
 
-        /** Zurdnung Spalte Betrag */
+        /* Zurdnung Spalte Betrag */
         //betragCol.setStyle("-fx-alignment: CENTER-RIGHT; -fx-background-color: beige;");
         betragCol.setStyle("-fx-alignment: CENTER-RIGHT;");
         betragCol.setCellFactory(TextFieldTableCell.forTableColumn(new ExtendedDoubleStringConverter()));
         betragCol.setCellValueFactory(new PropertyValueFactory<>("betrag"));
 
-        /** Zurdnung Spalte BuchungsKategorie */
+        /* Zurdnung Spalte BuchungsKategorie */
         //kategorieCol.setStyle("-fx-background-color: beige;");
         kategorieCol.setCellValueFactory(new PropertyValueFactory<>("kategorie"));
 
-        /** Zurdnung Spalte Wohnungsnummer */
+        /* Zurdnung Spalte Wohnungsnummer */
         wohnungCol.setCellFactory(ComboBoxTableCell.forTableColumn(new WohnungStringConverter(), wohnungOL));
         wohnungCol.setCellValueFactory(new PropertyValueFactory<>("wohnung"));
 
-        /** Zurdnung Spalte Mieter */
+        /* Zurdnung Spalte Mieter */
         mieterCol.setCellFactory(TextFieldTableCell.forTableColumn());
         mieterCol.setCellValueFactory(
                 cellData -> {
@@ -602,16 +612,16 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
                     return property;
                 });
 
-        /** Zurdnung Spalte Betrag */
+        /* Zurdnung Spalte Betrag */
         anteilCol.setStyle("-fx-alignment: CENTER-RIGHT;");
         anteilCol.setCellFactory(TextFieldTableCell.forTableColumn(new ExtendedDoubleStringConverter()));
         anteilCol.setCellValueFactory(new PropertyValueFactory<>("anteil"));
 
-        /** Zurdnung Spalte Verwendung */
+        /* Zurdnung Spalte Verwendung */
         verwendungCol.setCellFactory(ComboBoxTableCell.forTableColumn(new ZahlungsKategorieStringConverter(), zahlungsKategorieOL));
         verwendungCol.setCellValueFactory(new PropertyValueFactory<>("zahlungsKategorie"));
 
-        /** Zurdnung Spalte Jahr */
+        /* Zurdnung Spalte Jahr */
         jahrCol.setStyle("-fx-alignment: CENTER-RIGHT;");
         jahrCol.setCellFactory(ComboBoxTableCell.forTableColumn(new IntegerStringConverter(), jahrIntOL));
         jahrCol.setCellValueFactory(new PropertyValueFactory<>("jahr"));
@@ -625,7 +635,7 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
         stage.close();
     }
 
-    public class Zuordnung implements Cloneable, Comparable<Zuordnung> {
+    public static class Zuordnung implements Cloneable, Comparable<Zuordnung> {
         private Date datum;
         private String empfaenger;
         private Double betrag;
@@ -638,9 +648,6 @@ public class MietenBuchungController implements Initializable, CloseRequestable 
         private MietVertrag mietVertrag;
         private Mietzahlung mietzahlung;
         private Buchung buchung;
-
-        public Zuordnung() {
-        }
 
         public Zuordnung(Buchung buchung) {
             this.buchung = buchung;

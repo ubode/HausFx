@@ -1,0 +1,1864 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2026-06-25T09:53:48.825093600Z</date>
+  <millis>1782381228825</millis>
+  <nanos>93600</nanos>
+  <sequence>0</sequence>
+  <logger>de.ubo.fx.fahrten.gui.HausverwaltungController</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.gui.HausverwaltungController</class>
+  <method>handleMenu</method>
+  <thread>26</thread>
+  <message>Menu Item gewählt</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.108272200Z</date>
+  <millis>1782381229108</millis>
+  <nanos>272200</nanos>
+  <sequence>1</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Sun May 31 00:00:00 CEST 2026</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.109277Z</date>
+  <millis>1782381229109</millis>
+  <nanos>277000</nanos>
+  <sequence>2</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Tue Jun 30 00:00:00 CEST 2026</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.109277Z</date>
+  <millis>1782381229109</millis>
+  <nanos>277000</nanos>
+  <sequence>3</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Miete + Nebenkosten</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.148931800Z</date>
+  <millis>1782381229148</millis>
+  <nanos>931800</nanos>
+  <sequence>4</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.150960600Z</date>
+  <millis>1782381229150</millis>
+  <nanos>960600</nanos>
+  <sequence>5</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.155314300Z</date>
+  <millis>1782381229155</millis>
+  <nanos>314300</nanos>
+  <sequence>6</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.160500800Z</date>
+  <millis>1782381229160</millis>
+  <nanos>500800</nanos>
+  <sequence>7</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.164525700Z</date>
+  <millis>1782381229164</millis>
+  <nanos>525700</nanos>
+  <sequence>8</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.167716200Z</date>
+  <millis>1782381229167</millis>
+  <nanos>716200</nanos>
+  <sequence>9</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.170765400Z</date>
+  <millis>1782381229170</millis>
+  <nanos>765400</nanos>
+  <sequence>10</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.173818100Z</date>
+  <millis>1782381229173</millis>
+  <nanos>818100</nanos>
+  <sequence>11</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.177371900Z</date>
+  <millis>1782381229177</millis>
+  <nanos>371900</nanos>
+  <sequence>12</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.180393500Z</date>
+  <millis>1782381229180</millis>
+  <nanos>393500</nanos>
+  <sequence>13</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.183538400Z</date>
+  <millis>1782381229183</millis>
+  <nanos>538400</nanos>
+  <sequence>14</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.186612300Z</date>
+  <millis>1782381229186</millis>
+  <nanos>612300</nanos>
+  <sequence>15</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.189653200Z</date>
+  <millis>1782381229189</millis>
+  <nanos>653200</nanos>
+  <sequence>16</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.192787800Z</date>
+  <millis>1782381229192</millis>
+  <nanos>787800</nanos>
+  <sequence>17</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.195811100Z</date>
+  <millis>1782381229195</millis>
+  <nanos>811100</nanos>
+  <sequence>18</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.199245400Z</date>
+  <millis>1782381229199</millis>
+  <nanos>245400</nanos>
+  <sequence>19</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.202388400Z</date>
+  <millis>1782381229202</millis>
+  <nanos>388400</nanos>
+  <sequence>20</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.205405100Z</date>
+  <millis>1782381229205</millis>
+  <nanos>405100</nanos>
+  <sequence>21</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.208445500Z</date>
+  <millis>1782381229208</millis>
+  <nanos>445500</nanos>
+  <sequence>22</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.211466800Z</date>
+  <millis>1782381229211</millis>
+  <nanos>466800</nanos>
+  <sequence>23</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.214686700Z</date>
+  <millis>1782381229214</millis>
+  <nanos>686700</nanos>
+  <sequence>24</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.217731400Z</date>
+  <millis>1782381229217</millis>
+  <nanos>731400</nanos>
+  <sequence>25</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.220806600Z</date>
+  <millis>1782381229220</millis>
+  <nanos>806600</nanos>
+  <sequence>26</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.223946400Z</date>
+  <millis>1782381229223</millis>
+  <nanos>946400</nanos>
+  <sequence>27</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.225984800Z</date>
+  <millis>1782381229225</millis>
+  <nanos>984800</nanos>
+  <sequence>28</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.229035600Z</date>
+  <millis>1782381229229</millis>
+  <nanos>35600</nanos>
+  <sequence>29</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.232652200Z</date>
+  <millis>1782381229232</millis>
+  <nanos>652200</nanos>
+  <sequence>30</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.235667900Z</date>
+  <millis>1782381229235</millis>
+  <nanos>667900</nanos>
+  <sequence>31</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.238683600Z</date>
+  <millis>1782381229238</millis>
+  <nanos>683600</nanos>
+  <sequence>32</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.241700100Z</date>
+  <millis>1782381229241</millis>
+  <nanos>700100</nanos>
+  <sequence>33</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.243881900Z</date>
+  <millis>1782381229243</millis>
+  <nanos>881900</nanos>
+  <sequence>34</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.247375300Z</date>
+  <millis>1782381229247</millis>
+  <nanos>375300</nanos>
+  <sequence>35</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.250423400Z</date>
+  <millis>1782381229250</millis>
+  <nanos>423400</nanos>
+  <sequence>36</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.253766700Z</date>
+  <millis>1782381229253</millis>
+  <nanos>766700</nanos>
+  <sequence>37</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.257031600Z</date>
+  <millis>1782381229257</millis>
+  <nanos>31600</nanos>
+  <sequence>38</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.259050200Z</date>
+  <millis>1782381229259</millis>
+  <nanos>50200</nanos>
+  <sequence>39</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.262358500Z</date>
+  <millis>1782381229262</millis>
+  <nanos>358500</nanos>
+  <sequence>40</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.265379400Z</date>
+  <millis>1782381229265</millis>
+  <nanos>379400</nanos>
+  <sequence>41</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.268457500Z</date>
+  <millis>1782381229268</millis>
+  <nanos>457500</nanos>
+  <sequence>42</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.271723500Z</date>
+  <millis>1782381229271</millis>
+  <nanos>723500</nanos>
+  <sequence>43</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.274745800Z</date>
+  <millis>1782381229274</millis>
+  <nanos>745800</nanos>
+  <sequence>44</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.277375300Z</date>
+  <millis>1782381229277</millis>
+  <nanos>375300</nanos>
+  <sequence>45</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.280498900Z</date>
+  <millis>1782381229280</millis>
+  <nanos>498900</nanos>
+  <sequence>46</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.283538800Z</date>
+  <millis>1782381229283</millis>
+  <nanos>538800</nanos>
+  <sequence>47</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.285549Z</date>
+  <millis>1782381229285</millis>
+  <nanos>549000</nanos>
+  <sequence>48</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.288598500Z</date>
+  <millis>1782381229288</millis>
+  <nanos>598500</nanos>
+  <sequence>49</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.291609100Z</date>
+  <millis>1782381229291</millis>
+  <nanos>609100</nanos>
+  <sequence>50</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.294805600Z</date>
+  <millis>1782381229294</millis>
+  <nanos>805600</nanos>
+  <sequence>51</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.296936400Z</date>
+  <millis>1782381229296</millis>
+  <nanos>936400</nanos>
+  <sequence>52</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.299999700Z</date>
+  <millis>1782381229299</millis>
+  <nanos>999700</nanos>
+  <sequence>53</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.303024800Z</date>
+  <millis>1782381229303</millis>
+  <nanos>24800</nanos>
+  <sequence>54</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:49.305038100Z</date>
+  <millis>1782381229305</millis>
+  <nanos>38100</nanos>
+  <sequence>55</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:54.385861700Z</date>
+  <millis>1782381234385</millis>
+  <nanos>861700</nanos>
+  <sequence>56</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Sun May 31 00:00:00 CEST 2026</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:54.386915500Z</date>
+  <millis>1782381234386</millis>
+  <nanos>915500</nanos>
+  <sequence>57</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Tue Jun 30 00:00:00 CEST 2026</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:54.386915500Z</date>
+  <millis>1782381234386</millis>
+  <nanos>915500</nanos>
+  <sequence>58</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:54.401278800Z</date>
+  <millis>1782381234401</millis>
+  <nanos>278800</nanos>
+  <sequence>59</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:54.402334900Z</date>
+  <millis>1782381234402</millis>
+  <nanos>334900</nanos>
+  <sequence>60</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:59.137982400Z</date>
+  <millis>1782381239137</millis>
+  <nanos>982400</nanos>
+  <sequence>61</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Sat May 31 00:00:00 CEST 2025</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:59.138984700Z</date>
+  <millis>1782381239138</millis>
+  <nanos>984700</nanos>
+  <sequence>62</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Mon Jun 30 00:00:00 CEST 2025</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:59.138984700Z</date>
+  <millis>1782381239138</millis>
+  <nanos>984700</nanos>
+  <sequence>63</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:59.153495200Z</date>
+  <millis>1782381239153</millis>
+  <nanos>495200</nanos>
+  <sequence>64</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:53:59.154504500Z</date>
+  <millis>1782381239154</millis>
+  <nanos>504500</nanos>
+  <sequence>65</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:04.614362500Z</date>
+  <millis>1782381244614</millis>
+  <nanos>362500</nanos>
+  <sequence>66</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Wed Apr 30 00:00:00 CEST 2025</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:04.614362500Z</date>
+  <millis>1782381244614</millis>
+  <nanos>362500</nanos>
+  <sequence>67</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Sat May 31 00:00:00 CEST 2025</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:04.614362500Z</date>
+  <millis>1782381244614</millis>
+  <nanos>362500</nanos>
+  <sequence>68</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:04.629242700Z</date>
+  <millis>1782381244629</millis>
+  <nanos>242700</nanos>
+  <sequence>69</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:04.630251500Z</date>
+  <millis>1782381244630</millis>
+  <nanos>251500</nanos>
+  <sequence>70</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:07.217237500Z</date>
+  <millis>1782381247217</millis>
+  <nanos>237500</nanos>
+  <sequence>71</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Mon Mar 31 00:00:00 CEST 2025</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:07.218245700Z</date>
+  <millis>1782381247218</millis>
+  <nanos>245700</nanos>
+  <sequence>72</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Wed Apr 30 00:00:00 CEST 2025</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:07.218245700Z</date>
+  <millis>1782381247218</millis>
+  <nanos>245700</nanos>
+  <sequence>73</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:07.232441400Z</date>
+  <millis>1782381247232</millis>
+  <nanos>441400</nanos>
+  <sequence>74</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:07.233448800Z</date>
+  <millis>1782381247233</millis>
+  <nanos>448800</nanos>
+  <sequence>75</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:07.238822700Z</date>
+  <millis>1782381247238</millis>
+  <nanos>822700</nanos>
+  <sequence>76</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:07.242513400Z</date>
+  <millis>1782381247242</millis>
+  <nanos>513400</nanos>
+  <sequence>77</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:10.545628600Z</date>
+  <millis>1782381250545</millis>
+  <nanos>628600</nanos>
+  <sequence>78</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Fri Feb 28 00:00:00 CET 2025</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:10.546631100Z</date>
+  <millis>1782381250546</millis>
+  <nanos>631100</nanos>
+  <sequence>79</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Mon Mar 31 00:00:00 CEST 2025</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:10.546631100Z</date>
+  <millis>1782381250546</millis>
+  <nanos>631100</nanos>
+  <sequence>80</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:10.562269400Z</date>
+  <millis>1782381250562</millis>
+  <nanos>269400</nanos>
+  <sequence>81</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:10.563275400Z</date>
+  <millis>1782381250563</millis>
+  <nanos>275400</nanos>
+  <sequence>82</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:10.567319900Z</date>
+  <millis>1782381250567</millis>
+  <nanos>319900</nanos>
+  <sequence>83</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:10.573594600Z</date>
+  <millis>1782381250573</millis>
+  <nanos>594600</nanos>
+  <sequence>84</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:14.187235400Z</date>
+  <millis>1782381254187</millis>
+  <nanos>235400</nanos>
+  <sequence>85</sequence>
+  <logger>de.ubo.fx.fahrten.gui.MietenBuchungController</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.gui.MietenBuchungController</class>
+  <method>handleSearchAction</method>
+  <thread>26</thread>
+  <message>Verträge Suchen ausgelöst</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:14.190442Z</date>
+  <millis>1782381254190</millis>
+  <nanos>442000</nanos>
+  <sequence>86</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietvertraege</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=MietVertrag sql="SELECT mvg_id, mvg_anpassung, mvg_beginn, mvg_ende, mvg_heizkosten, mvg_kaution, mvg_mietzins, mvg_nebenkosten, mvg_regexp, mvg_per_id, mvg_woh_id FROM mietvertrag WHERE ((mvg_beginn &lt; ?) AND ((mvg_ende IS NULL) OR (mvg_ende &gt; ?)))"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:25.283311Z</date>
+  <millis>1782381265283</millis>
+  <nanos>311000</nanos>
+  <sequence>87</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Fri Jan 31 00:00:00 CET 2025</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:25.283311Z</date>
+  <millis>1782381265283</millis>
+  <nanos>311000</nanos>
+  <sequence>88</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Fri Feb 28 00:00:00 CET 2025</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:25.283311Z</date>
+  <millis>1782381265283</millis>
+  <nanos>311000</nanos>
+  <sequence>89</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:25.297669Z</date>
+  <millis>1782381265297</millis>
+  <nanos>669000</nanos>
+  <sequence>90</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:27.817487200Z</date>
+  <millis>1782381267817</millis>
+  <nanos>487200</nanos>
+  <sequence>91</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Tue Dec 31 00:00:00 CET 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:27.818498400Z</date>
+  <millis>1782381267818</millis>
+  <nanos>498400</nanos>
+  <sequence>92</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Fri Jan 31 00:00:00 CET 2025</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:27.818498400Z</date>
+  <millis>1782381267818</millis>
+  <nanos>498400</nanos>
+  <sequence>93</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:27.833627Z</date>
+  <millis>1782381267833</millis>
+  <nanos>627000</nanos>
+  <sequence>94</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:27.833627Z</date>
+  <millis>1782381267833</millis>
+  <nanos>627000</nanos>
+  <sequence>95</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:27.840091400Z</date>
+  <millis>1782381267840</millis>
+  <nanos>91400</nanos>
+  <sequence>96</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:31.966863700Z</date>
+  <millis>1782381271966</millis>
+  <nanos>863700</nanos>
+  <sequence>97</sequence>
+  <logger>de.ubo.fx.fahrten.gui.MietenBuchungController</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.gui.MietenBuchungController</class>
+  <method>handleSearchAction</method>
+  <thread>26</thread>
+  <message>Verträge Suchen ausgelöst</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:31.968034200Z</date>
+  <millis>1782381271968</millis>
+  <nanos>34200</nanos>
+  <sequence>98</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietvertraege</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=MietVertrag sql="SELECT mvg_id, mvg_anpassung, mvg_beginn, mvg_ende, mvg_heizkosten, mvg_kaution, mvg_mietzins, mvg_nebenkosten, mvg_regexp, mvg_per_id, mvg_woh_id FROM mietvertrag WHERE ((mvg_beginn &lt; ?) AND ((mvg_ende IS NULL) OR (mvg_ende &gt; ?)))"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:44.157537300Z</date>
+  <millis>1782381284157</millis>
+  <nanos>537300</nanos>
+  <sequence>99</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Sun Dec 31 00:00:00 CET 2023</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:44.157537300Z</date>
+  <millis>1782381284157</millis>
+  <nanos>537300</nanos>
+  <sequence>100</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Wed Jan 31 00:00:00 CET 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:44.157537300Z</date>
+  <millis>1782381284157</millis>
+  <nanos>537300</nanos>
+  <sequence>101</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:44.171742400Z</date>
+  <millis>1782381284171</millis>
+  <nanos>742400</nanos>
+  <sequence>102</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:46.901067400Z</date>
+  <millis>1782381286901</millis>
+  <nanos>67400</nanos>
+  <sequence>103</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Wed Jan 31 00:00:00 CET 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:46.902071700Z</date>
+  <millis>1782381286902</millis>
+  <nanos>71700</nanos>
+  <sequence>104</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Thu Feb 29 00:00:00 CET 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:46.902071700Z</date>
+  <millis>1782381286902</millis>
+  <nanos>71700</nanos>
+  <sequence>105</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:46.916474500Z</date>
+  <millis>1782381286916</millis>
+  <nanos>474500</nanos>
+  <sequence>106</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:49.108992100Z</date>
+  <millis>1782381289108</millis>
+  <nanos>992100</nanos>
+  <sequence>107</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Thu Feb 29 00:00:00 CET 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:49.109994300Z</date>
+  <millis>1782381289109</millis>
+  <nanos>994300</nanos>
+  <sequence>108</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Sun Mar 31 00:00:00 CET 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:49.109994300Z</date>
+  <millis>1782381289109</millis>
+  <nanos>994300</nanos>
+  <sequence>109</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:49.131579100Z</date>
+  <millis>1782381289131</millis>
+  <nanos>579100</nanos>
+  <sequence>110</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:50.909319100Z</date>
+  <millis>1782381290909</millis>
+  <nanos>319100</nanos>
+  <sequence>111</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Sun Mar 31 00:00:00 CET 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:50.909319100Z</date>
+  <millis>1782381290909</millis>
+  <nanos>319100</nanos>
+  <sequence>112</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Tue Apr 30 00:00:00 CEST 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:50.909319100Z</date>
+  <millis>1782381290909</millis>
+  <nanos>319100</nanos>
+  <sequence>113</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:50.922351500Z</date>
+  <millis>1782381290922</millis>
+  <nanos>351500</nanos>
+  <sequence>114</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:52.570262100Z</date>
+  <millis>1782381292570</millis>
+  <nanos>262100</nanos>
+  <sequence>115</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Tue Apr 30 00:00:00 CEST 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:52.570262100Z</date>
+  <millis>1782381292570</millis>
+  <nanos>262100</nanos>
+  <sequence>116</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Fri May 31 00:00:00 CEST 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:52.570262100Z</date>
+  <millis>1782381292570</millis>
+  <nanos>262100</nanos>
+  <sequence>117</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:52.585412600Z</date>
+  <millis>1782381292585</millis>
+  <nanos>412600</nanos>
+  <sequence>118</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:52.585412600Z</date>
+  <millis>1782381292585</millis>
+  <nanos>412600</nanos>
+  <sequence>119</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:55.448982800Z</date>
+  <millis>1782381295448</millis>
+  <nanos>982800</nanos>
+  <sequence>120</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Fri May 31 00:00:00 CEST 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:55.448982800Z</date>
+  <millis>1782381295448</millis>
+  <nanos>982800</nanos>
+  <sequence>121</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Sun Jun 30 00:00:00 CEST 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:55.449990900Z</date>
+  <millis>1782381295449</millis>
+  <nanos>990900</nanos>
+  <sequence>122</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:55.478689Z</date>
+  <millis>1782381295478</millis>
+  <nanos>689000</nanos>
+  <sequence>123</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:55.478689Z</date>
+  <millis>1782381295478</millis>
+  <nanos>689000</nanos>
+  <sequence>124</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:57.804856900Z</date>
+  <millis>1782381297804</millis>
+  <nanos>856900</nanos>
+  <sequence>125</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Sun Jun 30 00:00:00 CEST 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:57.805910Z</date>
+  <millis>1782381297805</millis>
+  <nanos>910000</nanos>
+  <sequence>126</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Wed Jul 31 00:00:00 CEST 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:57.805910Z</date>
+  <millis>1782381297805</millis>
+  <nanos>910000</nanos>
+  <sequence>127</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:57.836018700Z</date>
+  <millis>1782381297836</millis>
+  <nanos>18700</nanos>
+  <sequence>128</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:57.836018700Z</date>
+  <millis>1782381297836</millis>
+  <nanos>18700</nanos>
+  <sequence>129</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:54:57.839619800Z</date>
+  <millis>1782381297839</millis>
+  <nanos>619800</nanos>
+  <sequence>130</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:00.893010300Z</date>
+  <millis>1782381300893</millis>
+  <nanos>10300</nanos>
+  <sequence>131</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Wed Jul 31 00:00:00 CEST 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:00.893010300Z</date>
+  <millis>1782381300893</millis>
+  <nanos>10300</nanos>
+  <sequence>132</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Sat Aug 31 00:00:00 CEST 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:00.894015700Z</date>
+  <millis>1782381300894</millis>
+  <nanos>15700</nanos>
+  <sequence>133</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:00.916484200Z</date>
+  <millis>1782381300916</millis>
+  <nanos>484200</nanos>
+  <sequence>134</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:03.081468800Z</date>
+  <millis>1782381303081</millis>
+  <nanos>468800</nanos>
+  <sequence>135</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Sat Aug 31 00:00:00 CEST 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:03.081468800Z</date>
+  <millis>1782381303081</millis>
+  <nanos>468800</nanos>
+  <sequence>136</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Mon Sep 30 00:00:00 CEST 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:03.081468800Z</date>
+  <millis>1782381303081</millis>
+  <nanos>468800</nanos>
+  <sequence>137</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:03.096687400Z</date>
+  <millis>1782381303096</millis>
+  <nanos>687400</nanos>
+  <sequence>138</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:03.096687400Z</date>
+  <millis>1782381303096</millis>
+  <nanos>687400</nanos>
+  <sequence>139</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:03.099942100Z</date>
+  <millis>1782381303099</millis>
+  <nanos>942100</nanos>
+  <sequence>140</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:06.853975100Z</date>
+  <millis>1782381306853</millis>
+  <nanos>975100</nanos>
+  <sequence>141</sequence>
+  <logger>de.ubo.fx.fahrten.gui.MietenBuchungController</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.gui.MietenBuchungController</class>
+  <method>handleSearchAction</method>
+  <thread>26</thread>
+  <message>Verträge Suchen ausgelöst</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:06.854984300Z</date>
+  <millis>1782381306854</millis>
+  <nanos>984300</nanos>
+  <sequence>142</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietvertraege</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=MietVertrag sql="SELECT mvg_id, mvg_anpassung, mvg_beginn, mvg_ende, mvg_heizkosten, mvg_kaution, mvg_mietzins, mvg_nebenkosten, mvg_regexp, mvg_per_id, mvg_woh_id FROM mietvertrag WHERE ((mvg_beginn &lt; ?) AND ((mvg_ende IS NULL) OR (mvg_ende &gt; ?)))"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:18.587117Z</date>
+  <millis>1782381318587</millis>
+  <nanos>117000</nanos>
+  <sequence>143</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Sat Aug 31 00:00:00 CEST 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:18.587117Z</date>
+  <millis>1782381318587</millis>
+  <nanos>117000</nanos>
+  <sequence>144</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Mon Sep 30 00:00:00 CEST 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:18.587117Z</date>
+  <millis>1782381318587</millis>
+  <nanos>117000</nanos>
+  <sequence>145</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:18.604722100Z</date>
+  <millis>1782381318604</millis>
+  <nanos>722100</nanos>
+  <sequence>146</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:18.604722100Z</date>
+  <millis>1782381318604</millis>
+  <nanos>722100</nanos>
+  <sequence>147</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:18.610159100Z</date>
+  <millis>1782381318610</millis>
+  <nanos>159100</nanos>
+  <sequence>148</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:20.175936200Z</date>
+  <millis>1782381320175</millis>
+  <nanos>936200</nanos>
+  <sequence>149</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 1: Sat Aug 31 00:00:00 CEST 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:20.176989900Z</date>
+  <millis>1782381320176</millis>
+  <nanos>989900</nanos>
+  <sequence>150</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 2: Mon Sep 30 00:00:00 CEST 2024</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:20.176989900Z</date>
+  <millis>1782381320176</millis>
+  <nanos>989900</nanos>
+  <sequence>151</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Parameter 3: Mietkaution</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:20.195397900Z</date>
+  <millis>1782381320195</millis>
+  <nanos>397900</nanos>
+  <sequence>152</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectBuchungen</method>
+  <thread>26</thread>
+  <message>Statement: SELECT b FROM Buchung AS b  WHERE b.datum &gt; ?1 AND b.datum &lt;= ?2 AND b.kategorie = ?3</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:20.195397900Z</date>
+  <millis>1782381320195</millis>
+  <nanos>397900</nanos>
+  <sequence>153</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+<record>
+  <date>2026-06-25T09:55:20.198411800Z</date>
+  <millis>1782381320198</millis>
+  <nanos>411800</nanos>
+  <sequence>154</sequence>
+  <logger>de.ubo.fx.fahrten.persistence.HausJpaPersistence</logger>
+  <level>INFO</level>
+  <class>de.ubo.fx.fahrten.persistence.HausJpaPersistence</class>
+  <method>selectMietzahlung</method>
+  <thread>26</thread>
+  <message>EJBQueryImpl(ReadAllQuery(referenceClass=Mietzahlung sql="SELECT mzg_id, mzg_betrag, mzg_jahr, mzg_kategorie, mzg_buc_id, mzg_mvg_id FROM mietzahlung WHERE (mzg_buc_id = ?)"))</message>
+</record>
+</log>

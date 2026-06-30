@@ -32,12 +32,14 @@ public class HausJpaPersistence {
 
     }
 
+    /**
     @Override
     protected void finalize() throws Throwable {
         super.finalize();
         entityManager.close();
         entityManagerFactory.close();
     }
+    */
 
     public static HausJpaPersistence getInstance() {
         return instance;
